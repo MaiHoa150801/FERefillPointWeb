@@ -7,7 +7,7 @@ function SvgComponent(props) {
     //   <g data-name="Group 101" transform="translate(-375 -21)">
     //     <rect data-name="Rectangle 16" width={13} height={8} rx={4} transform="translate(375 53)" fill="#f40051" />
     //     <rect data-name="Rectangle 11" width={20} height={8} rx={4} transform="translate(382 21)" fill="#f2b300" />
-    //     <rect data-name="Rectangle 15" width={20} height={8} rx={4} transform="translate(382 37)" fill="#7620ff" />
+    //     <rect data-name="Rectangle 15" width={20} height={8} rx={4} transform="translate(382 37)" fill="#1d70b7" />
     //     <rect data-name="Rectangle 12" width={8} height={8} rx={4} transform="translate(375 29)" fill="#4cd5c5" />
     //   </g>
     // </svg>
