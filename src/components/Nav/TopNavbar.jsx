@@ -38,17 +38,17 @@ export default function TopNavbar() {
           <UlWrapper className="flexNullCenter">
             <li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="home" spy={true} smooth={true} offset={-80}>
-                HOME
+                Trang chủ
               </Link>
             </li>
             <li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="services" spy={true} smooth={true} offset={-80}>
-                WHY REFILL?
+                Tại sao tái chế
               </Link>
             </li>
             <li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="projects" spy={true} smooth={true} offset={-80}>
-                OUR WORK
+                Công việc của chúng tôi
               </Link>
             </li>
             <li className="semiBold font15 pointer">
@@ -63,7 +63,7 @@ export default function TopNavbar() {
             </li> */}
             <li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="contact" spy={true} smooth={true} offset={-80}>
-                CONTACT
+                Liên hệ
               </Link>
             </li>
           </UlWrapper>

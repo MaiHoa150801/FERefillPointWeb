@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 // Assets
-import ContactImg1 from "../../assets/img/contact-1.png";
-import ContactImg2 from "../../assets/img/contact-2.png";
-import ContactImg3 from "../../assets/img/contact-3.png";
+import ContactImg1 from "../../assets/img/contact1.jpg";
+import ContactImg2 from "../../assets/img/contact1.jpg";
+import ContactImg3 from "../../assets/img/contact1.jpg";
 
 export default function Contact() {
   return (
@@ -11,22 +11,23 @@ export default function Contact() {
       <div className="lightBg">
         <div className="container">
           <HeaderInfo>
-            <h1 className="font40 extraBold">Let's get in touch</h1>
+            <h1 className="font40 extraBold">Liên hệ</h1>
             <p className="font13">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              Chào mừng bạn đến với website chúng tôi!
               <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
+              Hãy liên hệ với chúng tôi nếu bạn có bất kì thắc mắc nào.
             </p>
           </HeaderInfo>
           <div className="row" style={{ paddingBottom: "30px" }}>
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
               <Form>
-                <label className="font13">First name:</label>
+                <label className="font13">Họ và tên:</label>
                 <input type="text" id="fname" name="fname" className="font20 extraBold" />
                 <label className="font13">Email:</label>
                 <input type="text" id="email" name="email" className="font20 extraBold" />
-                <label className="font13">Subject:</label>
+                <label className="font13">Tiêu đề:</label>
                 <input type="text" id="subject" name="subject" className="font20 extraBold" />
+                <label className="font13">Nội dung:</label>
                 <textarea rows="4" cols="50" type="text" id="message" name="message" className="font20 extraBold" />
               </Form>
               <SumbitWrapper className="flex">
@@ -43,7 +44,7 @@ export default function Contact() {
                 </ContactImgBox>
               </div>
               <div style={{ width: "50%" }}>
-                <div style={{ marginTop: "100px" }}>
+                <div style={{ marginTop: "150px" , marginLeft:"100px"}}>
                   <img src={ContactImg3} alt="office" className="radius6" />
                 </div>
               </div>
@@ -85,15 +86,16 @@ const Form = styled.form`
   }
 `;
 const ButtonInput = styled.input`
-  border: 1px solid #1d70b7;
-  background-color: #1d70b7;
+
+  border: 1px solid rgb(80, 199, 153);
+  background-color: rgb(80, 199, 153);
   width: 100%;
   padding: 15px;
   outline: none;
   color: #fff;
   :hover {
-    background-color: #ee4d2d;
-    border: 1px solid #1d70b7;
+    background-color: rgb(36, 158, 111);
+    border: 1px solid rgb(80, 199, 153);
     color: #fff;
   }
   @media (max-width: 991px) {
