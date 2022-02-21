@@ -3,7 +3,7 @@ import styled from "styled-components";
 // Components
 import FullButton from "../Buttons/FullButton";
 // Assets
-import HeaderImage from "../../assets/img/header-img.png";
+import HeaderImage from "../../assets/img/header.png";
 import QuotesIcon from "../../assets/svg/Quotes";
 import Dots from "../../assets/svg/Dots";
 
@@ -12,9 +12,9 @@ export default function Header() {
     <Wrapper id="home" className="container flexSpaceCenter">
       <LeftSide className="flexCenter">
         <div>
-          <h1 className="extraBold font60">Cùng chung tay đổ đầy sản phẩm</h1>
+          <h1 className="extraBold font60">Cùng chung tay đong đầy sản phẩm</h1>
           <HeaderP className="font13 semiBold">
-          Mỗi lần bạn refill đã góp phần giảm thiểu rác thảiđe dọa đến môi trường
+          Mỗi lần bạn đong đầy sản phẩm đã góp phần giảm thiểu rác thải đe dọa đến môi trường
           </HeaderP>
           <BtnWrapper>
             <FullButton title="Get Started" />
@@ -30,7 +30,7 @@ export default function Header() {
             </QuotesWrapper>
             <div>
               <p className="font15 whiteColor">
-                <em>Friends, such as we desire, are dreams and fables. Friendship demands the ability to do without it.</em>
+                <em>Cùng chung tay đong đầy sản phẩm. Mỗi lần bạn đong đầy sản phẩm đã góp phần giảm thiểu rác thải đe dọa đến môi trường</em>
               </p>
               <p className="font13 orangeColor textRight" style={{marginTop: '10px'}}>Ralph Waldo Emerson</p>
             </div>

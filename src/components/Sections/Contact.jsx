@@ -86,6 +86,7 @@ const Form = styled.form`
   }
 `;
 const ButtonInput = styled.input`
+
   border: 1px solid rgb(80, 199, 153);
   background-color: rgb(80, 199, 153);
   width: 100%;

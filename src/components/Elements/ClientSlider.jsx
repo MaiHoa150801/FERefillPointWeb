@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 // Assets
+
 import ClientLogo01 from "../../assets/img/clients/logo01.jpg"
 import ClientLogo02 from "../../assets/img/clients/logo02.jpg";
 import ClientLogo03 from "../../assets/img/clients/logo03.jpg";
