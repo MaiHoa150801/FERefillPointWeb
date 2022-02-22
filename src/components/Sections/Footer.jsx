@@ -22,7 +22,6 @@ export default function Contact() {
                   RefillPoint
                 </h1>
               </ul>
-              <p style={{ color: "white", padding:"10px 0"}}> Lorem ipsum dolor sit amet.</p>
             </StyleP>
             <StyleP className="whiteColor font13">              
               <h3> Giới Thiệu </h3>
@@ -41,7 +40,7 @@ export default function Contact() {
               {/* © {getCurrentYear()} - <span className="purpleColor font13">RefillPonit</span> All Right Reserved */}
             </StyleP>
             <Link className="whiteColor animate pointer font13" to="home" smooth={true} offset={-80}>
-              Back to top
+              Lên đầu trang
             </Link>
           </InnerWrapper>
         </div>
