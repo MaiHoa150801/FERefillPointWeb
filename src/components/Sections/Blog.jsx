@@ -19,7 +19,6 @@ export default function Blog() {
     </Wrapper>
   );
 }
-
 const Wrapper = styled.section`
   width: 100%;
   padding-top: 20px;
