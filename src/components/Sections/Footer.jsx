@@ -17,7 +17,7 @@ export default function Contact() {
           <InnerWrapper className="flexSpaceCenter" style={{ padding: "30px 0" }}>
             <StyleP to="home" smooth={true} offset={-80}>
               <ul className="flexCenter">
-                <LogoImg />
+                {/* <LogoImg /> */}
                 <h1 className="font20 extraBold whiteColor" style={{ marginLeft: "15px" }}>
                   RefillPoint
                 </h1>

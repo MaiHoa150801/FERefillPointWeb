@@ -17,7 +17,7 @@ export default function Header() {
           Mỗi lần bạn đong đầy sản phẩm đã góp phần giảm thiểu rác thải đe dọa đến môi trường. Hãy tải ứng dụng về để cùng hạn chế rác thải nhựa ra môi trường.
           </HeaderP>
           <BtnWrapper>
-            <FullButton title="Download" />
+            <FullButton title="Tải ứng dụng" />
           </BtnWrapper>
         </div>
       </LeftSide>

@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // Assets
-import ContactImg1 from "../../assets/img/contact1.jpg";
-import ContactImg2 from "../../assets/img/contact1.jpg";
-import ContactImg3 from "../../assets/img/contact1.jpg";
+import ContactImg1 from "../../assets/img/contact1.png";
 
 export default function Contact() {
   return (
@@ -31,23 +29,14 @@ export default function Contact() {
                 <textarea rows="4" cols="50" type="text" id="message" name="message" className="font20 extraBold" />
               </Form>
               <SumbitWrapper className="flex">
-                <ButtonInput type="submit" value="Send Message" className="pointer animate radius8" style={{ maxWidth: "220px" }} />
+                <ButtonInput type="submit" value="Gửi tin nhắn" className="pointer animate radius8" style={{ maxWidth: "220px" }} />
               </SumbitWrapper>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 flex">
-              <div style={{ width: "50%" }} className="flexNullCenter flexColumn">
-                <ContactImgBox>
+                <div >
                   <img src={ContactImg1} alt="office" className="radius6" />
-                </ContactImgBox>
-                <ContactImgBox>
-                  <img src={ContactImg2} alt="office" className="radius6" />
-                </ContactImgBox>
-              </div>
-              <div style={{ width: "50%" }}>
-                <div style={{ marginTop: "150px" , marginLeft:"100px"}}>
-                  <img src={ContactImg3} alt="office" className="radius6" />
                 </div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -86,16 +75,15 @@ const Form = styled.form`
   }
 `;
 const ButtonInput = styled.input`
-
-  border: 1px solid rgb(80, 199, 153);
-  background-color: rgb(80, 199, 153);
+  border: 1px solid #1f78c7;
+  background-color: #1f78c7;
   width: 100%;
   padding: 15px;
   outline: none;
   color: #fff;
   :hover {
-    background-color: rgb(36, 158, 111);
-    border: 1px solid rgb(80, 199, 153);
+    background-color: #11436e;
+    border: 1px solid #1f78c7;
     color: #fff;
   }
   @media (max-width: 991px) {
@@ -113,12 +101,3 @@ const SumbitWrapper = styled.div`
     margin-bottom: 50px;
   }
 `;
-
-
-
-
-
-
-
-
-

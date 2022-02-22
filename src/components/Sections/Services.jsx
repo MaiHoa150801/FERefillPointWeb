@@ -12,13 +12,13 @@ import AddImage4 from "../../assets/img/add/4.png";
 
 export default function Services() {
   return (
-    <Wrapper id="services">
+    <Wrapper >
       <div className="lightBg" style={{ padding: "50px 0" }}>
         <div className="container">
           <ClientSlider />
         </div>
       </div>
-      <div className="whiteBg" style={{ padding: "60px 0" }}>
+      <div id="services" className="whiteBg" style={{ padding: "60px 0" }}>
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">WHY REFILL?</h1>
@@ -63,7 +63,7 @@ export default function Services() {
             <Advertising className="flexSpaceCenter">
               <AddLeft>
                 <h4 className="font15 semiBold">A few words about company</h4>
-                <h2 className="font40 extraBold">A Study of Creativity</h2>
+                <h2 className="font40 extraBold">The image of Application</h2>
                 <p className="font12">
                   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
                   diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.

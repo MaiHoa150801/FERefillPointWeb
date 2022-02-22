@@ -27,7 +27,7 @@ export default function TopNavbar() {
       <Wrapper className="flexCenter animate whiteBg" style={y > 100 ? { height: "60px" } : { height: "80px" }}>
         <NavInner className="container flexSpaceCenter">
           <Link className="pointer flexNullCenter" to="home" smooth={true}>
-            <LogoIcon />
+            {/* <LogoIcon /> */}
             <h1 style={{ marginLeft: "15px" }} className="font20 extraBold">
               RefillPoint
             </h1>
@@ -70,12 +70,12 @@ export default function TopNavbar() {
           <UlWrapperRight className="flexNullCenter">
             <li className="semiBold font15 pointer">
               <a href="/" style={{ padding: "10px 30px 10px 0" }}>
-                Log in
+                Đăng nhập
               </a>
             </li>
             <li className="semiBold font15 pointer flexCenter">
               <a href="/" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
-                Register
+                Đăng kí
               </a>
             </li>
           </UlWrapperRight>
