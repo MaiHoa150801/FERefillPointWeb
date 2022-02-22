@@ -14,10 +14,10 @@ export default function Header() {
         <div>
           <h1 className="extraBold font60">Cùng chung tay đong đầy sản phẩm</h1>
           <HeaderP className="font13 semiBold">
-          Mỗi lần bạn đong đầy sản phẩm đã góp phần giảm thiểu rác thải đe dọa đến môi trường
+          Mỗi lần bạn đong đầy sản phẩm đã góp phần giảm thiểu rác thải đe dọa đến môi trường. Hãy tải ứng dụng về để cùng hạn chế rác thải nhựa ra môi trường.
           </HeaderP>
           <BtnWrapper>
-            <FullButton title="Get Started" />
+            <FullButton title="Download" />
           </BtnWrapper>
         </div>
       </LeftSide>

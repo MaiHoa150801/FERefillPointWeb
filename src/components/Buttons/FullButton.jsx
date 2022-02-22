@@ -14,16 +14,16 @@ export default function FullButton({ title, action, border }) {
 }
 
 const Wrapper = styled.button`
-  border: 1px solid ${(props) => (props.border ? "#707070" : "#1d70b7")};
-  background-color: ${(props) => (props.border ? "transparent" : "#1d70b7")};
+  border: 1px solid ${(props) => (props.border ? "#707070" : "#1f78c7")};
+  background-color: ${(props) => (props.border ? "transparent" : "#1f78c7")};
   width: 100%;
   padding: 15px;
   outline: none;
   color: ${(props) => (props.border ? "#707070" : "#fff")};
   :hover {
-    background-color: ${(props) => (props.border ? "transparent" : "#ee4d2d")};
-    border: 1px solid #1d70b7;
-    color: ${(props) => (props.border ? "#1d70b7" : "#fff")};
+    background-color: ${(props) => (props.border ? "transparent" : "#11436e")};
+    border: 1px solid #1f78c7;
+    color: ${(props) => (props.border ? "#1f78c7" : "#fff")};
   }
 `;
 

@@ -42,7 +42,7 @@
     color: #0B093B;
   }
   a:hover {
-    color: #1d70b7;
+    color: #1f78c7;
   }
   input:-webkit-autofill {
     -webkit-box-shadow:0 0 0 50px #fff inset; /* Change the color to your own background color */
@@ -52,7 +52,7 @@
   body {
     background: #fff;
     color: #0B093B;
-    font-family: 'Khula', sans-serif;
+    font-family: 'Verdana', sans-serif;
     overflow-x: hidden;
     font-size: 16px;
     font-weight: 400;
@@ -104,8 +104,8 @@
     width: 100%;
   }
   .active {
-    border-bottom: 2px solid #1d70b7;
-    color: #1d70b7;
+    border-bottom: 2px solid #1f78c7;
+    color: #1f78c7;
   }
   .tag {
     padding: 5px 10px;
@@ -224,7 +224,7 @@
     color: #0B093B;
   }
   .purpleColor {
-    color: #1d70b7;
+    color: #1f78c7;
   }
   .orangeColor {
     color: #F2B300;
@@ -249,7 +249,7 @@
     background-color: #0B093B;
   }
   .purpleBg {
-    background-color: #1d70b7;
+    background-color: #1f78c7;
   }
   .orangeBg {
     background-color: #F2B300;
