@@ -1,18 +1,20 @@
 import React from "react";
 // CSS
-import './login.css';
+import '../style/login.css';
 import ImageLogin from "../assets/img/ImageLogin.png";
+import TopNavbar from "../components/Nav/TopNavbar";
+import { Helmet } from "react-helmet";
 
 export default function Login() {
     return (
+
         <div>
-            <meta charSet="utf-8" />
-            <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <title>The Easiest Way to Add Input Masks to Your Forms</title>
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-            <link rel="stylesheet" href="register.css" />
+            <Helmet>
+                {/*  Link Login */}
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+            </Helmet>
             <div className="registration-form">
                 <form>
                     <div className="form-img">

@@ -69,7 +69,7 @@ export default function TopNavbar() {
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
             <li className="semiBold font15 pointer">
-              <a href="/" style={{ padding: "10px 30px 10px 0" }}>
+              <a href="/login" style={{ padding: "10px 30px 10px 0" }}>
                 Đăng nhập
               </a>
             </li>
