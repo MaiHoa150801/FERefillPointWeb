@@ -1,24 +1,19 @@
 import React from "react";
 // Sections
-import TopNavbar from "../components/Nav/TopNavbar";
-import Header from "../components/Sections/Header";
-import Services from "../components/Sections/Services";
-import Blog from "../components/Sections/Blog";
-import Projects from "../components/Sections/Projects";
-import Contact from "../components/Sections/Contact";
-import Footer from "../components/Sections/Footer"
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import Homepage from "./Homepage";
+import Login from "./Login";
 
 export default function Landing() {
   return (
-    <>
-      <TopNavbar />
-      <Header />
-      <Services />
-      <Projects />
-      <Blog/>
-      <Contact />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element= {<Homepage />}>
+        </Route>
+        <Route path="/login" element= {<Login />}>   
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
