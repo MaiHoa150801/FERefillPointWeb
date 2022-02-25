@@ -35,7 +35,7 @@ export default function Login() {
                     <div className="form-group">
                         <button type="button" className="btn btn-block create-account"> Đăng nhập</button>
                     </div>
-                    <div className=" register">
+                    <div className="register">
                     <p> <a href="/register"> Bạn chưa có tài khoản? Đăng Kí </a></p>
                     </div>
                 </form>
