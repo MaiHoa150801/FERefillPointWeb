@@ -5,6 +5,7 @@ import Homepage from "./Homepage";
 import Login from "./Login";
 import AdminLayout from "./AdminLayout";
 import Register from "./Register";
+import CodeEmail from "./code-email";
 
 export default function Landing() {
   return (
@@ -16,7 +17,9 @@ export default function Landing() {
         </Route>
         <Route path="/register" element= {<Register />}>   
         </Route>
-        <Route path="/admin" element= {<AdminLayout />}>   
+        <Route path="/admin" element= {<AdminLayout />}> 
+        </Route>
+        <Route path="/code-email" element= {<CodeEmail />}>   
         </Route>
       </Routes>
     </BrowserRouter>

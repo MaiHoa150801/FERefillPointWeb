@@ -27,6 +27,7 @@ export default function Login() {
                     </div>
                     <div className="form-group">
                         <input type="password" className="form-control item" id="password" placeholder="Mật khẩu" />
+                        
                     </div>
                     <div className="form-group">
                         <p> <a href ="/"> Quên mật khẩu ?</a></p>
