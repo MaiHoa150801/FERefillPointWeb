@@ -2,7 +2,6 @@ import React from "react";
 // CSS
 import '../style/login.css';
 import ImageLogin from "../assets/img/ImageLogin.png";
-import TopNavbar from "../components/Nav/TopNavbar";
 import { Helmet } from "react-helmet";
 
 export default function Login() {
@@ -10,10 +9,9 @@ export default function Login() {
 
         <div>
             <Helmet>
-                {/*  Link Login */}
+                 {/* Link Login */}
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-
             </Helmet>
             <div className="registration-form">
                 <form>
