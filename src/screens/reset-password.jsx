@@ -4,7 +4,7 @@ import '../style/login.css';
 import ImageLogin from "../assets/img/ImageLogin.png";
 import { Helmet } from "react-helmet";
 
-export default function Register() {
+export default function ResetPassword() {
     return (
 
         <div>
@@ -16,25 +16,16 @@ export default function Register() {
             <form>
                 <div className="form-img">
                     <span> <img className="image" src={ImageLogin} /></span>
-                    <h4>ĐĂNG KÍ</h4>
+                    <h4>Đổi mật khẩu mới</h4>
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control item" id="username" placeholder="Tên đăng nhập / Email " />
+                    <input type="password" className="form-control item" id="password" placeholder="Mật khẩu mới" />
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control item" id="email" placeholder="Email" />
+                    <input type="text" className="form-control item" id="c-password" placeholder="Xác thực mật khẩu mới" />
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control item" id="phone-number" placeholder="Số điện thoại" />
-                </div>
-                <div className="form-group">
-                    <input type="password" className="form-control item" id="password" placeholder="Mật khẩu" />
-                </div>
-                <div className="form-group">
-                    <input type="text" className="form-control item" id="c-password" placeholder="Xác thực mật khẩu" />
-                </div>
-                <div className="form-group">
-                    <button type="button" className="btn btn-block create-account"> Đăng kí</button>
+                    <button type="button" className="btn btn-block create-account"> Đăng nhập</button>
                 </div>
                 <div className="Sign-up">
                     <p> <a href="/login"> Bạn đã có tài khoản? Đăng nhập </a></p>
