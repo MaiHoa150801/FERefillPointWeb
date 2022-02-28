@@ -9,7 +9,6 @@ export default function Register() {
 
         <div>
             <Helmet>
-                {/*  Link Login */}
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
             </Helmet>
@@ -37,10 +36,10 @@ export default function Register() {
                 <div className="form-group">
                     <button type="button" className="btn btn-block create-account"> Đăng kí</button>
                 </div>
+                <div className="Sign-up">
+                    <p> <a href="/login"> Bạn đã có tài khoản? Đăng nhập </a></p>
+                </div>
           </form>
-          <div className="Sign-up">
-            <p> <a href="/login"> Bạn đã có tài khoản? Đăng nhập </a></p>
-          </div>
         </div>
       </div>
     );

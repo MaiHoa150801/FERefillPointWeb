@@ -2,15 +2,13 @@ import React from "react";
 // CSS
 import '../style/login.css';
 import ImageLogin from "../assets/img/ImageLogin.png";
-import TopNavbar from "../components/Nav/TopNavbar";
 import { Helmet } from "react-helmet";
+import TopNavbar from "../components/Nav/TopNavbar";
 
 export default function Login() {
     return (
-
         <div>
             <Helmet>
-                {/*  Link Login */}
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
@@ -30,7 +28,7 @@ export default function Login() {
                         
                     </div>
                     <div className="form-group">
-                        <p> <a href ="/"> Quên mật khẩu ?</a></p>
+                        <p> <a href ="/forgot-password"> Quên mật khẩu ?</a></p>
                     </div>
                     <div className="form-group">
                         <button type="button" className="btn btn-block create-account"> Đăng nhập</button>
@@ -38,17 +36,18 @@ export default function Login() {
                     <div className="register">
                     <p> <a href="/register"> Bạn chưa có tài khoản? Đăng Kí </a></p>
                     </div>
-                </form>
-                <div className="social-media">
-                    <h5>Sign up with social media</h5>
-                    <div className="social-icons">
-                        <a href="#"><i className="icon-social-facebook" title="Facebook" /></a>
-                        <a href="#"><i className="icon-social-google" title="Google" /></a>
-                        <a href="#"><i className="icon-social-twitter" title="Twitter" /></a>
+                    <div className="social-media">
+                        <h5>Đăng nhập với mạng xã hội</h5>
+                        <div className="social-icons">
+                            <a href="#"><i className="icon-social-facebook" title="Facebook" /></a>
+                            <a href="#"><i className="icon-social-google" title="Google" /></a>
+                            <a href="#"><i className="icon-social-twitter" title="Twitter" /></a>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
+       
     );
 }
 

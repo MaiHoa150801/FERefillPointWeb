@@ -9,7 +9,6 @@ export default function CodeEmail() {
 
         <div>
             <Helmet>
-                {/*  Link Code email */}
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
             </Helmet>
@@ -19,7 +18,7 @@ export default function CodeEmail() {
 									<span> <img className="image" src={ImageLogin}/></span>
 								</div>
 								<div className="form-top-content">
-									<h5>Xác thực email đăng kí</h5>
+									<h4>Xác thực email đăng kí</h4>
 								</div>
 								<div>
 									<div className="form-group">
@@ -31,10 +30,10 @@ export default function CodeEmail() {
 										</div>
 									</div>
 								</div>
-							</form>
-							<div className="new-user">
+								<div className="new-user">
 								<p><a href="/register">Đăng kí người dùng mới </a> </p>
 							</div>
+							</form>
           </div>
         </div>
     );
