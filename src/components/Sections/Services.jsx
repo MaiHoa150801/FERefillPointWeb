@@ -9,7 +9,7 @@ import AddImage1 from "../../assets/img/add/1.png";
 import AddImage2 from "../../assets/img/add/2.png";
 import AddImage3 from "../../assets/img/add/3.png";
 import AddImage4 from "../../assets/img/add/4.png";
-
+ 
 export default function Services() {
   return (
     <Wrapper >
@@ -21,40 +21,40 @@ export default function Services() {
       <div id="services" className="whiteBg" style={{ padding: "60px 0" }}>
         <div className="container">
           <HeaderInfo>
-            <h1 className="font40 extraBold">WHY REFILL?</h1>
+            <h1 className="font40 extraBold"> Vì sao?</h1>
             <p className="font13">
-              For people in developing countries, clean water can change everything.
+            Lý do lớn nhất mà chúng ta phải tái sử dụng rác thải chính là nhằm giảm bớt rác thải gây nguy hiểm cho môi trường,
               <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
+              việc làm đấy cũng giúp bảo vệ môi trường sống, bảo vệ sức khỏe của con người và động vật.
             </p>
           </HeaderInfo>
           <ServiceBoxRow className="flex">
             <ServiceBoxWrapper>
               <ServiceBox
                 icon="roller"
-                title="Impact reduce plastic waste"
-                subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+                title="Giảm rác thải nhựa"
+                subtitle="Lợi ích của việc tái chế và rác tái chế là Giảm lượng rác thải tại các bãi rác, giảm ô nhiễm, Giảm tiêu thụ năng lượng, giảm chi phí"
               />
             </ServiceBoxWrapper>
             <ServiceBoxWrapper>
               <ServiceBox
                 icon="monitor"
-                title="Improve your brand image"
-                subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore."
+                title="Đẩy mạnh thương hiệu hình ảnh"
+                subtitle="Xây dựng thương hiệu là tất cả những gì bạn cần làm để nổi bật, tạo ảnh hưởng cho thương hiệu và đưa doanh nghiệp lên một tầm cao mới."
               />
             </ServiceBoxWrapper>
             <ServiceBoxWrapper>
               <ServiceBox
                 icon="browser"
-                title="Increase traffic to your business"
-                subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
+                title="Tăng lượng truy cập vào doanh nghiệp"
+                subtitle="Bạn sẽ có nhiều cơ hội mới nếu bạn tham gia nhiều hoạt động vào dự án của chúng tôi"
               />
             </ServiceBoxWrapper>
             <ServiceBoxWrapper>
-              <ServiceBox 
-                icon="printer" 
-                title="Inspire a suitainable lifestyle"
-                subtitle="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor." />
+              <ServiceBox
+                icon="printer"
+                title="Truyền cảm hứng cho lối sống phù hợp"
+                subtitle="Chúng ta sẽ tạo ra một lối sống thân thiện giúp bảo vệ chính cuộc sống của chúng ta" />
             </ServiceBoxWrapper>
           </ServiceBoxRow>
         </div>
@@ -62,18 +62,17 @@ export default function Services() {
           <div className="container">
             <Advertising className="flexSpaceCenter">
               <AddLeft>
-                <h4 className="font15 semiBold">A few words about company</h4>
-                <h2 className="font40 extraBold">The image of Application</h2>
+                <h4 className="font15 semiBold">Một vài điều về công ty</h4>
+                <h4 className="font40 extraBold">Hình ảnh của Ứng dụng</h4>
                 <p className="font12">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-                  diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                Chúng tôi hy vọng luôn mang đến những sản phẩm tuyệt vời nhất cho quý khách.
                 </p>
                 <ButtonsRow className="flexNullCenter" style={{ margin: "30px 0"}}>
                   <div style={{ width: "190px" }}>
-                    <FullButton title="Get Started" action={() => alert("clicked")} />
+                    <FullButton title="Tải ứng dụng" action={() => alert("clicked")} />
                   </div>
                   <div style={{ width: "190px", marginLeft: "15px" }}>
-                    <FullButton title="Contact Us" action={() => alert("clicked")} border />
+                    <FullButton title="Liên hệ" action={() => alert("clicked")} border />
                   </div>
                 </ButtonsRow>
               </AddLeft>
@@ -104,7 +103,7 @@ export default function Services() {
     </Wrapper>
   );
 }
-
+ 
 const Wrapper = styled.section`
   width: 100%;
 `;
@@ -227,3 +226,4 @@ const AddImgWrapp4 = styled.div`
     -moz-box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
   }
 `;
+

@@ -19,16 +19,24 @@ export default function Login() {
                 <form>
                     <div className="form-img">
                         <span> <img className="image" src={ImageLogin} /></span>
-                        <h2>ĐĂNG NHẬP</h2>
+                        <h4>ĐĂNG NHẬP</h4>
                     </div>
                     <div className="form-group">
-                        <input type="text" className="form-control item" id="email" placeholder="Email" />
+                        <label id="icon" htmlFor="name" />
+                        <input type="text" className="form-control item" id="username" placeholder="Tên đăng nhập / Email" />
                     </div>
                     <div className="form-group">
-                        <input type="password" className="form-control item" id="password" placeholder="Password" />
+                        <input type="password" className="form-control item" id="password" placeholder="Mật khẩu" />
+                        
                     </div>
                     <div className="form-group">
-                        <button type="button" className="btn btn-block create-account">Login</button>
+                        <p> <a href ="/"> Quên mật khẩu ?</a></p>
+                    </div>
+                    <div className="form-group">
+                        <button type="button" className="btn btn-block create-account"> Đăng nhập</button>
+                    </div>
+                    <div className="register">
+                    <p> <a href="/register"> Bạn chưa có tài khoản? Đăng Kí </a></p>
                     </div>
                 </form>
                 <div className="social-media">

@@ -5,6 +5,8 @@ import Homepage from "./Homepage";
 import Login from "./Login";
 import AdminLayout from "./AdminLayout";
 import Register from "./Register";
+import CodeEmail from "./code-email";
+import ReferenceRegister from "./Reference-register";
 
 export default function Landing() {
   return (
@@ -16,8 +18,13 @@ export default function Landing() {
         </Route>
         <Route path="/register" element= {<Register />}>   
         </Route>
-        <Route path="/admin" element= {<AdminLayout />}>   
+        <Route path="/code-email" element= {<CodeEmail />}>   
         </Route>
+        <Route path="/reference-register" element= {<ReferenceRegister />}>   
+        </Route>
+        <Route path="/admin" element= {<AdminLayout />}> 
+        </Route>
+ 
       </Routes>
     </BrowserRouter>
   );
