@@ -7,6 +7,9 @@ import AdminLayout from "./AdminLayout";
 import Register from "./Register";
 import CodeEmail from "./code-email";
 import ReferenceRegister from "./Reference-register";
+import ForgotPassword from "./forgot-password";
+import CodeForgotPassword from "./code-reset-password";
+import ResetPassword from "./reset-password";
 
 export default function Landing() {
   return (
@@ -21,6 +24,12 @@ export default function Landing() {
         <Route path="/code-email" element= {<CodeEmail />}>   
         </Route>
         <Route path="/reference-register" element= {<ReferenceRegister />}>   
+        </Route>
+        <Route path="/forgot-password" element= {< ForgotPassword />}>   
+        </Route>
+        <Route path="/code-reset-password" element= {< CodeForgotPassword />}>   
+        </Route>
+        <Route path="/reset-password" element= {< ResetPassword />}>   
         </Route>
         <Route path="/admin" element= {<AdminLayout />}> 
         </Route>

@@ -17,7 +17,7 @@ export default function ReferenceRegister() {
 						<form>
 							<div className="form-img">
 								<span> <img className="image" src={ImageLogin} /></span>
-								<h5 className="Title">Tham khảo đăng kí</h5>
+								<h4 className="Title">Tham khảo đăng kí</h4>
 							</div>
 							<div className="form-group">
 								<input type="text" className="form-control item" id="username" placeholder="Tên đăng nhập" />
@@ -45,10 +45,10 @@ export default function ReferenceRegister() {
 							<div className="form-group">
 								<button type="button" className="btn btn-block create-account"> Tiếp tục</button>
 							</div>
-						</form>
-						<div className="Sign-in">
+							<div className="Sign-in">
 							<p> <a href="/login"> Bạn đã có tài khoản? Đăng nhập </a></p>
 						</div>
+						</form>
 					</div>
 			</div>
     );
