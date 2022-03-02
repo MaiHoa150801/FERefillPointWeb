@@ -5,12 +5,24 @@ import "slick-carousel/slick/slick-theme.css";
 import "./style/flexboxgrid.min.css";
 import './style/index.css';
 import App from './App';
+import { Provider } from 'react-redux';
+import store from './store';
+import { SnackbarProvider } from 'notistack';
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <>
-    <App />
+    <Provider store={store}>
+      <SnackbarProvider maxSnack={2}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}>
+        <App />
+      </SnackbarProvider>
+
+    </Provider>
   </>,
   document.getElementById('root')
 );

@@ -31,7 +31,7 @@ export default function App() {
                                         <div className="card bg-primary text-white mb-4">
                                             <div className="card-body">Total Sales Amount</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <a className="small text-white stretched-link" href="#">100000 </a>
+                                                <a className="small text-white stretched-link" href="/">100000 </a>
                                             </div>
                                         </div>
                                     </div>
@@ -39,7 +39,7 @@ export default function App() {
                                         <div className="card bg-warning text-white mb-4">
                                             <div className="card-body">Total Orders</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <a className="small text-white stretched-link" href="#">200</a>
+                                                <a className="small text-white stretched-link" href="/">200</a>
                                             </div>
                                         </div>
                                     </div>
@@ -47,7 +47,7 @@ export default function App() {
                                         <div className="card bg-success text-white mb-4">
                                             <div className="card-body">Total Products</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <a className="small text-white stretched-link" href="#">10</a>
+                                                <a className="small text-white stretched-link" href="/">10</a>
                                             </div>
                                         </div>
                                     </div>
@@ -55,7 +55,7 @@ export default function App() {
                                         <div className="card bg-danger text-white mb-4">
                                             <div className="card-body">Total Users</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <a className="small text-white stretched-link" href="#">1000</a>
+                                                <a className="small text-white stretched-link" href="/">1000</a>
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@ export default function App() {
                                         DataTable
                                     </div>
                                     <div className="card-body">
-                                        <table class="table">
+                                        <table className="table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>

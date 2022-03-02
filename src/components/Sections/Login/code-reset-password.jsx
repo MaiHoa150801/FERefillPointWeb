@@ -1,10 +1,10 @@
 import React from "react";
 // CSS
-import '../style/code-email.css';
-import ImageLogin from "../assets/img/ImageLogin.png";
+import '../../../style/code-email.css';
+import ImageLogin from "../../../assets/img/ImageLogin.png";
 import { Helmet } from "react-helmet";
 
-export default function CodeEmail() {
+export default function CodeForgotPassword() {
     return (
 
         <div>
@@ -15,10 +15,10 @@ export default function CodeEmail() {
             <div className="registration-form">
 							<form>
 								<div className="form-img">
-									<span> <img className="image" src={ImageLogin}/></span>
+									<span> <img className="image" src={ImageLogin} alt="imagecoderesets" /></span>
 								</div>
 								<div className="form-top-content">
-									<h4>Xác thực email đăng kí</h4>
+									<h4>Nhập mã xác thực</h4>
 								</div>
 								<div>
 									<div className="form-group">
@@ -30,8 +30,8 @@ export default function CodeEmail() {
 										</div>
 									</div>
 								</div>
-								<div className="new-user">
-								<p><a href="/register">Đăng kí người dùng mới </a> </p>
+								<div className="Sign-up">
+								<p><a href="/login">Đã có tài khoản! Đăng nhập</a> </p>
 							</div>
 							</form>
           </div>

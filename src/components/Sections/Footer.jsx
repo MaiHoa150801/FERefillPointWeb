@@ -2,13 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
 // Assets
-import LogoImg from "../../assets/svg/Logo";
 
 export default function Contact() {
 
-  const getCurrentYear = () => {
-    return new Date().getFullYear();
-  }
 
   return (
     <Wrapper>
@@ -32,9 +28,9 @@ export default function Contact() {
             <StyleP className="whiteColor font13">              
               <h3> Theo dõi </h3>
               <ul className="flexCenter " smooth={true} offset={-80}>
-                <i class="fa-brands fa-facebook" style={{ marginRight: "15px" }}></i>
-                <i class="fa-brands fa-youtube" style={{ marginRight: "15px" }}></i> 
-                <i class="fa-brands fa-instagram" style={{ marginRight: "15px" }}></i>
+                <i className="fa-brands fa-facebook" style={{ marginRight: "15px" }}></i>
+                <i className="fa-brands fa-youtube" style={{ marginRight: "15px" }}></i> 
+                <i className="fa-brands fa-instagram" style={{ marginRight: "15px" }}></i>
               </ul>
               
               {/* © {getCurrentYear()} - <span className="purpleColor font13">RefillPonit</span> All Right Reserved */}

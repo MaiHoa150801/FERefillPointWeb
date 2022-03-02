@@ -1,7 +1,7 @@
 import React from "react";
 // CSS
-import '../style/login.css';
-import ImageLogin from "../assets/img/ImageLogin.png";
+import '../../../style/login.css';
+import ImageLogin from "../../../assets/img/ImageLogin.png";
 import { Helmet } from "react-helmet";
 
 export default function ForgotPassword() {
@@ -16,7 +16,7 @@ export default function ForgotPassword() {
             <div className="registration-form">
                 <form>
                     <div className="form-img">
-                        <span> <img className="image" src={ImageLogin} /></span>
+                        <span> <img className="image" src={ImageLogin} alt="imageforgot"/></span>
                         <h4>Quên mật khẩu</h4>
                     </div>
                     <div className="form-group">
