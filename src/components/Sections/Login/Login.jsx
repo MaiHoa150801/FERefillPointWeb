@@ -16,7 +16,7 @@ const Login = () => {
     const { enqueueSnackbar } = useSnackbar();
     const location = useLocation();
 
-    const {  isAuthenticated, error } = useSelector((state) => state.user);
+    const {  loading, isAuthenticated, error } = useSelector((state) => state.user);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -26,7 +26,7 @@ const Login = () => {
         dispatch(loginUser(email, password));
     }
 
-    const redirect = location.search ? location.search.split("=")[1] : "account";
+    const redirect = location.search ? location.search.split("=")[1] : "";
 
     useEffect(() => {
         if (error) {
@@ -36,11 +36,11 @@ const Login = () => {
         if (isAuthenticated) {
             navigate(`/${redirect}`)
         }
-    }, [dispatch, error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
+    }, [isAuthenticated]);
 
     return (
         <>
-            {/* {loading} */}
+            {loading}
             <Helmet>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />

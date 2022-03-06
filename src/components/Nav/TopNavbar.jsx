@@ -5,19 +5,29 @@ import { Link } from "react-scroll";
 import Sidebar from "../Nav/Sidebar";
 import Backdrop from "../Elements/Backdrop";
 // Assets
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import BurgerIcon from "../../assets/svg/BurgerIcon";
+// import { useSelector } from 'react-redux';
+// import { Link } from 'react-router-dom';
+import PrimaryDropDownMenu from './PrimaryDropDownMenu';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadUser } from '../../actions/userAction';
 
-export default function TopNavbar() {
+const TopNavbar = () => {
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
+
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+  console.log(isAuthenticated);
+  console.log(user);
   const [y, setY] = useState(window.scrollY);
   const [sidebarOpen, toggleSidebar] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => setY(window.scrollY));
-    return () => {
-      window.removeEventListener("scroll", () => setY(window.scrollY));
-    };
-  }, [y]);
-
+  const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
 
   return (
     <>
@@ -62,22 +72,33 @@ export default function TopNavbar() {
             </li>
           </UlWrapper>
           <UlWrapperRight className="flexNullCenter">
-            <li className="semiBold font15 pointer">
-              <a href="/login" style={{ padding: "10px 30px 10px 0" }}>
-                Đăng nhập
-              </a>
-            </li>
-            <li className="semiBold font15 pointer flexCenter">
-              <a href="/register" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
-                Đăng kí
-              </a>
-            </li>
+            {isAuthenticated === false ?
+              <span>
+                <li className="semiBold font15 pointer">
+                  <a href="/login" style={{ padding: "10px 30px 10px 0" }}>
+                    Đăng nhập
+                  </a>
+                </li>
+                {/* <li className="semiBold font15 pointer flexCenter">
+                  <a href="/register" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
+                    Đăng kí
+                  </a>
+                </li> */}
+              </span>
+              :
+              <span className="userDropDown flex items-center text-dark font-medium gap-1 cursor-pointer" onClick={() => setTogglePrimaryDropDown(!togglePrimaryDropDown)}>{user.name && user.name.split(" ", 1)}
+                <span>{togglePrimaryDropDown ? <ExpandLessIcon sx={{ fontSize: "16px" }} /> : <ExpandMoreIcon sx={{ fontSize: "16px" }} />}</span>
+                {togglePrimaryDropDown && <PrimaryDropDownMenu setTogglePrimaryDropDown={setTogglePrimaryDropDown} user={user} />}
+              </span>
+            }
           </UlWrapperRight>
         </NavInner>
       </Wrapper>
     </>
   );
-}
+};
+
+export default TopNavbar;
 
 const Wrapper = styled.nav`
   width: 100%;

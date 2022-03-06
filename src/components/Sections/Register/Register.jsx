@@ -84,7 +84,8 @@ export default function Register() {
         if (isAuthenticated) {
             navigate('/')
         }
-    }, [dispatch, error, isAuthenticated, navigate, enqueueSnackbar]);
+    }, [ isAuthenticated]);
+    
     return (
 
         <div>
