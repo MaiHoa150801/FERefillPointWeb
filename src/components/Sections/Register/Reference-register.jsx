@@ -1,7 +1,7 @@
 import React from "react";
 // CSS
-import '../style/login.css';
-import ImageLogin from "../assets/img/ImageLogin.png";
+import '../../../style/login.css';
+import ImageLogin from "../../../assets/img/ImageLogin.png";
 import { Helmet } from "react-helmet";
 
 export default function ReferenceRegister() {
@@ -16,7 +16,7 @@ export default function ReferenceRegister() {
             <div className="registration-form">
 						<form>
 							<div className="form-img">
-								<span> <img className="image" src={ImageLogin} /></span>
+								<span> <img className="image" src={ImageLogin} alt="imageregister"/></span>
 								<h4 className="Title">Tham khảo đăng kí</h4>
 							</div>
 							<div className="form-group">

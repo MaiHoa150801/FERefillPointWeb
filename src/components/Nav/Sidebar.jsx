@@ -19,7 +19,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
           <CloseIcon />
         </CloseBtn>
       </SidebarHeader>
-
       <UlStyle className="flexNullCenter flexColumn">
         <li className="semiBold font15 pointer">
           <Link
@@ -77,20 +76,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             ABOUT US
           </Link>
         </li>
-        {/* <li className="semiBold font15 pointer">
-          <Link
-            onClick={() => toggleSidebar(!sidebarOpen)}
-            activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
-            to="pricing"
-            spy={true}
-            smooth={true}
-            offset={-60}
-          >
-            GET INVOLVED
-          </Link>
-        </li> */}
         <li className="semiBold font15 pointer">
           <Link
             onClick={() => toggleSidebar(!sidebarOpen)}

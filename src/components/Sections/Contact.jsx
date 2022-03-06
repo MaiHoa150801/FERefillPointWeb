@@ -90,11 +90,7 @@ const ButtonInput = styled.input`
     margin: 0 auto;
   }
 `;
-const ContactImgBox = styled.div`
-  max-width: 180px; 
-  align-self: flex-end; 
-  margin: 10px 30px 10px 0;
-`;
+
 const SumbitWrapper = styled.div`
   @media (max-width: 991px) {
     width: 100%;
