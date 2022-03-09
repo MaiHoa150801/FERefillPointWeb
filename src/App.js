@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Homepage from "./screens/Homepage";
 import TopNavbar from "./components/Nav/TopNavbar";
@@ -12,6 +12,9 @@ import ProtectedRoute from "./Routes/ProtectedRoute";
 import AdminLayout from "./screens/AdminLayout";
 import { loadUser } from './actions/userAction';
 import { useDispatch } from 'react-redux';
+import Account from "./components/Sections/Account";
+import UpdateProfile from "./components/Sections/UpdateProfile";
+import UpdatePassword from "./components/Sections/UpdatePassword";
 
 function App() {
 
@@ -22,7 +25,7 @@ function App() {
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
-  
+
   return (
     <>
       {/* <TopNavbar /> */}
@@ -37,8 +40,22 @@ function App() {
         </Route>
         <Route path="/password/reset/:token" element={< ResetPassword />}>
         </Route>
-        {/* <Route path="/admin" element={<AdminLayout />}>
-        </Route> */}
+        <Route path="/account" element={
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>
+        } ></Route>
+        <Route path="/account/update" element={
+          <ProtectedRoute>
+            <UpdateProfile />
+          </ProtectedRoute>
+        } ></Route>
+
+        <Route path="/password/update" element={
+          <ProtectedRoute>
+            <UpdatePassword />
+          </ProtectedRoute>
+        } ></Route>
         <Route path="/admin/dashboard" element={
           <ProtectedRoute isAdmin={true}>
             <AdminLayout />

@@ -9,6 +9,8 @@ import { clearErrors, registerUser } from '../../../actions/userAction';
 import '../../../style/login.css';
 import ImageLogin from "../../../assets/img/ImageLogin.png";
 import { Helmet } from "react-helmet";
+import Footer from "../../Sections/Footer";
+import TopNavbar from "../../Nav/TopNavbar";
 
 export default function Register() {
     const dispatch = useDispatch();
@@ -85,7 +87,8 @@ export default function Register() {
     
     return (
 
-        <div>
+        <>
+            <TopNavbar />
             <Helmet>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
@@ -135,7 +138,8 @@ export default function Register() {
                     </div>
                 </form>
             </div>
-        </div>
+            <Footer />
+        </>
     );
 }
 

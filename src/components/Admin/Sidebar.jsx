@@ -4,7 +4,7 @@ import React from "react";
 function Sidebar() {
   return (
 
-    <nav className="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <nav className="sb-sidenav accordion sb-sidenav-dark fixed" id="sidenavAccordion">
       <div className="sb-sidenav-menu">
         <div className="nav">
           <div className="sb-sidenav-menu-heading">Core</div>
