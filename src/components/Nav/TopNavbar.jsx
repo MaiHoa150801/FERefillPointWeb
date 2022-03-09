@@ -16,10 +16,11 @@ import { loadUser } from '../../actions/userAction';
 
 const TopNavbar = () => {
 
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadUser());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(loadUser());
+  // }, [dispatch]);
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
   console.log(isAuthenticated);
@@ -79,11 +80,6 @@ const TopNavbar = () => {
                     Đăng nhập
                   </a>
                 </li>
-                {/* <li className="semiBold font15 pointer flexCenter">
-                  <a href="/register" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
-                    Đăng kí
-                  </a>
-                </li> */}
               </span>
               :
               <span className="userDropDown flex items-center text-dark font-medium gap-1 cursor-pointer" onClick={() => setTogglePrimaryDropDown(!togglePrimaryDropDown)}>{user.name && user.name.split(" ", 1)}
