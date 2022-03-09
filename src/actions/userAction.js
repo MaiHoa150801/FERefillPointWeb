@@ -35,8 +35,42 @@ import {
     ALL_USERS_FAIL,
     ALL_USERS_SUCCESS,
     ALL_USERS_REQUEST,
+    CONTACT_LANDING_REQUEST,
+    CONTACT_LANDING_SUCCESS,
+    CONTACT_LANDING_FAIL,
 } from '../constants/userConstants';
 import axios from 'axios';
+
+// Contact Landing page
+export const contactLanding = (fname, email, subject, message) => async (dispatch) => {
+    try {
+
+        dispatch({ type: CONTACT_LANDING_REQUEST });
+
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+
+        const { data } = await axios.post(
+            'https://be-refill-mml5m.ondigitalocean.app/api/v1/contact',
+            { fname, email, subject, message },
+            config
+        );
+
+        dispatch({
+            type: CONTACT_LANDING_SUCCESS,
+            payload: data.user,
+        });
+
+    } catch (error) {
+        dispatch({
+            type: CONTACT_LANDING_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+};
 
 // Login User
 export const loginUser = (email, password) => async (dispatch) => {
