@@ -8,23 +8,14 @@ import Backdrop from "../Elements/Backdrop";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import BurgerIcon from "../../assets/svg/BurgerIcon";
-// import { useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import PrimaryDropDownMenu from './PrimaryDropDownMenu';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '../../actions/userAction';
 
 const TopNavbar = () => {
 
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(loadUser());
-  // }, [dispatch]);
-
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  console.log(isAuthenticated);
-  console.log(user);
+
   const [y, setY] = useState(window.scrollY);
   const [sidebarOpen, toggleSidebar] = useState(false);
 

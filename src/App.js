@@ -17,10 +17,7 @@ import UpdateProfile from "./components/Sections/UpdateProfile";
 import UpdatePassword from "./components/Sections/UpdatePassword";
 
 function App() {
-
   const dispatch = useDispatch();
-  const { pathname } = useLocation();
-
 
   useEffect(() => {
     dispatch(loadUser());
@@ -28,11 +25,14 @@ function App() {
 
   return (
     <>
-      {/* <TopNavbar /> */}
       <Routes>
+      <Route exact path="/acc" element={<Account />}>
+        </Route>
         <Route exact path="/" element={<Homepage />}>
         </Route>
         <Route path="/login" element={<Login />}>
+        </Route>
+        <Route path="/admin" element={<AdminLayout />}>
         </Route>
         <Route path="/register" element={<Register />}>
         </Route>
@@ -61,9 +61,13 @@ function App() {
             <AdminLayout />
           </ProtectedRoute>
         } ></Route>
+        <Route path="/saler/dashboard" element={
+          <ProtectedRoute isSaler={true}>
+            <AdminLayout />
+          </ProtectedRoute>
+        } ></Route>
         <Route path="*" element={<NotFound />}></Route>
       </Routes>
-      {/* <Footer /> */}
     </>
   );
 }

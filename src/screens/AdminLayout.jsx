@@ -4,8 +4,37 @@ import '../style/styles.css';
 import AdminNavbar from "../components/Admin/AdminNavbar";
 import Sidebar from "../components/Admin/Sidebar";
 // Sections
+import { useEffect } from 'react';
+import Chart from 'chart.js/auto'
+import { Doughnut, Line, Pie, Bar } from 'react-chartjs-2';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAdminProducts } from '../actions/productAction';
+import { getAllOrders } from '../actions/orderAction';
+import { getAllUsers } from '../actions/userAction';
 
-export default function App() {
+const AdminLayout = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllUsers());
+    }, [dispatch]);
+
+    const { users } = useSelector((state) => state.users);
+
+    console.log(users);
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    const date = new Date();
+    const lineState = {
+        labels: months,
+        datasets: [
+            
+        ],
+    };
+
+    const statuses = ['Processing', 'Shipped', 'Delivered'];
+
+    
     return (
         <>
             <Helmet>
@@ -14,7 +43,7 @@ export default function App() {
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
             </Helmet>
             <div>
-                <AdminNavbar/>
+                <AdminNavbar />
                 <div id="layoutSidenav">
                     <div id="layoutSidenav_nav">
                         <Sidebar />
@@ -22,13 +51,13 @@ export default function App() {
                     <div id="layoutSidenav_content">
                         <main>
                             <div className="container-fluid px-4">
-                               
+                                Dashboard
                                 <div className="row">
                                     <div className="col-xl-3 col-md-6">
                                         <div className="card bg-primary text-white mb-4">
                                             <div className="card-body">Total Sales Amount</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <a className="small text-white stretched-link" href="/">100000 </a>
+                                                <a className="small text-white stretched-link" >{users.length} </a>
                                             </div>
                                         </div>
                                     </div>
@@ -36,7 +65,7 @@ export default function App() {
                                         <div className="card bg-warning text-white mb-4">
                                             <div className="card-body">Total Orders</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <a className="small text-white stretched-link" href="/">200</a>
+                                                <a className="small text-white stretched-link" >{users.length}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -44,7 +73,7 @@ export default function App() {
                                         <div className="card bg-success text-white mb-4">
                                             <div className="card-body">Total Products</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <a className="small text-white stretched-link" href="/">10</a>
+                                                <a className="small text-white stretched-link" >{users.length}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -52,7 +81,7 @@ export default function App() {
                                         <div className="card bg-danger text-white mb-4">
                                             <div className="card-body">Total Users</div>
                                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                                <a className="small text-white stretched-link" href="/">1000</a>
+                                                <a className="small text-white stretched-link" >{users.length}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -104,13 +133,20 @@ export default function App() {
                                         </table>
                                     </div>
                                 </div>
+                                <div className="card mb-4">
+                                    <div className="bg-white rounded-xl h-auto w-full shadow-lg p-2">
+                                        <Line data={lineState} />
+                                    </div>
+                                </div>
                             </div>
                         </main>
-                        
+
                     </div>
                 </div>
             </div>
         </>
     );
-}
+};
+
+export default AdminLayout;
 
