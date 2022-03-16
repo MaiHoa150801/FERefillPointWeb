@@ -14,9 +14,6 @@ import { Helmet } from "react-helmet";
 import ProductSlider from '../components/Sections/ProductSlider/ProductSlider';
 
 export default function App() {
-    const dispatch = useDispatch();
-    const { enqueueSnackbar } = useSnackbar();
-
     return (
         <>
             <TopNavbar />

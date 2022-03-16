@@ -17,7 +17,7 @@ export default function Register() {
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
 
-    const { isAuthenticated, error } = useSelector((state) => state.user);
+    const { loading, isAuthenticated, error } = useSelector((state) => state.user);
 
     const [user, setUser] = useState({
         name: "",
@@ -35,15 +35,15 @@ export default function Register() {
     const handleRegister = (e) => {
         e.preventDefault();
         if (password.length < 8) {
-            enqueueSnackbar("Password length must be atleast 8 characters", { variant: "warning" });
+            enqueueSnackbar("Mật khẩu ít nhất 8 kí tự nhé", { variant: "warning" });
             return;
         }
         if (password !== cpassword) {
-            enqueueSnackbar("Password Doesn't Match", { variant: "error" });
+            enqueueSnackbar("Mật khẩu không giống nhau", { variant: "error" });
             return;
         }
         if (!avatar) {
-            enqueueSnackbar("Select Avatar", { variant: "error" });
+            enqueueSnackbar("Hãy chọn hình đại diện", { variant: "error" });
             return;
         }
 
@@ -83,18 +83,19 @@ export default function Register() {
         if (isAuthenticated) {
             navigate('/')
         }
-    }, [ dispatch, error, isAuthenticated, navigate, enqueueSnackbar]);
-    
+    }, [dispatch, isAuthenticated, navigate, enqueueSnackbar]);
+
     return (
 
         <>
+            {loading}
             <TopNavbar />
             <Helmet>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
             </Helmet>
             <div className="registration-form">
-                <form onSubmit={handleRegister} encType="multipart/form-data">
+                <form id="frm-register" onSubmit={handleRegister} encType="multipart/form-data">
                     <div className="form-img">
                         <span> <img className="image" src={ImageLogin} alt="imageregister" /></span>
                         <h4>ĐĂNG KÍ</h4>
@@ -106,32 +107,33 @@ export default function Register() {
                             sx={{ width: 56, height: 56 }}
                         />
                         <input
+                            id="choose-avatar"
                             type="file"
                             name="avatar"
                             accept="image/*"
                             onChange={handleDataChange}
                             className="hidden"
                         />
-                        Choose File
+
                     </div>
 
                     <div className="form-group">
-                        <input type="text" name="name" className="form-control item" id="full-name" value={name} onChange={handleDataChange} required placeholder="Name " />
+                        <input type="text" name="name" className="form-control item" id="full-name" value={name} onChange={handleDataChange} placeholder="Name " />
                     </div>
                     <div className="form-group">
-                        <input type="email" name="email"  className="form-control item" id="email" value={email} onChange={handleDataChange} placeholder="Email" required />
+                        <input type="email" name="email" className="form-control item" id="email" value={email} onChange={handleDataChange} placeholder="Email" />
                     </div>
                     <div className="form-group">
-                        <input type="text" name="phone" className="form-control item" id="phone-number" value={phone} onChange={handleDataChange} required placeholder="Số điện thoại" />
+                        <input type="text" name="phone" className="form-control item" id="phone-number" value={phone} onChange={handleDataChange} placeholder="Số điện thoại" />
                     </div>
                     <div className="form-group">
-                        <input type="password" name="password" className="form-control item" id="password" value={password} onChange={handleDataChange} required placeholder="Mật khẩu" />
+                        <input type="password" name="password" className="form-control item" id="password" value={password} onChange={handleDataChange} placeholder="Mật khẩu" />
                     </div>
                     <div className="form-group">
-                        <input type="password" name="cpassword" className="form-control item" id="confirm-password"  value={cpassword} onChange={handleDataChange} required placeholder="Xác thực mật khẩu" />
+                        <input type="password" name="cpassword" className="form-control item" id="confirm-password" value={cpassword} onChange={handleDataChange} placeholder="Xác thực mật khẩu" />
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-block create-account"> Đăng kí</button>
+                        <button id="btn-register" type="submit" className="btn btn-block create-account"> Đăng kí</button>
                     </div>
                     <div className="Sign-up">
                         <p> <a href="/login"> Bạn đã có tài khoản? Đăng nhập </a></p>

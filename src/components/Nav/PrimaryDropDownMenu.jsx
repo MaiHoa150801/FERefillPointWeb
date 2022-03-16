@@ -21,11 +21,10 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown, user }) => {
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
 
-
     const handleLogout = () => {
         dispatch(logoutUser());
         navigate("/login");
-        enqueueSnackbar("Logout Successfully", { variant: "success" });
+        enqueueSnackbar("Đăng xuất thành công", { variant: "success" });
         setTogglePrimaryDropDown(false);
     }
 
@@ -40,6 +39,12 @@ const PrimaryDropDownMenu = ({ setTogglePrimaryDropDown, user }) => {
                 </Link>
             }
 
+            {user.role === "saler" &&
+                <Link className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50 rounded-t" to="/admin/dashboard">
+                    <span className="text-primary-blue"><DashboardIcon sx={{ fontSize: "18px" }} /></span>
+                    Saler Dashboard
+                </Link>
+            }
             <Link className="pl-3 py-3.5 border-b flex gap-3 items-center hover:bg-gray-50 rounded-t" to="/account">
                 <span className="text-primary-blue"><AccountCircleIcon sx={{ fontSize: "18px" }} /></span>
                 My Profile

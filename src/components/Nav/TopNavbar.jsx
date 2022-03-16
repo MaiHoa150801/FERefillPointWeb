@@ -8,28 +8,42 @@ import Backdrop from "../Elements/Backdrop";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import BurgerIcon from "../../assets/svg/BurgerIcon";
-// import { useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import PrimaryDropDownMenu from './PrimaryDropDownMenu';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '../../actions/userAction';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { useSnackbar } from 'notistack';
+import { logoutUser } from '../../actions/userAction';
+import { useNavigate } from 'react-router-dom';
+import IconButton from '@mui/material/IconButton';
+import Avatar from '@mui/material/Avatar'
 
 const TopNavbar = () => {
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(loadUser());
-  // }, [dispatch]);
-
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    navigate("/admin/dashboard");
+  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  console.log(isAuthenticated);
-  console.log(user);
+
   const [y, setY] = useState(window.scrollY);
   const [sidebarOpen, toggleSidebar] = useState(false);
 
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
-
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate("/login");
+    enqueueSnackbar("Đăng xuất thành công", { variant: "success" });
+    setTogglePrimaryDropDown(false);
+  }
   return (
     <>
       <Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
@@ -82,10 +96,35 @@ const TopNavbar = () => {
                 </li>
               </span>
               :
-              <span className="userDropDown flex items-center text-dark font-medium gap-1 cursor-pointer" onClick={() => setTogglePrimaryDropDown(!togglePrimaryDropDown)}>{user.name && user.name.split(" ", 1)}
-                <span>{togglePrimaryDropDown ? <ExpandLessIcon sx={{ fontSize: "16px" }} /> : <ExpandMoreIcon sx={{ fontSize: "16px" }} />}</span>
-                {togglePrimaryDropDown && <PrimaryDropDownMenu setTogglePrimaryDropDown={setTogglePrimaryDropDown} user={user} />}
-              </span>
+              <div>
+                <Button
+                  id="basic-button"
+                  aria-controls={open ? 'basic-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? 'true' : undefined}
+                  onClick={handleClick}
+                >
+                  {user.name && user.name.split(" ", 1)}
+                </Button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                  }}
+                >
+                  {user.role === "admin" &&
+                    <MenuItem onClick={handleClose}> Quản trị viên </MenuItem>}
+                  {user.role === "saler" &&
+                    <MenuItem onClick={handleClose}> Quản lý bán hàng</MenuItem>}
+                  <MenuItem onClick={handleClose}>Tài khoản</MenuItem>
+                  <MenuItem onClick={handleClose}>Đơn hàng</MenuItem>
+                  <MenuItem onClick={handleClose}>Cửa hàng của bạn</MenuItem>
+                  <MenuItem onClick={handleLogout}>Đăng xuất</MenuItem>
+                </Menu>
+              </div>
             }
           </UlWrapperRight>
         </NavInner>
@@ -98,7 +137,6 @@ export default TopNavbar;
 
 const Wrapper = styled.nav`
   width: 100%;
-  position: fixed;
   top: 0;
   left: 0;
   z-index: 999;

@@ -8,25 +8,39 @@ import { useSnackbar } from 'notistack';
 import '../../../style/login.css';
 import ImageLogin from "../../../assets/img/ImageLogin.png";
 import { Helmet } from "react-helmet";
+import Footer from "../../Sections/Footer";
+import TopNavbar from "../../Nav/TopNavbar";
+import cookie from "react-cookie";
+
+const setCookie= () => {
+    let d = new Date();
+    d.setTime(d.getTime() + (60*60*1000));
+  
+    cookie.set("token", true, {path: "/", expires: d});
+  };
 
 const Login = () => {
 
+    
+    
+       
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
     const location = useLocation();
 
     const {  loading, isAuthenticated, error } = useSelector((state) => state.user);
-
+    // console.log(isAuthenticated);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleLogin = (e) => {
         e.preventDefault();
+       
         dispatch(loginUser(email, password));
     }
 
-    const redirect = location.search ? location.search.split("=")[1] : "";
+    const redirect = location.search ? location.search.split("=")[1] : "account";
 
     useEffect(() => {
         if (error) {
@@ -36,17 +50,18 @@ const Login = () => {
         if (isAuthenticated) {
             navigate(`/${redirect}`)
         }
-    }, [dispatch, error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
+    }, [ dispatch, isAuthenticated, redirect, navigate, enqueueSnackbar]);
 
     return (
         <>
+            <TopNavbar />
             {loading}
             <Helmet>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
             </Helmet>
             <div className="registration-form">
-                <form onSubmit={handleLogin}>
+                <form id="frm-login" onSubmit={handleLogin}>
                     <div className="form-img">
                         <span> <img className="image" src={ImageLogin} alt="imagelogo" /></span>
                         <h4>ĐĂNG NHẬP</h4>
@@ -62,7 +77,7 @@ const Login = () => {
                         <p> <a href="/password/forgot"> Quên mật khẩu ?</a></p>
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-block create-account"> Đăng nhập</button>
+                        <button id ="btn-login" type="submit" className="btn btn-block create-account"> Đăng nhập</button>
                     </div>
                     <div className="register">
                         <p> <a href="/register"> Bạn chưa có tài khoản? Đăng Kí </a></p>
@@ -77,6 +92,7 @@ const Login = () => {
                     </div>
                 </form>
             </div>
+
         </>
 
     );
