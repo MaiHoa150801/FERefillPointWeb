@@ -15,6 +15,10 @@ import { useDispatch } from 'react-redux';
 import Account from "./components/Sections/Account";
 import UpdateProfile from "./components/Sections/UpdateProfile";
 import UpdatePassword from "./components/Sections/UpdatePassword";
+import RegisterStore from "./components/Sections/RegisterStore";
+import Dashboard from "./components/Admin/Dashboard";
+import MainData from "./components/Admin/MainData";
+import ProductTable from "./components/Admin/ProductTable";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,7 +30,7 @@ function App() {
   return (
     <>
       <Routes>
-      <Route exact path="/acc" element={<Account />}>
+        <Route exact path="/register/store" element={<RegisterStore />}>
         </Route>
         <Route exact path="/" element={<Homepage />}>
         </Route>
@@ -58,7 +62,18 @@ function App() {
         } ></Route>
         <Route path="/admin/dashboard" element={
           <ProtectedRoute isAdmin={true}>
-            <AdminLayout />
+            {/* <AdminLayout /> */}
+            <Dashboard activeTab={0}>
+              <MainData />
+            </Dashboard>
+          </ProtectedRoute>
+        } ></Route>
+        <Route path="/admin/products" element={
+          <ProtectedRoute isAdmin={true}>
+            {/* <AdminLayout /> */}
+            <Dashboard activeTab={1}>
+              <ProductTable />
+            </Dashboard>
           </ProtectedRoute>
         } ></Route>
         <Route path="/saler/dashboard" element={

@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import '../style/styles.css';
 import AdminNavbar from "../components/Admin/AdminNavbar";
-import Sidebar from "../components/Admin/Sidebar";
+import Sidebar from "../components/Admin/Sidebar1";
 // Sections
 import { useEffect } from 'react';
 import Chart from 'chart.js/auto'

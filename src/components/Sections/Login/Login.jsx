@@ -10,9 +10,20 @@ import ImageLogin from "../../../assets/img/ImageLogin.png";
 import { Helmet } from "react-helmet";
 import Footer from "../../Sections/Footer";
 import TopNavbar from "../../Nav/TopNavbar";
+import cookie from "react-cookie";
+
+const setCookie= () => {
+    let d = new Date();
+    d.setTime(d.getTime() + (60*60*1000));
+  
+    cookie.set("token", true, {path: "/", expires: d});
+  };
 
 const Login = () => {
 
+    
+    
+       
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
@@ -25,6 +36,7 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
+       
         dispatch(loginUser(email, password));
     }
 
