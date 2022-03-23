@@ -10,33 +10,21 @@ import ImageLogin from "../../../assets/img/ImageLogin.png";
 import { Helmet } from "react-helmet";
 import Footer from "../../Sections/Footer";
 import TopNavbar from "../../Nav/TopNavbar";
-import cookie from "react-cookie";
-
-const setCookie= () => {
-    let d = new Date();
-    d.setTime(d.getTime() + (60*60*1000));
-  
-    cookie.set("token", true, {path: "/", expires: d});
-  };
 
 const Login = () => {
 
-    
-    
-       
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
     const location = useLocation();
 
     const {  loading, isAuthenticated, error } = useSelector((state) => state.user);
-    // console.log(isAuthenticated);
+    console.log(isAuthenticated + "login");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleLogin = (e) => {
         e.preventDefault();
-       
         dispatch(loginUser(email, password));
     }
 
@@ -50,11 +38,10 @@ const Login = () => {
         if (isAuthenticated) {
             navigate(`/${redirect}`)
         }
-    }, [ dispatch, isAuthenticated, redirect, navigate, enqueueSnackbar]);
+    }, [  isAuthenticated, redirect, navigate, enqueueSnackbar]);
 
     return (
         <>
-            <TopNavbar />
             {loading}
             <Helmet>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />

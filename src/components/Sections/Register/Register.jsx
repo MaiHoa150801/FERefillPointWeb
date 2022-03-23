@@ -18,7 +18,7 @@ export default function Register() {
     const { enqueueSnackbar } = useSnackbar();
 
     const { loading, isAuthenticated, error } = useSelector((state) => state.user);
-
+    console.log(isAuthenticated + "register");
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -83,13 +83,13 @@ export default function Register() {
         if (isAuthenticated) {
             navigate('/')
         }
-    }, [dispatch, isAuthenticated, navigate, enqueueSnackbar]);
+    }, [dispatch, error, isAuthenticated, navigate, enqueueSnackbar]);
 
     return (
 
         <>
+            {/* <TopNavbar /> */}
             {loading}
-            <TopNavbar />
             <Helmet>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />

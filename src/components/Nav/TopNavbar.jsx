@@ -5,10 +5,7 @@ import { Link } from "react-scroll";
 import Sidebar from "../Nav/Sidebar";
 import Backdrop from "../Elements/Backdrop";
 // Assets
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import BurgerIcon from "../../assets/svg/BurgerIcon";
-import PrimaryDropDownMenu from './PrimaryDropDownMenu';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadUser } from '../../actions/userAction';
 import Button from '@mui/material/Button';
@@ -21,29 +18,34 @@ import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar'
 
 const TopNavbar = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    navigate("/admin/dashboard");
-  };
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { isAuthenticated, user } = useSelector((state) => state.user);
-
-  const [y, setY] = useState(window.scrollY);
+  console.log(user + "topnavbar");
+  const [y] = useState(window.scrollY);
   const [sidebarOpen, toggleSidebar] = useState(false);
 
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
+  
   const handleLogout = () => {
     dispatch(logoutUser());
     navigate("/login");
     enqueueSnackbar("Đăng xuất thành công", { variant: "success" });
     setTogglePrimaryDropDown(false);
   }
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    navigate("/admin/dashboard");
+  };
+
   return (
     <>
       <Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />

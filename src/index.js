@@ -9,7 +9,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { SnackbarProvider } from 'notistack';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { CookiesProvider } from 'react-cookie';
+// import { CookiesProvider } from 'react-cookie';
+import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,15 +20,18 @@ ReactDOM.render(
           vertical: 'bottom',
           horizontal: 'center',
         }}>
-        <CookiesProvider>
+        {/* <CookiesProvider> */}
           <Router>
             <App />
           </Router>
-        </CookiesProvider>
+        {/* </CookiesProvider> */}
       </SnackbarProvider>
     </Provider>
-  </React.StrictMode>,
+   </React.StrictMode>
+  ,
   document.getElementById('root')
 );
+
+reportWebVitals();
 
 

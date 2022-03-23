@@ -40,11 +40,11 @@ import {
     CONTACT_LANDING_FAIL,
 } from '../constants/userConstants';
 import axios from 'axios';
-
+import Cookies from 'js-cookie';
 // Contact Landing page
 export const contactLanding = (fname, email, subject, message) => async (dispatch) => {
     try {
-
+        
         dispatch({ type: CONTACT_LANDING_REQUEST });
 
         const config = {
@@ -58,7 +58,7 @@ export const contactLanding = (fname, email, subject, message) => async (dispatc
             { fname, email, subject, message },
             config
         );
-
+        
         dispatch({
             type: CONTACT_LANDING_SUCCESS,
             payload: data.user,
@@ -75,9 +75,11 @@ export const contactLanding = (fname, email, subject, message) => async (dispatc
 // Login User
 export const loginUser = (email, password) => async (dispatch) => {
     try {
-
+        var date = new Date(
+            Date.now() + 5 * 24 * 60 * 60 * 1000
+        );
+        console.log(date);
         dispatch({ type: LOGIN_USER_REQUEST });
-
         const config = {
             headers: {
                 "Content-Type": "application/json",
@@ -89,7 +91,8 @@ export const loginUser = (email, password) => async (dispatch) => {
             { email, password },
             config
         );
-
+        console.log(data + "user action");
+        Cookies.set('token', data.token, { expires: date, path: '' });
         dispatch({
             type: LOGIN_USER_SUCCESS,
             payload: data.user,
@@ -120,7 +123,7 @@ export const registerUser = (userData) => async (dispatch) => {
             userData,
             config
         );
-
+        Cookies.set('token', data.token, { expires: 900000000, path: '' });
         dispatch({
             type: REGISTER_USER_SUCCESS,
             payload: data.user,
@@ -141,7 +144,8 @@ export const loadUser = () => async (dispatch) => {
         dispatch({ type: LOAD_USER_REQUEST });
 
         const { data } = await axios.get('http://localhost:8080/api/v1/me');
-
+        Cookies.set('token', data.token, { expires: 900000000, path: '' });
+        console.log(data + "loaduser");
         dispatch({
             type: LOAD_USER_SUCCESS,
             payload: data.user,
@@ -181,11 +185,12 @@ export const updateProfile = (userData) => async (dispatch) => {
         }
 
         const { data } = await axios.put(
-            'http://localhost:8080/v1/me/update',
+            'http://localhost:8080/api/v1/me/update',
             userData,
             config
         );
-
+        console.log(data + "updateprofile");
+        Cookies.set('token', data.token, { expires: 900000000, path: '' });
         dispatch({
             type: UPDATE_PROFILE_SUCCESS,
             payload: data.success,
