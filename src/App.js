@@ -19,16 +19,18 @@ import RegisterStore from "./components/Sections/RegisterStore";
 import Dashboard from "./components/Admin/Dashboard";
 import MainData from "./components/Admin/MainData";
 import ProductTable from "./components/Admin/ProductTable";
+import Setting from "./components/Sections/Setting";
+import Shop from "./components/Sections/Shop";
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(loadUser());
   }, [dispatch]);
 
   return (
     <>
+      <TopNavbar />
       <Routes>
         <Route exact path="/register/store" element={<RegisterStore />}>
         </Route>
@@ -46,7 +48,16 @@ function App() {
         </Route>
         <Route path="/account" element={
           <ProtectedRoute>
-            <Account />
+            <Account activeTab={0}>
+              <Setting />
+            </Account>
+          </ProtectedRoute>
+        } ></Route>
+        <Route path="/shop" element={
+          <ProtectedRoute>
+            <Account activeTab={1}>
+              <Shop />
+            </Account>
           </ProtectedRoute>
         } ></Route>
         <Route path="/account/update" element={
@@ -62,7 +73,6 @@ function App() {
         } ></Route>
         <Route path="/admin/dashboard" element={
           <ProtectedRoute isAdmin={true}>
-            {/* <AdminLayout /> */}
             <Dashboard activeTab={0}>
               <MainData />
             </Dashboard>
@@ -70,7 +80,6 @@ function App() {
         } ></Route>
         <Route path="/admin/products" element={
           <ProtectedRoute isAdmin={true}>
-            {/* <AdminLayout /> */}
             <Dashboard activeTab={1}>
               <ProductTable />
             </Dashboard>

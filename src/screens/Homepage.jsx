@@ -12,11 +12,12 @@ import { clearErrors, getSliderProducts } from '../actions/productAction';
 import { useSnackbar } from 'notistack';
 import { Helmet } from "react-helmet";
 import ProductSlider from '../components/Sections/ProductSlider/ProductSlider';
+import { loadUser } from '../actions/userAction';;
 
-export default function App() {
+const Homepage = () => {
+
     return (
         <>
-            <TopNavbar />
             <Helmet>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,3 +34,4 @@ export default function App() {
     );
 }
 
+export default Homepage;

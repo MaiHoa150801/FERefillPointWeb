@@ -1,11 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import FolderIcon from '@mui/icons-material/Folder';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import PersonIcon from '@mui/icons-material/Person';
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import ChatIcon from '@mui/icons-material/Chat';
-import FolderSharedIcon from '@mui/icons-material/FolderShared';
-import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import Avatar from '@mui/material/Avatar';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { logoutUser } from '../../actions/userAction';
@@ -17,7 +11,7 @@ const Sidebar = ({ activeTab }) => {
     const { enqueueSnackbar } = useSnackbar();
 
     const { user } = useSelector(state => state.user);
-
+    console.log(user + "sidebar account")
     const handleLogout = () => {
         dispatch(logoutUser());
         enqueueSnackbar("Logout Successfully", { variant: "success" });
@@ -25,11 +19,49 @@ const Sidebar = ({ activeTab }) => {
     }
 
     return (
-        <nav>
-            <a>account1</a>
-            <a>account2</a>
-            <a>account3</a>
-        </nav>
+        <>
+            <div className="wrapper">
+                {/* Sidebar Holder */}
+                <nav id="sidebar" >
+                    <div className="sidebar-header flex">
+
+                        <h3>{user.name}</h3>
+                    </div>
+                    <ul className="list-unstyled components">
+                        <li className=''>
+                            <Link to="/account" className={`${activeTab === "profile"} `} >
+                                <i className="fa fa-home" />
+                                Tài khoản
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/shop" className={`${activeTab === "shop"} `} >
+                                <i className="fa fa-home" />
+                                Bán hàng
+                            </Link>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i className="fa fa-link" />
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i className="fa fa-paperclip" />
+                                FAQ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i className="fa fa-send" />
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </>
     );
 };
 

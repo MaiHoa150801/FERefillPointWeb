@@ -8,7 +8,7 @@ const Layout = props => {
 
   return (
     <div className={style.layout}>
-      <TopNavbar />
+      {/* <TopNavbar /> */}
       <aside >
         <Sidebar />
       </aside>

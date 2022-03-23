@@ -96,7 +96,7 @@ const GreyDiv = styled.div`
   width: 30%;
   height: 700px;
   position: absolute;
-  top: 0;
+  top: 100px;
   right: 0;
   z-index: 0;
   @media (max-width: 960px) {

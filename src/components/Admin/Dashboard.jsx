@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 import MenuIcon from '@mui/icons-material/Menu';
-import TopSidebar from '../Nav/TopNavbar';
+// import TopSidebar from '../Nav/TopNavbar';
 
 const Dashboard = ({ activeTab, children }) => {
 
@@ -16,7 +16,7 @@ const Dashboard = ({ activeTab, children }) => {
 
     return (
         <>
-            <TopSidebar />
+            {/* <TopSidebar /> */}
             <main className="flex min-h-screen mt-14 sm:min-w-full">
                 {!onMobile && <Sidebar activeTab={activeTab} />}
                 {children}

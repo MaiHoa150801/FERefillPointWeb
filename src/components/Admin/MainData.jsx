@@ -3,7 +3,7 @@ import Chart from 'chart.js/auto'
 import { Doughnut, Line, Pie, Bar } from 'react-chartjs-2';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllUsers } from '../../actions/userAction';
-// import MetaData from '../Layouts/MetaData';
+
 
 const MainData = () => {
 
@@ -13,7 +13,7 @@ const MainData = () => {
 
     console.log(users);
     useEffect(() => {
-        // dispatch(getAllUsers());
+        dispatch(getAllUsers());
     }, []);
 
 
