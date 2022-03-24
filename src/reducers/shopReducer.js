@@ -24,139 +24,123 @@ import {
     UPDATE_SHOP_RESET
 } from '../constants/shopConstants';
 
-export const shopsReducer = (state = { shops: [] }, { type, payload }) => {
+// export const shopsReducer = (state = { shops: [] }, { type, payload }) => {
 
-    switch (type) {
-        case ALL_SHOPS_REQUEST:
-        case ADMIN_SHOPS_REQUEST:
+//     switch (type) {
+//         case ALL_SHOPS_REQUEST:
+//         case ADMIN_SHOPS_REQUEST:
 
-        case ALL_SHOPS_SUCCESS:
-            return {
-                loading: false,
-                shops: payload.shops,
-                shopsCount: payload.shopsCount,
-                resultPerPage: payload.resultPerPage,
-                filteredProductsCount: payload.filteredProductsCount,
-            };
-        case ADMIN_SHOPS_SUCCESS:
-        case ALL_SHOPS_FAIL:
-        case ADMIN_SHOPS_FAIL:
-        case CLEAR_ERRORS:
-            return {
-                ...state,
-                error: null,
-            };
-        default:
-            return state;
-    }
-}
+//         case ALL_SHOPS_SUCCESS:
+//             return {
+//                 loading: false,
+//                 shops: payload.shops,
+//                 shopsCount: payload.shopsCount,
+//                 resultPerPage: payload.resultPerPage,
+//                 filteredProductsCount: payload.filteredProductsCount,
+//             };
+//         case ADMIN_SHOPS_SUCCESS:
+//         case ALL_SHOPS_FAIL:
+//         case ADMIN_SHOPS_FAIL:
+//         case CLEAR_ERRORS:
+//             return {
+//                 ...state,
+//                 error: null,
+//             };
+//         default:
+//             return state;
+//     }
+// }
 
-export const shopDetailsReducer = (state = { shop: {} }, { type, payload }) => {
+// export const shopDetailsReducer = (state = { shop: {} }, { type, payload }) => {
 
-    switch (type) {
-        case SHOP_DETAILS_REQUEST:
-            return {
-                ...state,
-                loading: true,
-            };
-        case SHOP_DETAILS_SUCCESS:
-            return {
-                loading: false,
-                shop: payload,
-            };
-        case SHOP_DETAILS_FAIL:
-            return {
-                loading: false,
-                error: payload,
-            };
-        case REMOVE_SHOP_DETAILS:
-            return {
-                ...state,
-                shop: {},
-            };
-        case CLEAR_ERRORS:
-            return {
-                ...state,
-                error: null,
-            };
-        default:
-            return state;
-    }
-}
+//     switch (type) {
+//         case SHOP_DETAILS_REQUEST:
+//             return {
+//                 ...state,
+//                 loading: true,
+//             };
+//         case SHOP_DETAILS_SUCCESS:
+//             return {
+//                 loading: false,
+//                 shop: payload,
+//             };
+//         case SHOP_DETAILS_FAIL:
+//             return {
+//                 loading: false,
+//                 error: payload,
+//             };
+//         case REMOVE_SHOP_DETAILS:
+//             return {
+//                 ...state,
+//                 shop: {},
+//             };
+//         case CLEAR_ERRORS:
+//             return {
+//                 ...state,
+//                 error: null,
+//             };
+//         default:
+//             return state;
+//     }
+// }
 
 // New Product Reducer
-export const newShopReducer = (state = { shop: {} }, { type, payload }) => {
+export const shopReducer = (state = { shop: {} }, { type, payload }) => {
+    // switch (type) {
+    //     case NEW_SHOP_REQUEST:
+    //         return {
+    //             ...state,
+    //             loading: true,
+    //         };
+    //     case NEW_SHOP_SUCCESS:
+    //         return {
+    //             loading: false,
+    //             success: payload.success,
+    //             shop: payload.shop,
+    //         };
+    //     case NEW_SHOP_FAIL:
+    //         return {
+    //             ...state,
+    //             loading: false,
+    //             error: payload,
+    //         };
+    //     case NEW_SHOP_RESET:
+    //         return {
+    //             ...state,
+    //             success: false,
+    //         };
+    //     case CLEAR_ERRORS:
+    //         return {
+    //             ...state,
+    //             error: null,
+    //         };
+    //     default:
+    //         return state;
+    // }
     switch (type) {
         case NEW_SHOP_REQUEST:
-            return {
-                ...state,
-                loading: true,
-            };
+        // case LOAD_SHOP_REQUEST:
+        //     return {
+        //         loading: true,
+        //     };
         case NEW_SHOP_SUCCESS:
-            return {
-                loading: false,
-                success: payload.success,
-                shop: payload.shop,
-            };
+        // case LOAD_SHOP_SUCCESS:
+            // return {
+            //     success: payload.success
+            // };
         case NEW_SHOP_FAIL:
             return {
                 ...state,
                 loading: false,
+                shop: null,
                 error: payload,
             };
-        case NEW_SHOP_RESET:
-            return {
-                ...state,
-                success: false,
-            };
-        case CLEAR_ERRORS:
-            return {
-                ...state,
-                error: null,
-            };
-        default:
-            return state;
-    }
-}
-
-// Product Reducer
-export const shopReducer = (state = {}, { type, payload }) => {
-    switch (type) {
-        case UPDATE_SHOP_REQUEST:
-        case DELETE_SHOP_REQUEST:
-            return {
-                ...state,
-                loading: true,
-            };
-        case UPDATE_SHOP_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                isUpdated: payload,
-            };
-        case DELETE_SHOP_SUCCESS:
-            return {
-                ...state,
-                loading: false,
-                isDeleted: payload,
-            };
-        case UPDATE_SHOP_FAIL:
-        case DELETE_SHOP_FAIL:
-            return {
-                ...state,
-                loading: false,
-                error: payload,
-            };
-        case UPDATE_SHOP_RESET:
-            return {
-                ...state,
-                isUpdated: false,
-            };
-        case DELETE_SHOP_RESET:
-            return {
-                ...state,
-                isDeleted: false,
-            };
+        // case LOAD_SHOP_FAIL:
+        //     return {
+        //         loading: false,
+        //         shop: null,
+        //         error: payload,
+        //     }
         case CLEAR_ERRORS:
             return {
                 ...state,

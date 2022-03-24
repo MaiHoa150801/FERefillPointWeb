@@ -15,24 +15,45 @@ const ShopRigister = () => {
   const { loading, success, error } = useSelector((state) => state.shop);
 
   const { user, isAuthenticated } = useSelector((state) => state.user);
+  console.log(user);
 
-  const [logo, setLogo] = useState('');
+  const [logo, setLogo] = useState();
   const [logoPreview, setLogoPreview] = useState('preview.png');
 
   const [shop, setShop] = useState({
     name: '',
-    phone: '',
+    phone_number: '',
     email: '',
     address: '',
     latitude: '',
     longitude: '',
     description: '',
+    account_id: '',
+    role:'',
   });
 
-  const { name, email, phone, address, latitude, longitude, description } =
-    shop;
+  const { name, email, phone_number, address, latitude, longitude, description } = shop;
+
+  const handleDataChange = (e) => {
+    if (e.target.name === 'logo') {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setLogoPreview(reader.result);
+          setLogo(reader.result);
+        }
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      // console.log(shop);
+      setShop({ ...shop, [e.target.name]: e.target.value });
+    }
+  };
 
   const newShop = (e) => {
+
     e.preventDefault();
 
     // required field checks
@@ -40,7 +61,7 @@ const ShopRigister = () => {
       enqueueSnackbar('Vui lòng nhập tên', { variant: 'warning' });
       return;
     }
-    if (!phone) {
+    if (!phone_number) {
       enqueueSnackbar('Vui lòng nhập số điện thoại', { variant: 'warning' });
       return;
     }
@@ -70,38 +91,20 @@ const ShopRigister = () => {
     }
 
     const formData = new FormData();
-
+    formData.set('role', user.role);
+    formData.set('account_id', user._id);
     formData.set('name', name);
-    formData.set('phone', phone);
+    formData.set('phone_number', phone_number);
     formData.set('email', email);
     formData.set('address', address);
     formData.set('latitude', latitude);
     formData.set('longitude', longitude);
     formData.set('description', description);
     formData.set('logo', logo);
-
+    console.log(formData);
+    
     dispatch(createShop(formData));
   };
-
-  const handleDataChange = (e) => {
-    if (e.target.name === 'logo') {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        if (reader.readyState === 2) {
-          setLogoPreview(reader.result);
-          setLogo(reader.result);
-        }
-      };
-
-      reader.readAsDataURL(e.target.files[0]);
-    } else {
-      setShop({ ...shop, [e.target.name]: e.target.value });
-    }
-  };
-
-  console.log(user + 'account');
-
   useEffect(() => {
     if (error) {
       enqueueSnackbar(error, { variant: 'error' });
@@ -109,9 +112,9 @@ const ShopRigister = () => {
     }
     if (success) {
       enqueueSnackbar('Cửa hàng của bạn đã được tạo.', { variant: 'success' });
-      navigate('/shop/product');
+
     }
-  }, [dispatch, error, success, navigate, enqueueSnackbar]);
+  }, [dispatch, enqueueSnackbar]);
 
   return (
     <>
@@ -329,11 +332,11 @@ const ShopRigister = () => {
                         <label htmlFor="website_url">Phone</label>
                         <input
                           className="form-control"
-                          type="number"
-                          name="phone"
-                          id="phone"
+                          type="text"
+                          name="phone_number"
+                          id="phone_number"
                           placeholder="Enter..."
-                          value={phone}
+                          value={phone_number}
                           onChange={handleDataChange}
                         />
                       </div>

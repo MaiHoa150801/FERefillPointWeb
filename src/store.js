@@ -10,9 +10,9 @@ const reducer = combineReducers({
     forgotPassword: forgotPasswordReducer,
     users: allUsersReducer,
     userDetails: userDetailsReducer,
-    newShop: newShopReducer,
-    shops: shopsReducer,
-    shopDetails: shopDetailsReducer,
+    // newShop: newShopReducer,
+    // shops: shopsReducer,
+    // shopDetails: shopDetailsReducer,
     shop: shopReducer,
 });
 

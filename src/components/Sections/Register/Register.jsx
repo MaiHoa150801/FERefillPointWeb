@@ -38,10 +38,11 @@ export default function Register() {
             enqueueSnackbar("Mật khẩu ít nhất 8 kí tự nhé", { variant: "warning" });
             return;
         }
-        if (password !== cpassword) {
-            enqueueSnackbar("Mật khẩu không giống nhau", { variant: "error" });
+        if ( cpassword == null ) {
+            enqueueSnackbar("Xác thực mật khẩu không có giá trị", { variant: "error" });
             return;
         }
+
         if (!avatar) {
             enqueueSnackbar("Hãy chọn hình đại diện", { variant: "error" });
             return;
@@ -52,6 +53,7 @@ export default function Register() {
         formData.set("email", email);
         formData.set("phone", phone);
         formData.set("password", password);
+        formData.set("cpassword", cpassword);
         formData.set("avatar", avatar);
 
         dispatch(registerUser(formData));
