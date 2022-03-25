@@ -5,6 +5,7 @@ import ContactImg1 from "../../assets/img/contact1.png";
 import { contactLanding } from '../../actions/userAction';
 import { useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
+import validator from 'validator';
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -37,6 +38,14 @@ export default function Contact() {
       enqueueSnackbar("Không được để trống nội dung", { variant: "error" });
       return;
     }
+    if (!message) {
+      enqueueSnackbar("Không được để trống nội dung", { variant: "error" });
+      return;
+    }
+    if (validator.isEmail(email) == false) {
+      enqueueSnackbar("Email không có giá trị", { variant: "error" });
+      return;
+    }
     else {
       enqueueSnackbar("Đã gửi thành công", { variant: "success" });
       dispatch(contactLanding(name, email, subject, message));
@@ -44,15 +53,6 @@ export default function Contact() {
 
   }
 
-  // useEffect(() => {
-  //   if (error) {
-  //       enqueueSnackbar(error, { variant: "error" });
-  //       dispatch(clearErrors());
-  //   }
-  //   if (success) {
-  //       enqueueSnackbar(message, { variant: "error" });
-  //   }
-  // }, [enqueueSnackbar ]);
 
   return (
     <Wrapper id="contact">

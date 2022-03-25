@@ -54,7 +54,7 @@ export const contactLanding = (name, email, subject, message) => async (dispatch
       };
 
       const { data } = await axios.post(
-        'https://be-refill-mml5m.ondigitalocean.app/api/v1/contact',
+        'http://localhost:8080/api/v1/contact',
         { name, email, subject, message },
         config
       );
