@@ -1,59 +1,50 @@
-import React from "react";
+import React from 'react';
 import { useEffect } from 'react';
 import { useSnackbar } from 'notistack';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Sidebar from "./Sidebar";
-import Loader from "../Sections/Layout/Loader";
+import Sidebar from './Sidebar';
+import Loader from '../Sections/Layout/Loader';
 
-import {
-    CardContent,
-} from '@mui/material';
+import { CardContent } from '@mui/material';
 
 const Account = ({ activeTab, children }) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const { user, loading, isAuthenticated } = useSelector((state) => state.user);
 
-    const { user, loading, isAuthenticated } = useSelector(state => state.user)
-    console.log(user + "account");
-
-    useEffect(() => {
-        if (isAuthenticated === false) {
-            navigate("/login")
-        }
-    }, [isAuthenticated, navigate]);
-
-    const getLastName = () => {
-        const nameArray = user.name.split(" ");
-        return nameArray[nameArray.length - 1];
+  useEffect(() => {
+    if (isAuthenticated === false) {
+      navigate('/login');
     }
+  }, [isAuthenticated, navigate]);
 
-    const [open, setOpen] = React.useState(true);
+  const getLastName = () => {
+    const nameArray = user.name.split(' ');
+    return nameArray[nameArray.length - 1];
+  };
 
-    const handleClick = () => {
-        setOpen(!open);
-    };
+  const [open, setOpen] = React.useState(true);
 
-    return (
-        <>
-            {loading ? <Loader /> :
-                <div className="wrapper">
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
-                    <Sidebar activeTab={activeTab} />
+  return (
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="wrapper">
+          <Sidebar activeTab={activeTab} />
 
-                    
-                    {children}
-
-
-                </div>
-
-            }
-
-        </>
-    );
-}
+          {children}
+        </div>
+      )}
+    </>
+  );
+};
 
 export default Account;
-
