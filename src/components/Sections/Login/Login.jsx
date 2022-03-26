@@ -25,8 +25,18 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        if (!email || !password) {
-            enqueueSnackbar("Eamil hoặc mật khẩu không được để trống", { variant: "error" });
+        if (!email && ! password) {
+            enqueueSnackbar("Eamil và password không được để trống", { variant: "error" });
+            return;
+        }
+        
+        if (!email ) {
+            enqueueSnackbar("Eamil không được để trống", { variant: "error" });
+            return;
+        }
+
+        if (!password ) {
+            enqueueSnackbar("Mật khẩu không được để trống", { variant: "error" });
             return;
         }
 

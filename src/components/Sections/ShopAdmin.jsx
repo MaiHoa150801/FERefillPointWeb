@@ -18,12 +18,6 @@ const ShopAdmin = () => {
 
   const { loading, success, error } = useSelector((state) => state.newProduct);
   const { user } = useSelector((state) => state.user);
-  // const { shop } = useSelector((state) => state.shop);
-  // console.log(shop);
-  // console.log(shop[].account_id);
-  // useEffect(() => {
-  //   dispatch(LoadShop(user._id));
-  // }, [dispatch]);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -130,8 +124,7 @@ const ShopAdmin = () => {
                   label="ID"
                   variant="outlined"
                   size="small"
-                  width="500px"
-                  required
+                  width="500px"                 
                   value={type_product_id}
                   onChange={(e) => setProductId(e.target.value)}
                 />
@@ -142,7 +135,6 @@ const ShopAdmin = () => {
                   label="Tên"
                   variant="outlined"
                   size="small"
-                  required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -152,8 +144,7 @@ const ShopAdmin = () => {
                 <TextField
                   label="Mô tả"
                   multiline
-                  rows={3}
-                  required
+                  rows={3}                 
                   variant="outlined"
                   size="small"
                   value={description}
@@ -166,7 +157,6 @@ const ShopAdmin = () => {
                   label="Đơn vị"
                   variant="outlined"
                   size="small"
-                  required
                   value={measure}
                   onChange={(e) => setMeasure(e.target.value)}
                 />
@@ -178,12 +168,6 @@ const ShopAdmin = () => {
                   type="number"
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    inputProps: {
-                      min: 0
-                    }
-                  }}
-                  required
                   value={unit_price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
@@ -191,13 +175,7 @@ const ShopAdmin = () => {
                   label="Giá đã giảm"
                   type="number"
                   variant="outlined"
-                  size="small"
-                  InputProps={{
-                    inputProps: {
-                      min: 0
-                    }
-                  }}
-                  required
+                  size="small"  
                   value={sale_price}
                   onChange={(e) => setCuttedPrice(e.target.value)}
                 />
