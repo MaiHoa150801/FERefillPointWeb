@@ -20,7 +20,7 @@ const ShopAdmin = () => {
   const { user } = useSelector((state) => state.user);
   // const { shop } = useSelector((state) => state.shop);
   // console.log(shop);
-
+  // console.log(shop[].account_id);
   // useEffect(() => {
   //   dispatch(LoadShop(user._id));
   // }, [dispatch]);
@@ -110,7 +110,7 @@ const ShopAdmin = () => {
     if (success) {
       enqueueSnackbar("Product Created", { variant: "success" });
       dispatch({ type: NEW_PRODUCT_RESET });
-      navigate("/admin/products");
+      navigate("/saler/products");
     }
   }, [dispatch, error, success, navigate, enqueueSnackbar]);
 

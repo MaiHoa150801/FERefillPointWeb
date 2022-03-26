@@ -11,10 +11,9 @@ const reducer = combineReducers({
     users: allUsersReducer,
     userDetails: userDetailsReducer,
     newProduct: newProductReducer,
-    // shops: shopsReducer,
-    // shopDetails: shopDetailsReducer,
     shop: shopReducer,
     products: productsReducer,
+    
 });
 
 let initialState = {

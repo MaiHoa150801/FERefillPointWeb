@@ -120,7 +120,7 @@ export default function Register() {
                     </div>
 
                     <div className="form-group">
-                        <input type="text" name="name" className="form-control item" id="full-name" value={name} onChange={handleDataChange} placeholder="Name " />
+                        <input type="text" name="name" className="form-control item" id="full-name" value={name} onChange={handleDataChange} placeholder="Tên " />
                     </div>
                     <div className="form-group">
                         <input type="email" name="email" className="form-control item" id="email" value={email} onChange={handleDataChange} placeholder="Email" />

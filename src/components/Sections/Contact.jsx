@@ -2,20 +2,40 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // Assets
 import ContactImg1 from "../../assets/img/contact1.png";
-import { contactLanding } from '../../actions/userAction';
+import {  contactLanding } from '../../actions/userAction';
 import { useDispatch } from 'react-redux';
+import { useSnackbar } from 'notistack';
 
 export default function Contact() {
-  const [fname, setName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleContact = (e) => {
     e.preventDefault();
-    dispatch(contactLanding(fname, email, subject, message));
+    if (!email || !name || !subject || !message) {
+      enqueueSnackbar("Không được để trống bất kì thông tin nào", { variant: "error" });
+      return;
+    }
+    else{
+      enqueueSnackbar("Đã gửi thành công", { variant: "success" });
+      dispatch(contactLanding(name, email, subject, message));
+    }
+    
   }
+
+  // useEffect(() => {
+  //   if (error) {
+  //       enqueueSnackbar(error, { variant: "error" });
+  //       dispatch(clearErrors());
+  //   }
+  //   if (success) {
+  //       enqueueSnackbar(message, { variant: "error" });
+  //   }
+  // }, [enqueueSnackbar ]);
 
     return (
       <Wrapper id="contact">
@@ -34,13 +54,13 @@ export default function Contact() {
                 <form onSubmit={handleContact}>
                   <Form>
                     <label className="font13">Họ và tên:</label>
-                    <input type="text" id="fname" name="fname" className="font20 extraBold" value={fname} onChange={(e) => setName(e.target.value)} required />
+                    <input type="text" id="fname" name="fname" className="font20 extraBold" value={name} onChange={(e) => setName(e.target.value)}  />
                     <label className="font13">Email:</label>
-                    <input type="text" id="email" name="email" className="font20 extraBold" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <input type="text" id="email" name="email" className="font20 extraBold" value={email} onChange={(e) => setEmail(e.target.value)}  />
                     <label className="font13">Tiêu đề:</label>
-                    <input type="text" id="subject" name="subject" className="font20 extraBold" value={subject} onChange={(e) => setSubject(e.target.value)} required />
+                    <input type="text" id="subject" name="subject" className="font20 extraBold" value={subject} onChange={(e) => setSubject(e.target.value)}  />
                     <label className="font13">Nội dung:</label>
-                    <textarea rows="4" cols="50" type="text" id="message" name="message" className="font20 extraBold" value={message} onChange={(e) => setMessage(e.target.value)} required />
+                    <textarea rows="4" cols="50" type="text" id="message" name="message" className="font20 extraBold" value={message} onChange={(e) => setMessage(e.target.value)}  />
                   </Form>
                   <SumbitWrapper className="flex">
                     <ButtonInput type="submit" value="Gửi tin nhắn" className="pointer animate radius8" style={{ maxWidth: "220px" }} />

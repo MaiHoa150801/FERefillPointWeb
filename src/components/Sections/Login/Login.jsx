@@ -25,6 +25,11 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
+        if (!email || !password) {
+            enqueueSnackbar("Eamil hoặc mật khẩu không được để trống", { variant: "error" });
+            return;
+        }
+
         dispatch(loginUser(email, password));
     }
 
@@ -55,10 +60,10 @@ const Login = () => {
                     </div>
                     <div className="form-group">
                         <label id="icon" htmlFor="name" />
-                        <input id="email" type="email" className="form-control item" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <input id="email" type="email" className="form-control item" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)}  />
                     </div>
                     <div className="form-group">
-                        <input type="password" className="form-control item" id="password" placeholder="Mật khẩu" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                        <input type="password" className="form-control item" id="password" placeholder="Mật khẩu" value={password} onChange={(e) => setPassword(e.target.value)}  />
                     </div>
                     <div className="form-group">
                         <p> <a href="/password/forgot"> Quên mật khẩu ?</a></p>

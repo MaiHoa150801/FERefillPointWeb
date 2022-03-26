@@ -51,7 +51,7 @@ export const LoadShop = (id) => async (dispatch) => {
         console.log(data);
         dispatch({
           type: LOAD_SHOP_SUCCESS,
-          payload: data.shop,
+          payload: data.salesperson,
         });
       } catch (error) {
         dispatch({

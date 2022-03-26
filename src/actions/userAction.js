@@ -43,8 +43,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { getMe } from '../Service/UserService';
 // Contact Landing page
-export const contactLanding =
-  (fname, email, subject, message) => async (dispatch) => {
+export const contactLanding = (name, email, subject, message) => async (dispatch) => {
     try {
       dispatch({ type: CONTACT_LANDING_REQUEST });
 
@@ -56,10 +55,10 @@ export const contactLanding =
 
       const { data } = await axios.post(
         'https://be-refill-mml5m.ondigitalocean.app/api/v1/contact',
-        { fname, email, subject, message },
+        { name, email, subject, message },
         config
       );
-
+        // console.log(data);
       dispatch({
         type: CONTACT_LANDING_SUCCESS,
         payload: data.user,

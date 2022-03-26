@@ -40,6 +40,9 @@ import {
     DELETE_USER_RESET,
     DELETE_USER_FAIL,
     REMOVE_USER_DETAILS,
+    CONTACT_LANDING_REQUEST,
+    CONTACT_LANDING_SUCCESS,
+    CONTACT_LANDING_FAIL,
 } from '../constants/userConstants';
 
 export const userReducer = (state = { user: {} }, { type, payload }) => {
@@ -60,6 +63,7 @@ export const userReducer = (state = { user: {} }, { type, payload }) => {
                 isAuthenticated: true,
                 user: payload,
             };
+      
         case LOGOUT_USER_SUCCESS:
             return {
                 loading: false,
