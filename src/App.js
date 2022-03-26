@@ -18,7 +18,7 @@ import UpdatePassword from './components/Sections/UpdatePassword';
 import RegisterStore from './components/Sections/RegisterStore';
 import Dashboard from './components/Admin/Dashboard';
 import MainData from './components/Admin/MainData';
-import ProductTable from './components/Admin/ProductTable';
+import ProductTable from './components/Sections/ProductTable';
 import Setting from './components/Sections/Setting';
 import ShopAdmin from './components/Sections/ShopAdmin';
 import ShopRoute from './components/Sections/ShopRoute';
@@ -59,6 +59,16 @@ function App() {
             <ProtectedRoute>
               <Account activeTab={1}>
                 <ShopRoute />
+              </Account>
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/shop/product"
+          element={
+            <ProtectedRoute isSaler={true}>
+              <Account activeTab={2}>
+                <ProductTable />
               </Account>
             </ProtectedRoute>
           }

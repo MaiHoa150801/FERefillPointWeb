@@ -119,7 +119,7 @@ export const getSliderProducts = () => async (dispatch) => {
     try {
         dispatch({ type: SLIDER_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get('http://localhost:4000/api/v1/products/all');
+        const { data } = await axios.get('http://localhost:8080/api/v1/products/all');
 
         dispatch({
             type: SLIDER_PRODUCTS_SUCCESS,
@@ -138,7 +138,7 @@ export const getAdminProducts = () => async (dispatch) => {
     try {
         dispatch({ type: ADMIN_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get('http://localhost:4000/api/v1/admin/products');
+        const { data } = await axios.get('http://localhost:8080/api/v1/admin/products');
 
         dispatch({
             type: ADMIN_PRODUCTS_SUCCESS,
@@ -155,9 +155,10 @@ export const getAdminProducts = () => async (dispatch) => {
 // New Product ---ADMIN
 export const createProduct = (productData) => async (dispatch) => {
     try {
+        console.log(productData);
         dispatch({ type: NEW_PRODUCT_REQUEST });
         const config = { header: { "Content-Type": "application/json" } }
-        const { data } = await axios.post("http://localhost:4000/api/v1/admin/product/new", productData, config);
+        const { data } = await axios.post("http://localhost:8080/api/v1/admin/product/new", productData, config);
 
         dispatch({
             type: NEW_PRODUCT_SUCCESS,

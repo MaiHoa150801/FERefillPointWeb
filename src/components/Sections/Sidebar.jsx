@@ -41,15 +41,15 @@ const Sidebar = ({ activeTab }) => {
                             </Link>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/shop/product">
                                 <i className="fa fa-link" />
-                                Portfolio
+                                Sản phẩm
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i className="fa fa-paperclip" />
-                                FAQ
+                                Đơn đặt hàng
                             </a>
                         </li>
                         <li>
