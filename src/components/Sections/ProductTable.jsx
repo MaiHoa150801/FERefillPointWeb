@@ -9,6 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+
 import { getSliderProducts, deleteProduct } from '../../actions/productAction';
 import { DataGrid } from '@mui/x-data-grid';
 import Actions from '../../components/Admin/Actions';
@@ -114,6 +115,7 @@ const ProductTable = () => {
   useEffect(() => {
     dispatch(getSliderProducts());
   }, [dispatch]);
+
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
