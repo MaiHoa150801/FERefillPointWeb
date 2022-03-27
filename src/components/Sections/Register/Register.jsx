@@ -35,27 +35,27 @@ export default function Register() {
     const handleRegister = (e) => {
         e.preventDefault();
         if(!name && !email && !phone && !password && !cpassword && !avatar){
-            enqueueSnackbar("Không được để trống tất cả các trường", { variant: "warning" });
+            enqueueSnackbar("Không được để trống tất cả các trường", { variant: "error" });
             return;
         }
         if (!name) {
-            enqueueSnackbar("Hãy nhập tên của bạn", { variant: "warning" });
+            enqueueSnackbar("Hãy nhập tên của bạn", { variant: "error" });
             return;
         }
         if (!email) {
-            enqueueSnackbar("Hãy nhập email của bạn", { variant: "warning" });
+            enqueueSnackbar("Hãy nhập email của bạn", { variant: "error" });
             return;
         }
         if (!phone) {
-            enqueueSnackbar("Hãy nhập số điện thoại của bạn", { variant: "warning" });
+            enqueueSnackbar("Hãy nhập số điện thoại của bạn", { variant: "erroe" });
             return;
         }
         if (!password) {
-            enqueueSnackbar("Hãy nhập mật khẩu của bạn", { variant: "warning" });
+            enqueueSnackbar("Hãy nhập mật khẩu của bạn", { variant: "error" });
             return;
         }
         if (password.length < 8) {
-            enqueueSnackbar("Mật khẩu ít nhất 8 kí tự nhé", { variant: "warning" });
+            enqueueSnackbar("Mật khẩu ít nhất 8 kí tự nhé", { variant: "error" });
             return;
         }
         if (!cpassword) {

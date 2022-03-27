@@ -230,19 +230,18 @@ const ShopAdmin = () => {
                     Choose Files
                   </label>
                 </div>
-              </div> {/* form-group // */}
+              </div> 
               <hr />
 
               <div className="form-group">
                 <div className="col-sm-offset-3 col-sm-9">
                   <button type="submit" className="btn btn-primary">Save</button>
                 </div>
-              </div> {/* form-group // */}
-
+              </div> 
             </form>
-          </div>{/* panel-body // */}
-        </section>{/* panel// */}
-      </div> {/* container// */}
+          </div>
+        </section>
+      </div> 
     </>
   );
 };
