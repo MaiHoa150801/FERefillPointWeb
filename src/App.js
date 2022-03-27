@@ -64,7 +64,7 @@ function App() {
           }
         ></Route>
         <Route
-          path="/shop/product"
+          path="/product"
           element={
             <ProtectedRoute isSaler={true}>
               <Account activeTab={2}>

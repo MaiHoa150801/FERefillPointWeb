@@ -41,7 +41,7 @@ const Sidebar = ({ activeTab }) => {
                             </Link>
                         </li>
                         <li>
-                            <a href="/shop/product">
+                            <a href="/product">
                                 <i className="fa fa-link" />
                                 Sản phẩm
                             </a>

@@ -59,7 +59,7 @@ const Login = () => {
             enqueueSnackbar('Đăng nhập thành công', { variant: 'success' });
             navigate(`/${redirect}`)
         }
-    }, [ error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
+    }, [ dispatch, error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
 
     return (
         <>
