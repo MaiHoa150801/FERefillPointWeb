@@ -8,8 +8,7 @@ import { useSnackbar } from 'notistack';
 import '../../../style/login.css';
 import ImageLogin from "../../../assets/img/ImageLogin.png";
 import { Helmet } from "react-helmet";
-import Footer from "../../Sections/Footer";
-import TopNavbar from "../../Nav/TopNavbar";
+import validator from 'validator';
 
 const Login = () => {
 
@@ -26,19 +25,25 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         if (!email && ! password) {
-            enqueueSnackbar("Eamil và password không được để trống", { variant: "error" });
+            enqueueSnackbar("Email và password không được để trống", { variant: "error" });
             return;
         }
         
         if (!email ) {
-            enqueueSnackbar("Eamil không được để trống", { variant: "error" });
+            enqueueSnackbar("Email không được để trống", { variant: "error" });
             return;
         }
 
+        if (validator.isEmail(email) == false) {
+            enqueueSnackbar("Email không đúng định dạng", { variant: "error" });
+            return;
+        }
+        
         if (!password ) {
             enqueueSnackbar("Mật khẩu không được để trống", { variant: "error" });
             return;
         }
+        
 
         dispatch(loginUser(email, password));
     }
@@ -51,9 +56,10 @@ const Login = () => {
             dispatch(clearErrors());
         }
         if (isAuthenticated) {
+            enqueueSnackbar('Đăng nhập thành công', { variant: 'success' });
             navigate(`/${redirect}`)
         }
-    }, [  isAuthenticated, redirect, navigate, enqueueSnackbar]);
+    }, [ dispatch, error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
 
     return (
         <>
@@ -70,7 +76,7 @@ const Login = () => {
                     </div>
                     <div className="form-group">
                         <label id="icon" htmlFor="name" />
-                        <input id="email" type="email" className="form-control item" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)}  />
+                        <input id="email"  className="form-control item" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)}  />
                     </div>
                     <div className="form-group">
                         <input type="password" className="form-control item" id="password" placeholder="Mật khẩu" value={password} onChange={(e) => setPassword(e.target.value)}  />

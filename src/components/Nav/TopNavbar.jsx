@@ -28,8 +28,8 @@ const TopNavbar = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate('/login');
     enqueueSnackbar('Đăng xuất thành công', { variant: 'success' });
+    navigate('/login');
     setTogglePrimaryDropDown(false);
   };
 

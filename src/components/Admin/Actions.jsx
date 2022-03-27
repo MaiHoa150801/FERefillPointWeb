@@ -23,9 +23,9 @@ const Actions = ({ id, deleteHandler, name, editRoute }) => {
                         <EditIcon />
                     </Link>
                 )}
-                <button onClick={() => setOpen(true)} className="text-red-600 hover:bg-red-200 p-1 rounded-full bg-red-100">
-                    <DeleteIcon />
-                </button>
+                {/* <button  className=""> */}
+                    <DeleteIcon onClick={() => setOpen(true)}/>
+                {/* </button> */}
             </div>
 
             <Dialog
@@ -40,8 +40,8 @@ const Actions = ({ id, deleteHandler, name, editRoute }) => {
                     <p className="text-gray-500">Do you really want to delete{name && <span className="font-medium">&nbsp;{name}</span>}? This process cannot be undone.</p>
                 </DialogContent>
                 <DialogActions>
-                    <button onClick={handleClose} className="py-2 px-6 rounded shadow bg-gray-400 hover:bg-gray-500 text-white">Cancel</button>
-                    <button onClick={() => deleteHandler(id)} className="py-2 px-6 ml-4 rounded bg-red-600 hover:bg-red-700 text-white shadow">Delete</button>
+                    <button onClick={handleClose} className="  text-dark">Cancel</button>
+                    <button onClick={() => deleteHandler(id)} className=" text-dark shadow">Delete</button>
                 </DialogActions>
             </Dialog>
         </>
