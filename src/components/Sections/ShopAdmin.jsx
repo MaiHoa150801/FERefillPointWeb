@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import { useSnackbar } from 'notistack';
-import Avatar from '@mui/material/Avatar';
-import { clearErrors, createProduct } from '../../actions/productAction';
-import TextField from '@mui/material/TextField';
-import { NEW_PRODUCT_RESET } from '../../constants/productConstants';
-import ImageIcon from '@mui/icons-material/Image';
-import { LoadShop } from '../../actions/shopAction';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import { useSnackbar } from "notistack";
+import Avatar from "@mui/material/Avatar";
+import { clearErrors, createProduct } from "../../actions/productAction";
+import TextField from "@mui/material/TextField";
+import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
+import ImageIcon from "@mui/icons-material/Image";
+import { LoadShop } from "../../actions/shopAction";
 
 const ShopAdmin = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const ShopAdmin = () => {
     };
 
     reader.readAsDataURL(e.target.files[0]);
-  }
+  };
 
   const handleProductImageChange = (e) => {
     const files = Array.from(e.target.files);
@@ -59,10 +59,10 @@ const ShopAdmin = () => {
           setImagesPreview((oldImages) => [...oldImages, reader.result]);
           setImages((oldImages) => [...oldImages, reader.result]);
         }
-      }
+      };
       reader.readAsDataURL(file);
     });
-  }
+  };
 
   const newProductSubmitHandler = (e) => {
     e.preventDefault();
@@ -94,7 +94,7 @@ const ShopAdmin = () => {
     });
 
     dispatch(createProduct(formData));
-  }
+  };
 
   useEffect(() => {
     if (error) {
@@ -117,9 +117,16 @@ const ShopAdmin = () => {
             <h3 className="panel-title">Thêm sản phẩm</h3>
           </div>
           <div className="panel-body">
-            <form className="form-horizontal" onSubmit={newProductSubmitHandler} encType="multipart/form-data" id="mainform" >
-              <div className="form-group">
-                <label htmlFor="name" className="col-sm-3 control-label">ID sản phẩm</label>
+            <form
+              className="form-horizontal"
+              onSubmit={newProductSubmitHandler}
+              encType="multipart/form-data"
+              id="mainform"
+            >
+              <div className="form-group mb-3 ">
+                <label htmlFor="name" className="col-sm-3 control-label">
+                  ID sản phẩm
+                </label>
                 <TextField
                   label="ID"
                   variant="outlined"
@@ -129,8 +136,10 @@ const ShopAdmin = () => {
                   onChange={(e) => setProductId(e.target.value)}
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="name" className="col-sm-3 control-label">Tên sản phẩm</label>
+              <div className="form-group mb-3">
+                <label htmlFor="name" className="col-sm-3 control-label">
+                  Tên sản phẩm
+                </label>
                 <TextField
                   label="Tên"
                   variant="outlined"
@@ -138,9 +147,12 @@ const ShopAdmin = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
-              </div> {/* form-group // */}
-              <div className="form-group">
-                <label htmlFor="name" className="col-sm-3 control-label">Mô tả sản phẩm</label>
+              </div>{" "}
+              {/* form-group // */}
+              <div className="form-group mb-3">
+                <label htmlFor="name" className="col-sm-3 control-label">
+                  Mô tả sản phẩm
+                </label>
                 <TextField
                   label="Mô tả"
                   multiline
@@ -150,9 +162,12 @@ const ShopAdmin = () => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
-              </div> {/* form-group // */}
-              <div className="form-group">
-                <label htmlFor="name" className="col-sm-3 control-label">Đơn vị đo lường</label>
+              </div>{" "}
+              {/* form-group // */}
+              <div className="form-group mb-3">
+                <label htmlFor="name" className="col-sm-3 control-label">
+                  Đơn vị đo lường
+                </label>
                 <TextField
                   label="Đơn vị"
                   variant="outlined"
@@ -161,8 +176,10 @@ const ShopAdmin = () => {
                   onChange={(e) => setMeasure(e.target.value)}
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="about" className="col-sm-3 control-label">Giá</label>
+              <div className="form-group mb-3">
+                <label htmlFor="about" className="col-sm-3 control-label">
+                  Giá
+                </label>
                 <TextField
                   label="Giá"
                   type="number"
@@ -179,9 +196,12 @@ const ShopAdmin = () => {
                   value={sale_price}
                   onChange={(e) => setCuttedPrice(e.target.value)}
                 />
-              </div> {/* form-group // */}
-              <div className="form-group">
-                <label htmlFor="about" className="col-sm-3 control-label">Hãng</label>
+              </div>{" "}
+              {/* form-group // */}
+              <div className="form-group mb-3">
+                <label htmlFor="about" className="col-sm-3 control-label">
+                  Hãng
+                </label>
                 <TextField
                   label="Brand"
                   type="text"
@@ -192,12 +212,21 @@ const ShopAdmin = () => {
                   onChange={(e) => settradeMarkName(e.target.value)}
                 />
                 <div className="flex items-center justify-center border rounded-lg">
-                  {!logoPreview ? <ImageIcon /> :
-                    <img draggable="false" src={logoPreview} alt="Brand Logo" className=" object-contain" width="100" height="60" />
-                  }
+                  {!logoPreview ? (
+                    <ImageIcon />
+                  ) : (
+                    <img
+                      draggable="false"
+                      src={logoPreview}
+                      alt="Brand Logo"
+                      className=" object-contain"
+                      width="100"
+                      height="60"
+                    />
+                  )}
                 </div>
               </div>
-              <div className="form-group">
+              <div className="form-group ">
                 <label className="col-sm-3 control-label">Logo</label>
                 <label className="rounded bg-gray-400 text-center cursor-pointer text-white py-2 px-2.5 shadow hover:shadow-lg">
                   <input
@@ -210,12 +239,20 @@ const ShopAdmin = () => {
                   Choose Logo
                 </label>
               </div>
-              <div className="form-group">
+              <div className="form-group ">
                 <div className="col-sm-3">
                   <h2 className="font-medium">Product Images</h2>
                   <div className="flex gap-2 overflow-x-auto h-32 border rounded">
                     {imagesPreview.map((image, i) => (
-                      <img draggable="false" src={image} alt="Product" key={i} className="w-full h-full object-contain" width="600" height="400" />
+                      <img
+                        draggable="false"
+                        src={image}
+                        alt="Product"
+                        key={i}
+                        className="w-full h-full object-contain"
+                        width="600"
+                        height="300"
+                      />
                     ))}
                   </div>
                   <label className="rounded font-medium bg-gray-400 text-center cursor-pointer text-white p-2 shadow hover:shadow-lg my-2">
@@ -232,16 +269,18 @@ const ShopAdmin = () => {
                 </div>
               </div> 
               <hr />
-
               <div className="form-group">
                 <div className="col-sm-offset-3 col-sm-9">
-                  <button type="submit" className="btn btn-primary">Save</button>
+                  <button type="submit" className="btn btn-primary">
+                    Save
+                  </button>
                 </div>
               </div> 
             </form>
           </div>
         </section>
       </div> 
+
     </>
   );
 };
