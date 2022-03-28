@@ -18,12 +18,6 @@ const ShopAdmin = () => {
 
   const { loading, success, error } = useSelector((state) => state.newProduct);
   const { user } = useSelector((state) => state.user);
-  // const { shop } = useSelector((state) => state.shop);
-  // console.log(shop);
-
-  // useEffect(() => {
-  //   dispatch(LoadShop(user._id));
-  // }, [dispatch]);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -110,7 +104,7 @@ const ShopAdmin = () => {
     if (success) {
       enqueueSnackbar("Product Created", { variant: "success" });
       dispatch({ type: NEW_PRODUCT_RESET });
-      navigate("/admin/products");
+      navigate("/saler/products");
     }
   }, [dispatch, error, success, navigate, enqueueSnackbar]);
 
@@ -137,8 +131,7 @@ const ShopAdmin = () => {
                   label="ID"
                   variant="outlined"
                   size="small"
-                  width="500px"
-                  required
+                  width="500px"                 
                   value={type_product_id}
                   onChange={(e) => setProductId(e.target.value)}
                 />
@@ -151,7 +144,6 @@ const ShopAdmin = () => {
                   label="Tên"
                   variant="outlined"
                   size="small"
-                  required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -164,8 +156,7 @@ const ShopAdmin = () => {
                 <TextField
                   label="Mô tả"
                   multiline
-                  rows={3}
-                  required
+                  rows={3}                 
                   variant="outlined"
                   size="small"
                   value={description}
@@ -181,7 +172,6 @@ const ShopAdmin = () => {
                   label="Đơn vị"
                   variant="outlined"
                   size="small"
-                  required
                   value={measure}
                   onChange={(e) => setMeasure(e.target.value)}
                 />
@@ -195,12 +185,6 @@ const ShopAdmin = () => {
                   type="number"
                   variant="outlined"
                   size="small"
-                  InputProps={{
-                    inputProps: {
-                      min: 0,
-                    },
-                  }}
-                  required
                   value={unit_price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
@@ -208,13 +192,7 @@ const ShopAdmin = () => {
                   label="Giá đã giảm"
                   type="number"
                   variant="outlined"
-                  size="small"
-                  InputProps={{
-                    inputProps: {
-                      min: 0,
-                    },
-                  }}
-                  required
+                  size="small"  
                   value={sale_price}
                   onChange={(e) => setCuttedPrice(e.target.value)}
                 />
@@ -289,8 +267,7 @@ const ShopAdmin = () => {
                     Choose Files
                   </label>
                 </div>
-              </div>{" "}
-              {/* form-group // */}
+              </div> 
               <hr />
               <div className="form-group">
                 <div className="col-sm-offset-3 col-sm-9">
@@ -298,15 +275,12 @@ const ShopAdmin = () => {
                     Save
                   </button>
                 </div>
-              </div>{" "}
-              {/* form-group // */}
+              </div> 
             </form>
           </div>
-          {/* panel-body // */}
         </section>
-        {/* panel// */}
-      </div>{" "}
-      {/* container// */}
+      </div> 
+
     </>
   );
 };

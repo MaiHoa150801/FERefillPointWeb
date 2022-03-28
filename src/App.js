@@ -18,10 +18,10 @@ import UpdatePassword from './components/Sections/UpdatePassword';
 import RegisterStore from './components/Sections/RegisterStore';
 import Dashboard from './components/Admin/Dashboard';
 import MainData from './components/Admin/MainData';
-import ProductTable from './components/Sections/ProductTable';
 import Setting from './components/Sections/Setting';
-import ShopAdmin from './components/Sections/ShopAdmin';
 import ShopRoute from './components/Sections/ShopRoute';
+import ProductTable from './components/Sections/ProductTable';
+import Order from './components/Sections/Order';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ function App() {
           path="/account"
           element={
             <ProtectedRoute>
-              <Account activeTab={0}>
+              <Account activeTab="profile">
                 <Setting />
               </Account>
             </ProtectedRoute>
@@ -57,18 +57,18 @@ function App() {
           path="/shop"
           element={
             <ProtectedRoute>
-              <Account activeTab={1}>
+              <Account activeTab="shop">
                 <ShopRoute />
               </Account>
             </ProtectedRoute>
           }
         ></Route>
         <Route
-          path="/shop/product"
+          path="/shop/order"
           element={
-            <ProtectedRoute isSaler={true}>
-              <Account activeTab={2}>
-                <ProductTable />
+            <ProtectedRoute>
+              <Account activeTab="shop/order">
+                <Order />
               </Account>
             </ProtectedRoute>
           }
@@ -101,12 +101,12 @@ function App() {
           }
         ></Route>
         <Route
-          path="/admin/products"
+          path="/shop/product"
           element={
-            <ProtectedRoute isAdmin={true}>
-              <Dashboard activeTab={1}>
+            <ProtectedRoute>
+              <Account activeTab="shop/product">
                 <ProductTable />
-              </Dashboard>
+              </Account>
             </ProtectedRoute>
           }
         ></Route>

@@ -10,11 +10,12 @@ const Sidebar = ({ activeTab }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const { user } = useSelector((state) => state.user);
-  console.log(user + "sidebar account");
+
+  console.log(user + 'sidebar account');
   const handleLogout = () => {
     dispatch(logoutUser());
-    enqueueSnackbar("Logout Successfully", { variant: "success" });
-    navigate("/login");
+    enqueueSnackbar('Logout Successfully', { variant: 'success' });
+    navigate('/login');
   };
 
   return (
@@ -27,32 +28,38 @@ const Sidebar = ({ activeTab }) => {
           </div>
           <ul className="list-unstyled components">
             <li className="">
-              <Link to="/account" className={`${activeTab === "profile"} `}>
+              <Link to="/account" className={`${activeTab === 'profile'} `}>
                 <i className="fa fa-home" />
                 Tài khoản
               </Link>
             </li>
             <li>
-              <Link to="/shop" className={`${activeTab === "shop"} `}>
-                <i className="fa fa-users" />
+              <Link to="/shop" className={`${activeTab === 'shop'} `}>
+                <i className="fa fa-home" />
                 Bán hàng
               </Link>
             </li>
             <li>
-              <a href="/shop/product">
+              <Link
+                to="/shop/product"
+                className={`${activeTab === 'shop/product'} `}
+              >
                 <i className="fa fa-link" />
                 Sản phẩm
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link
+                to="/shop/order"
+                className={`${activeTab === 'shop/order'} `}
+              >
                 <i className="fa fa-paperclip" />
                 Đơn đặt hàng
-              </a>
+              </Link>
             </li>
             <li>
               <a href="#">
-                <i className="fa fa-id-card" />
+                <i className="fa fa-send" />
                 Contact
               </a>
             </li>

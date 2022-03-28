@@ -4,72 +4,109 @@ import styled from "styled-components";
 import ContactImg1 from "../../assets/img/contact1.png";
 import { contactLanding } from '../../actions/userAction';
 import { useDispatch } from 'react-redux';
+import { useSnackbar } from 'notistack';
+import validator from 'validator';
 
 export default function Contact() {
-  const [fname, setName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleContact = (e) => {
     e.preventDefault();
-    dispatch(contactLanding(fname, email, subject, message));
+    if (!email && !name && !subject && !message) {
+      enqueueSnackbar("Không được để trống bất kì thông tin nào", { variant: "error" });
+      return;
+    }
+    if (!name) {
+      enqueueSnackbar("Không được để trống tên", { variant: "error" });
+      return;
+    }
+    if (!email) {
+      enqueueSnackbar("Không được để trống email", { variant: "error" });
+      return;
+    }
+    
+    if (!subject) {
+      enqueueSnackbar("Không được để trống tiêu đề", { variant: "error" });
+      return;
+    }
+    if (!message) {
+      enqueueSnackbar("Không được để trống nội dung", { variant: "error" });
+      return;
+    }
+    if (!message) {
+      enqueueSnackbar("Không được để trống nội dung", { variant: "error" });
+      return;
+    }
+    if (validator.isEmail(email) == false) {
+      enqueueSnackbar("Email không có giá trị", { variant: "error" });
+      return;
+    }
+    else {
+      enqueueSnackbar("Đã gửi thành công", { variant: "success" });
+      dispatch(contactLanding(name, email, subject, message));
+    }
+
   }
 
-    return (
-      <Wrapper id="contact">
-        <div className="lightBg">
-          <div className="container">
-            <HeaderInfo>
-              <h1 className="font40 extraBold">Liên hệ</h1>
-              <p className="font13">
-                Chào mừng bạn đến với website chúng tôi!
-                <br />
-                Hãy liên hệ với chúng tôi nếu bạn có bất kì thắc mắc nào.
-              </p>
-            </HeaderInfo>
-            <div className="row" style={{ paddingBottom: "30px" }}>
-              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                <form onSubmit={handleContact}>
-                  <Form>
-                    <label className="font13">Họ và tên:</label>
-                    <input type="text" id="fname" name="fname" className="font20 extraBold" value={fname} onChange={(e) => setName(e.target.value)} required />
-                    <label className="font13">Email:</label>
-                    <input type="text" id="email" name="email" className="font20 extraBold" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                    <label className="font13">Tiêu đề:</label>
-                    <input type="text" id="subject" name="subject" className="font20 extraBold" value={subject} onChange={(e) => setSubject(e.target.value)} required />
-                    <label className="font13">Nội dung:</label>
-                    <textarea rows="4" cols="50" type="text" id="message" name="message" className="font20 extraBold" value={message} onChange={(e) => setMessage(e.target.value)} required />
-                  </Form>
-                  <SumbitWrapper className="flex">
-                    <ButtonInput type="submit" value="Gửi tin nhắn" className="pointer animate radius8" style={{ maxWidth: "220px" }} />
-                  </SumbitWrapper>
-                </form>
-              </div>
-              <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 flex">
-                <div >
-                  <img src={ContactImg1} alt="office" className="radius6" />
-                </div>
 
+  return (
+    <Wrapper id="contact">
+      <div className="lightBg">
+        <div className="container">
+          <HeaderInfo>
+            <h1 className="font40 extraBold">Liên hệ</h1>
+            <p className="font13">
+              Chào mừng bạn đến với website chúng tôi!
+              <br />
+              Hãy liên hệ với chúng tôi nếu bạn có bất kì thắc mắc nào.
+            </p>
+          </HeaderInfo>
+          <div className="row" style={{ paddingBottom: "30px" }}>
+            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              <form onSubmit={handleContact}>
+                <Form>
+                  <label className="font13">Họ và tên:</label>
+                  <input type="text" id="fname" name="fname" className="font20 extraBold" value={name} onChange={(e) => setName(e.target.value)} />
+                  <label className="font13">Email:</label>
+                  <input type="text" id="email" name="email" className="font20 extraBold" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <label className="font13">Tiêu đề:</label>
+                  <input type="text" id="subject" name="subject" className="font20 extraBold" value={subject} onChange={(e) => setSubject(e.target.value)} />
+                  <label className="font13">Nội dung:</label>
+                  <textarea rows="4" cols="50" type="text" id="message" name="message" className="font20 extraBold" value={message} onChange={(e) => setMessage(e.target.value)} />
+                </Form>
+                <SumbitWrapper className="flex">
+                  <ButtonInput type="submit" value="Gửi tin nhắn" className="pointer animate radius8" style={{ maxWidth: "220px" }} />
+                </SumbitWrapper>
+              </form>
+            </div>
+            <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 flex">
+              <div >
+                <img src={ContactImg1} alt="office" className="radius6" />
               </div>
+
             </div>
           </div>
         </div>
-      </Wrapper>
-    );
-  }
+      </div>
+    </Wrapper>
+  );
+}
 
-  const Wrapper = styled.section`
+const Wrapper = styled.section`
   width: 100%;
 `;
-  const HeaderInfo = styled.div`
+const HeaderInfo = styled.div`
   padding: 70px 0 30px 0;
   @media (max-width: 860px) {
     text-align: center;
   }
 `;
-  const Form = styled.form`
+const Form = styled.form`
   padding: 70px 0 30px 0;
   input,
   textarea {
@@ -89,7 +126,7 @@ export default function Contact() {
     padding: 30px 0;
   }
 `;
-  const ButtonInput = styled.input`
+const ButtonInput = styled.input`
   border: 1px solid #1f78c7;
   background-color: #1f78c7;
   width: 100%;
@@ -106,7 +143,7 @@ export default function Contact() {
   }
 `;
 
-  const SumbitWrapper = styled.div`
+const SumbitWrapper = styled.div`
   @media (max-width: 991px) {
     width: 100%;
     margin-bottom: 50px;

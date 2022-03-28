@@ -34,12 +34,32 @@ export default function Register() {
 
     const handleRegister = (e) => {
         e.preventDefault();
-        if (password.length < 8) {
-            enqueueSnackbar("Mật khẩu ít nhất 8 kí tự nhé", { variant: "warning" });
+        if(!name && !email && !phone && !password && !cpassword && !avatar){
+            enqueueSnackbar("Không được để trống tất cả các trường", { variant: "error" });
             return;
         }
-        if ( cpassword == null ) {
-            enqueueSnackbar("Xác thực mật khẩu không có giá trị", { variant: "error" });
+        if (!name) {
+            enqueueSnackbar("Hãy nhập tên của bạn", { variant: "error" });
+            return;
+        }
+        if (!email) {
+            enqueueSnackbar("Hãy nhập email của bạn", { variant: "error" });
+            return;
+        }
+        if (!phone) {
+            enqueueSnackbar("Hãy nhập số điện thoại của bạn", { variant: "erroe" });
+            return;
+        }
+        if (!password) {
+            enqueueSnackbar("Hãy nhập mật khẩu của bạn", { variant: "error" });
+            return;
+        }
+        if (password.length < 8) {
+            enqueueSnackbar("Mật khẩu ít nhất 8 kí tự nhé", { variant: "error" });
+            return;
+        }
+        if (!cpassword) {
+            enqueueSnackbar("Hãy nhập xác thực mật khẩu", { variant: "error" });
             return;
         }
 
@@ -99,31 +119,28 @@ export default function Register() {
             <div className="registration-form">
                 <form id="frm-register" onSubmit={handleRegister} encType="multipart/form-data">
                     <div className="form-img">
-                        <span> <img className="image" src={ImageLogin} alt="imageregister" /></span>
+                        {/* <span> <img className="image" src={ImageLogin} alt="imageregister" /></span> */}
                         <h4>ĐĂNG KÍ</h4>
                     </div>
-                    <div className="form-group">
+                    <div className="form-group" style={{ display: "flex" }}>
                         <Avatar
                             alt="Avatar Preview"
                             src={avatarPreview}
                             sx={{ width: 56, height: 56 }}
                         />
-                        <input
-                            id="choose-avatar"
-                            type="file"
-                            name="avatar"
-                            accept="image/*"
-                            onChange={handleDataChange}
-                            className="hidden"
-                        />
+                        <div className="avatarfield">
+                            Chọn hình đại diện
+                            <input type="file" name="avatar" onChange={handleDataChange} className="hide_file"></input>
+                        </div>
+
 
                     </div>
 
                     <div className="form-group">
-                        <input type="text" name="name" className="form-control item" id="full-name" value={name} onChange={handleDataChange} placeholder="Name " />
+                        <input type="text" name="name" className="form-control item" id="full-name" value={name} onChange={handleDataChange} placeholder="Tên " />
                     </div>
                     <div className="form-group">
-                        <input type="email" name="email" className="form-control item" id="email" value={email} onChange={handleDataChange} placeholder="Email" />
+                        <input name="email" className="form-control item" id="email" value={email} onChange={handleDataChange} placeholder="Email" />
                     </div>
                     <div className="form-group">
                         <input type="text" name="phone" className="form-control item" id="phone-number" value={phone} onChange={handleDataChange} placeholder="Số điện thoại" />
@@ -142,7 +159,7 @@ export default function Register() {
                     </div>
                 </form>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }

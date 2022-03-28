@@ -21,7 +21,6 @@ const TopNavbar = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  console.log(user + 'topnavbar');
   const [y] = useState(window.scrollY);
   const [sidebarOpen, toggleSidebar] = useState(false);
 
@@ -29,8 +28,8 @@ const TopNavbar = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate('/login');
     enqueueSnackbar('Đăng xuất thành công', { variant: 'success' });
+    navigate('/login');
     setTogglePrimaryDropDown(false);
   };
 
