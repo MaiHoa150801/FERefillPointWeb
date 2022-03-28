@@ -1,9 +1,15 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Avatar from '@mui/material/Avatar';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { logoutUser } from '../../actions/userAction';
+import styled from "styled-components";
 import React from 'react';
+import {
+  Col,
+  Nav,
+} from "react-bootstrap";
+
 const Sidebar = ({ activeTab }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,52 +24,26 @@ const Sidebar = ({ activeTab }) => {
   };
   return (
     <>
-      <div className="wrapper">
-        {/* Sidebar Holder */}
-        <nav id="sidebar">
-          <div className="sidebar-header flex">
-            <h3>{user.name}</h3>
-          </div>
-          <ul className="list-unstyled components">
-            <li className="">
-              <Link to="/account" className={`${activeTab === 'profile'} `}>
-                <i className="fa fa-home" />
-                Tài khoản
-              </Link>
-            </li>
-            <li>
-              <Link to="/shop" className={`${activeTab === 'shop'} `}>
-                <i className="fa fa-home" />
-                Bán hàng
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/shop/product"
-                className={`${activeTab === 'shop/product'} `}
-              >
-                <i className="fa fa-link" />
-                Sản phẩm
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/shop/order"
-                className={`${activeTab === 'shop/order'} `}
-              >
-                <i className="fa fa-paperclip" />
-                Đơn đặt hàng
-              </Link>
-            </li>
-            <li>
-              <a href="#">
-                <i className="fa fa-send" />
-                Contact
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+    <Col md = "2">
+        <Nav style={{ display: "block", paddingLeft: "10px" }}>
+          <NavLink to="/account" className={`nav-link ${activeTab === 'profile'} `}>
+            <i className="fa fa-home" />
+            Tài khoản
+          </NavLink>
+          <NavLink to="/shop" className={`nav-link  ${activeTab === 'shop'} `}>
+            <i className="fa fa-home" />
+            Bán hàng
+          </NavLink>
+          <NavLink to="/shop/product" className={`nav-link  ${activeTab === 'shop/product'} `}>
+            <i className="fa fa-home" />
+            Sản phẩm
+          </NavLink>
+          <NavLink to="/shop/order" className={`nav-link  ${activeTab === 'shop/order'} `}>
+            <i className="fa fa-home" />
+            Đơn hàng
+          </NavLink>
+        </Nav>
+      </Col>
     </>
   );
 };

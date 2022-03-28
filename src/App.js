@@ -66,7 +66,7 @@ function App() {
         <Route
           path="/shop/order"
           element={
-            <ProtectedRoute  isSaler={true}>
+            <ProtectedRoute >
               <Account activeTab="shop/order">
                 <Order />
               </Account>
@@ -77,7 +77,9 @@ function App() {
           path="/account/update"
           element={
             <ProtectedRoute>
-              <UpdateProfile />
+              <Account activeTab="account/update">
+                <UpdateProfile />
+              </Account>
             </ProtectedRoute>
           }
         ></Route>
@@ -86,14 +88,16 @@ function App() {
           path="/password/update"
           element={
             <ProtectedRoute>
-              <UpdatePassword />
+              <Account activeTab="password/update">
+                <UpdatePassword />
+              </Account>
             </ProtectedRoute>
           }
         ></Route>
         <Route
           path="/admin/dashboard"
           element={
-            <ProtectedRoute isAdmin={true}>
+            <ProtectedRoute >
               <Dashboard activeTab={0}>
                 <MainData />
               </Dashboard>
@@ -103,7 +107,7 @@ function App() {
         <Route
           path="/shop/product"
           element={
-            <ProtectedRoute  isSaler={true}>
+            <ProtectedRoute  >
               <Account activeTab="shop/product">
                 <ProductTable />
               </Account>
@@ -113,7 +117,7 @@ function App() {
         <Route
           path="/saler/dashboard"
           element={
-            <ProtectedRoute isSaler={true}>
+            <ProtectedRoute >
               <AdminLayout />
             </ProtectedRoute>
           }

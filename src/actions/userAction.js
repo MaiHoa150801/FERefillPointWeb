@@ -44,32 +44,32 @@ import Cookies from 'js-cookie';
 import { getMe } from '../Service/UserService';
 // Contact Landing page
 export const contactLanding = (name, email, subject, message) => async (dispatch) => {
-    try {
-      dispatch({ type: CONTACT_LANDING_REQUEST });
+  try {
+    dispatch({ type: CONTACT_LANDING_REQUEST });
 
-      const config = {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      };
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
 
-      const { data } = await axios.post(
-        'http://localhost:8080/api/v1/contact',
-        { name, email, subject, message },
-        config
-      );
-        // console.log(data);
-      dispatch({
-        type: CONTACT_LANDING_SUCCESS,
-        payload: data.user,
-      });
-    } catch (error) {
-      dispatch({
-        type: CONTACT_LANDING_FAIL,
-        payload: error.response.data.message,
-      });
-    }
-  };
+    const { data } = await axios.post(
+      'http://localhost:8080/api/v1/contact',
+      { name, email, subject, message },
+      config
+    );
+    // console.log(data);
+    dispatch({
+      type: CONTACT_LANDING_SUCCESS,
+      payload: data.user,
+    });
+  } catch (error) {
+    dispatch({
+      type: CONTACT_LANDING_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // Login User
 export const loginUser = (email, password) => async (dispatch) => {
@@ -135,8 +135,11 @@ export const registerUser = (userData) => async (dispatch) => {
 export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
+    const token = await Cookies.get('token');
+    const header = token ? { Authorization: `Bearer ${token}` } : null;
+    // const { data } = await getMe();
+    const { data } = await axios.get('http://localhost:8080/api/v1/me', { headers: header });
 
-    const { data } = await getMe();
     dispatch({
       type: LOAD_USER_SUCCESS,
       payload: data.user,
@@ -165,21 +168,23 @@ export const logoutUser = () => async (dispatch) => {
 // Update User
 export const updateProfile = (userData) => async (dispatch) => {
   try {
+    const token = await Cookies.get('token');
+    const header = token ? { Authorization: `Bearer ${token}` } : null;
     dispatch({ type: UPDATE_PROFILE_REQUEST });
 
     const config = {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'multipart/form-data', header
       },
     };
 
     const { data } = await axios.put(
       'http://localhost:8080/api/v1/me/update',
       userData,
-      config
+      { headers: header }
     );
-    console.log(data + 'updateprofile');
-    Cookies.set('token', data.token, { expires: 900000000, path: '' });
+    // console.log(data + 'updateprofile');
+    // Cookies.set('token', data.token, { expires: 900000000, path: '' });
     dispatch({
       type: UPDATE_PROFILE_SUCCESS,
       payload: data.success,
@@ -195,6 +200,9 @@ export const updateProfile = (userData) => async (dispatch) => {
 // Update User Password
 export const updatePassword = (passwords) => async (dispatch) => {
   try {
+    const token = await Cookies.get('token');
+    const header = token ? { Authorization: `Bearer ${token}` } : null;
+
     dispatch({ type: UPDATE_PASSWORD_REQUEST });
 
     const config = {
@@ -204,9 +212,9 @@ export const updatePassword = (passwords) => async (dispatch) => {
     };
 
     const { data } = await axios.put(
-      'hhttp://localhost:8080/api/v1/password/update',
+      'http://localhost:8080/api/v1/password/update',
       passwords,
-      config
+      { headers: header }
     );
 
     dispatch({
