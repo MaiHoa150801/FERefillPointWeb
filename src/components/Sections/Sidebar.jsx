@@ -1,23 +1,21 @@
-import { useDispatch, useSelector } from "react-redux";
-import Avatar from "@mui/material/Avatar";
-import { Link, useNavigate } from "react-router-dom";
-import { useSnackbar } from "notistack";
-import { logoutUser } from "../../actions/userAction";
-import React from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import Avatar from '@mui/material/Avatar';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
+import { logoutUser } from '../../actions/userAction';
+import React from 'react';
 const Sidebar = ({ activeTab }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
   const { user } = useSelector((state) => state.user);
-
   console.log(user + 'sidebar account');
   const handleLogout = () => {
     dispatch(logoutUser());
     enqueueSnackbar('Logout Successfully', { variant: 'success' });
     navigate('/login');
   };
-
   return (
     <>
       <div className="wrapper">
