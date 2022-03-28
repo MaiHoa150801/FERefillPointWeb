@@ -66,7 +66,7 @@ function App() {
         <Route
           path="/shop/order"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute  isSaler={true}>
               <Account activeTab="shop/order">
                 <Order />
               </Account>
@@ -103,7 +103,7 @@ function App() {
         <Route
           path="/shop/product"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute  isSaler={true}>
               <Account activeTab="shop/product">
                 <ProductTable />
               </Account>
