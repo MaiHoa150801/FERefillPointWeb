@@ -29,7 +29,7 @@ const ShopRigister = () => {
     longitude: '',
     description: '',
     account_id: '',
-    role:'',
+    role: '',
   });
 
   const { name, email, phone_number, address, latitude, longitude, description } = shop;
@@ -102,7 +102,7 @@ const ShopRigister = () => {
     formData.set('description', description);
     formData.set('logo', logo);
     console.log(formData);
-    
+
     dispatch(createShop(formData));
   };
   useEffect(() => {
@@ -112,9 +112,9 @@ const ShopRigister = () => {
     }
     if (success) {
       enqueueSnackbar('Cửa hàng của bạn đã được tạo.', { variant: 'success' });
-
+      navigate('/shop/product');
     }
-  }, [dispatch, enqueueSnackbar]);
+  }, [error, success, dispatch, enqueueSnackbar]);
 
   return (
     <>
@@ -122,13 +122,167 @@ const ShopRigister = () => {
       <div id="content" className="flex">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-8 col-lg-10 col-xl-8 mx-auto">
-              <div>
+            <div id="" className="col-6 col-lg-6 col-xl-6 mx-auto">
+              <h4 class="text-center">Đăng kí cửa hàng của bạn</h4>
+              <form
+                onSubmit={newShop}
+                encType="multipart/form-data"
+                id="wlg_form"
+              >
+                <div className="row">
+                  <div className="form-group col-3" control_id="country">
+                    <Avatar
+                      alt="Logo Preview"
+                      src={logoPreview}
+                      sx={{ width: 56, height: 56 }}
+                    />
+                  </div>
+                  <div className="form-group col-6" control_id="country">
+                    <div className="avatarfield">
+                      Chọn hình
+                      <input type="file" name="logo" onChange={handleDataChange} className="hide_file"></input>
+                    </div>
+                  </div>
+                </div>
+                <div className="wizard-steps-body">
+                  <div className="wizard-steps-body-item body-1 active">
+                    <fieldset className="wlg-form-group">
+                      <div
+                        className="wlg-form-control form-group"
+                        control_id="website_name"
+                      >
+                        <label htmlFor="website_name">Tên trạm refill</label>
+                        <input
+                          className="form-control"
+                          type="text"
+                          name="name"
+                          id="name"
+                          value={name}
+                          onChange={handleDataChange}
+                        />
+                      </div>
+                    </fieldset>
+                    <fieldset className="wlg-form-group">
+                      <div
+                        className="wlg-form-control form-group"
+                        control_id="website_url"
+                      >
+                        <label htmlFor="website_url">Email</label>
+                        <input
+                          className="form-control"
+                          type="email"
+                          name="email"
+                          id="email"
+                          placeholder="Enter..."
+                          value={email}
+                          onChange={handleDataChange}
+                        />
+                      </div>
+                    </fieldset>
+                    <fieldset className="wlg-form-group">
+                      <div
+                        className="wlg-form-control form-group"
+                        control_id="website_url"
+                      >
+                        <label htmlFor="website_url">Phone</label>
+                        <input
+                          className="form-control"
+                          type="text"
+                          name="phone_number"
+                          id="phone_number"
+                          placeholder="Enter..."
+                          value={phone_number}
+                          onChange={handleDataChange}
+                        />
+                      </div>
+                    </fieldset>
+                    <fieldset className="wlg-form-group">
+                      <div
+                        className="wlg-form-control form-group"
+                        control_id="country"
+                      >
+                        <label htmlFor="website_name">Địa chỉ</label>
+                        <input
+                          className="form-control"
+                          type="text"
+                          name="address"
+                          id="address"
+                          placeholder="Enter..."
+                          value={address}
+                          onChange={handleDataChange}
+                        />
+                      </div>
+                    </fieldset>
+                    <div>
+                      <fieldset className="row">
+                        <label htmlFor="address">
+                          Xem trên google để biết chính xác địa chỉ của shop
+                          bạn.
+                        </label>
+                        <div className="form-group col-6" control_id="country">
+                          <label htmlFor="website_name">Kinh độ</label>
+                          <input
+                            className="form-control"
+                            type="number"
+                            name="latitude"
+                            id="latitude"
+                            placeholder="Enter..."
+                            value={latitude}
+                            onChange={handleDataChange}
+                          />
+                        </div>
+                        <div className="form-group col-6" control_id="country">
+                          <label htmlFor="website_name">Vĩ độ</label>
+                          <input
+                            className="form-control"
+                            type="number"
+                            name="longitude"
+                            id="longitude"
+                            placeholder="Enter..."
+                            value={longitude}
+                            onChange={handleDataChange}
+                          />
+                        </div>
+                      </fieldset>
+                    </div>
+                    <fieldset className="wlg-form-group">
+                      <div
+                        className="wlg-form-control form-group"
+                        control_id="email_address"
+                      >
+                        <label htmlFor="email_address">Mô tả</label>
+                        <textarea
+                          className="form-control"
+                          type="text"
+                          name="description"
+                          id="description"
+                          placeholder="Enter..."
+                          value={description}
+                          onChange={handleDataChange}
+                        />
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+                {/* <FormControlLabel
+                  control={<Checkbox />}
+                  label="Agree with Privacy Policy of the website"
+                /> */}
+                <div className="wizard-steps-navigation">
+                  <button
+                    className="btn btn-primary active"
+                    type="submit"
+                    id="wlg_submit"
+                  >
+                    Bán hàng
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="col-6 col-lg-6 col-xl-6 mx-auto">
+              { /*<div>
                 <h2>
-                  Privacy Policy of{' '}
-                  <span className="website_url">
-                    https://refill-point.vercel.app/
-                  </span>
+                  Privacy Policy of the app
                 </h2>
                 <p>
                   At <span className="website_name">Refill Point</span>, we
@@ -261,169 +415,9 @@ const ShopRigister = () => {
                   information, we will notify you by posting an announcement on
                   the Website or sending you an email.
                 </p>
-              </div>
+              </div>*/}
             </div>
-            <div id="" className="col-4 col-lg-2 col-xl-4 mx-auto">
-              <h4 class="text-center">Đăng kí cửa hàng của bạn</h4>
-              <form
-                onSubmit={newShop}
-                encType="multipart/form-data"
-                id="wlg_form"
-              >
-                <div className="row">
-                  <div className="form-group col-6" control_id="country">
-                    <Avatar
-                      alt="Logo Preview"
-                      src={logoPreview}
-                      sx={{ width: 56, height: 56 }}
-                    />
-                  </div>
-                  <div className="form-group col-6" control_id="country">
-                    <input
-                      id="choose-avatar"
-                      type="file"
-                      name="logo"
-                      accept="image/*"
-                      onChange={handleDataChange}
-                      className="hidden"
-                    />
-                  </div>
-                </div>
-                <div className="wizard-steps-body">
-                  <div className="wizard-steps-body-item body-1 active">
-                    <fieldset className="wlg-form-group">
-                      <div
-                        className="wlg-form-control form-group"
-                        control_id="website_name"
-                      >
-                        <label htmlFor="website_name">Tên Cửa hàng</label>
-                        <input
-                          className="form-control"
-                          type="text"
-                          name="name"
-                          id="name"
-                          value={name}
-                          onChange={handleDataChange}
-                        />
-                      </div>
-                    </fieldset>
-                    <fieldset className="wlg-form-group">
-                      <div
-                        className="wlg-form-control form-group"
-                        control_id="website_url"
-                      >
-                        <label htmlFor="website_url">Email</label>
-                        <input
-                          className="form-control"
-                          type="email"
-                          name="email"
-                          id="email"
-                          placeholder="Enter..."
-                          value={email}
-                          onChange={handleDataChange}
-                        />
-                      </div>
-                    </fieldset>
-                    <fieldset className="wlg-form-group">
-                      <div
-                        className="wlg-form-control form-group"
-                        control_id="website_url"
-                      >
-                        <label htmlFor="website_url">Phone</label>
-                        <input
-                          className="form-control"
-                          type="text"
-                          name="phone_number"
-                          id="phone_number"
-                          placeholder="Enter..."
-                          value={phone_number}
-                          onChange={handleDataChange}
-                        />
-                      </div>
-                    </fieldset>
-                    <fieldset className="wlg-form-group">
-                      <div
-                        className="wlg-form-control form-group"
-                        control_id="country"
-                      >
-                        <label htmlFor="website_name">Địa chỉ</label>
-                        <input
-                          className="form-control"
-                          type="text"
-                          name="address"
-                          id="address"
-                          placeholder="Enter..."
-                          value={address}
-                          onChange={handleDataChange}
-                        />
-                      </div>
-                    </fieldset>
-                    <div>
-                      <fieldset className="row">
-                        <label htmlFor="address">
-                          Xem trên google để biết chính xác địa chỉ của shop
-                          bạn.
-                        </label>
-                        <div className="form-group col-6" control_id="country">
-                          <label htmlFor="website_name">Kinh độ</label>
-                          <input
-                            className="form-control"
-                            type="number"
-                            name="latitude"
-                            id="latitude"
-                            placeholder="Enter..."
-                            value={latitude}
-                            onChange={handleDataChange}
-                          />
-                        </div>
-                        <div className="form-group col-6" control_id="country">
-                          <label htmlFor="website_name">Vĩ độ</label>
-                          <input
-                            className="form-control"
-                            type="number"
-                            name="longitude"
-                            id="longitude"
-                            placeholder="Enter..."
-                            value={longitude}
-                            onChange={handleDataChange}
-                          />
-                        </div>
-                      </fieldset>
-                    </div>
-                    <fieldset className="wlg-form-group">
-                      <div
-                        className="wlg-form-control form-group"
-                        control_id="email_address"
-                      >
-                        <label htmlFor="email_address">Mô tả</label>
-                        <textarea
-                          className="form-control"
-                          type="text"
-                          name="description"
-                          id="description"
-                          placeholder="Enter..."
-                          value={description}
-                          onChange={handleDataChange}
-                        />
-                      </div>
-                    </fieldset>
-                  </div>
-                </div>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label="Agree with Privacy Policy of the website"
-                />
-                <div className="wizard-steps-navigation">
-                  <button
-                    className="btn btn-primary active"
-                    type="submit"
-                    id="wlg_submit"
-                  >
-                    Bán hàng
-                  </button>
-                </div>
-              </form>
-            </div>
+
           </div>
         </div>
       </div>

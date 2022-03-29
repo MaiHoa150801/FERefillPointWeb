@@ -10,6 +10,18 @@ import TextField from '@mui/material/TextField';
 import { NEW_PRODUCT_RESET } from '../../constants/productConstants';
 import ImageIcon from '@mui/icons-material/Image';
 import { LoadShop } from '../../actions/shopAction';
+import {
+  Badge,
+  Button,
+  Card,
+  Form,
+  Navbar,
+  Nav,
+  Container,
+  Row,
+  Col,
+} from "react-bootstrap";
+
 
 const ShopAdmin = () => {
   const dispatch = useDispatch();
@@ -104,14 +116,14 @@ const ShopAdmin = () => {
     if (success) {
       enqueueSnackbar("Product Created", { variant: "success" });
       dispatch({ type: NEW_PRODUCT_RESET });
-      navigate("/saler/products");
+      navigate("/shop/products");
     }
   }, [dispatch, error, success, navigate, enqueueSnackbar]);
 
   return (
     <>
       {loading}
-      <div className="container">
+      {/* <div className="container">
         <section className="panel panel-default">
           <div className="panel-heading">
             <h3 className="panel-title">Thêm sản phẩm</h3>
@@ -138,7 +150,7 @@ const ShopAdmin = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
-              </div> {/* form-group // */}
+              </div> 
               <div className="form-group">
                 <label htmlFor="name" className="col-sm-3 control-label">Mô tả sản phẩm</label>
                 <TextField
@@ -150,7 +162,7 @@ const ShopAdmin = () => {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
-              </div> {/* form-group // */}
+              </div> 
               <div className="form-group">
                 <label htmlFor="name" className="col-sm-3 control-label">Đơn vị đo lường</label>
                 <TextField
@@ -179,7 +191,7 @@ const ShopAdmin = () => {
                   value={sale_price}
                   onChange={(e) => setCuttedPrice(e.target.value)}
                 />
-              </div> {/* form-group // */}
+              </div> 
               <div className="form-group">
                 <label htmlFor="about" className="col-sm-3 control-label">Hãng</label>
                 <TextField
@@ -241,7 +253,204 @@ const ShopAdmin = () => {
             </form>
           </div>
         </section>
-      </div> 
+      </div>  */}
+      <Container fluid>
+        <Row>
+          <Col md="8">
+            <Card>
+              <Card.Header>
+                <Card.Title as="h4">Thêm Sản Phẩm</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <Form onSubmit={newProductSubmitHandler} encType="multipart/form-data" id="mainform">
+                  <Row>
+                    <Col className="pr-1" md="6">
+                      <Form.Group>
+                        <label>ID</label>
+                        <Form.Control
+                          value={type_product_id}
+                          onChange={(e) => setProductId(e.target.value)}
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pl-1" md="6">
+                      <Form.Group>
+                        <label htmlFor="exampleInputEmail1">
+                          Tên SP
+                        </label>
+                        <Form.Control
+                          value={name}
+                          type="text"
+                          onChange={(e) => setName(e.target.value)}
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md="12">
+                      <Form.Group>
+                        <label>Mô tả</label>
+                        <Form.Control
+                          cols="80"
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
+                          rows="4"
+                          as="textarea"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md="12">
+                      <Form.Group>
+                        <label>Đơn vị</label>
+                        <Form.Control
+                          value={measure}
+                          onChange={(e) => setMeasure(e.target.value)}
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="pr-1" md="4">
+                      <Form.Group>
+                        <label>Giá</label>
+                        <Form.Control
+                          value={unit_price}
+                          onChange={(e) => setPrice(e.target.value)}
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pr-1" md="4">
+                      <Form.Group>
+                        <label>Giá đã giảm</label>
+                        <Form.Control
+                          value={sale_price}
+                          onChange={(e) => setCuttedPrice(e.target.value)}
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="pr-1" md="4">
+                      <Form.Group>
+                        <label>Nhãn hàng</label>
+                        <Form.Control
+                          value={tradeMarkName}
+                          onChange={(e) => settradeMarkName(e.target.value)}
+                          type="text"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pr-1" md="4">
+                      <Form.Group>
+                        <label>Ảnh nhãn hàng</label>
+                        <Form.Control
+                          name="logo"
+                         
+                          onChange={handleLogoChange}
+                          type="file"
+                          className="hidden"
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pr-1" md="4">
+                      <Form.Group>
+                      {!logoPreview ? <ImageIcon /> :
+                        <img draggable="false" src={logoPreview} alt="Brand Logo" className=" object-contain" width="100" height="60" />
+                      }
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col className="pr-1" md="4">
+                      <Form.Group>
+                        <label>Hình ảnh sản phẩm</label>
+                        <Form.Control
+                          name="images"
+                          accept="image/*"
+                          onChange={handleProductImageChange}
+                          type="file"
+                          multiple
+                        ></Form.Control>
+                      </Form.Group>
+                    </Col>
+                    <Col className="pr-1" md="4">
+                      {imagesPreview.map((image, i) => (
+                        <img draggable="false" src={image} alt="Product" key={i} className="w-full h-full object-contain" width="100" height="60" />
+                      ))}
+                    </Col>
+                  </Row>
+
+                  <br></br>
+                  <Button
+                    className="btn-fill pull-right"
+                    type="submit"
+                    variant="info"
+                  >
+                    Thêm sản phẩm
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md="4">
+            <Card className="card-user">
+              <Card.Body>
+                <div className="author text-center " >
+                  <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                    <img
+                      alt="..."
+                      className="avatar border-gray rounded-circle"
+                      src={user.avatar.url}
+                      width="150px"
+                      height="150px"
+                    ></img>
+                    <h5 className="title">{user.name}</h5>
+                  </a>
+                  {/* <p className="description">michael24</p> */}
+                </div>
+                {/* <p className="description text-center">
+                                    "Lamborghini Mercy <br></br>
+                                    Your chick she so thirsty <br></br>
+                                    I'm in that two seat Lambo"
+                                </p> */}
+              </Card.Body>
+              <hr></hr>
+              <div className="button-container mr-auto ml-auto">
+                <Button
+                  className="btn-simple btn-icon"
+                  href=""
+                  onClick={(e) => e.preventDefault()}
+                  variant="link"
+                >
+                  <i className="fab fa-facebook-square"></i>
+                </Button>
+                <Button
+                  className="btn-simple btn-icon"
+                  href=""
+                  onClick={(e) => e.preventDefault()}
+                  variant="link"
+                >
+                  <i className="fab fa-twitter"></i>
+                </Button>
+                <Button
+                  className="btn-simple btn-icon"
+                  href=""
+                  onClick={(e) => e.preventDefault()}
+                  variant="link"
+                >
+                  <i className="fab fa-google-plus-square"></i>
+                </Button>
+              </div>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };

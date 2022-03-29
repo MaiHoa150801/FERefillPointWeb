@@ -158,9 +158,6 @@ export const createProduct = (productData) => async (dispatch) => {
     try {
         const token = await Cookies.get('token');
         const header = token ? { Authorization: `Bearer ${token}` } : null;
-        console.log(header);
-        // dispatch({ type: NEW_PRODUCT_REQUEST });
-        // const config = { header: { "Content-Type": "application/json" }, header }
         const { data } = await axios.post("http://localhost:8080/api/v1/admin/product/new", productData,  {
             headers: header
         });

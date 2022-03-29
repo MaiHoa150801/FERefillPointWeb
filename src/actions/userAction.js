@@ -145,10 +145,10 @@ export const loadUser = () => async (dispatch) => {
       payload: data.user,
     });
   } catch (error) {
-    dispatch({
-      type: LOAD_USER_FAIL,
-      payload: error.response.data.message,
-    });
+    // dispatch({
+    //   type: LOAD_USER_FAIL,
+    //   payload: error.response.data.message,
+    // });
   }
 };
 
