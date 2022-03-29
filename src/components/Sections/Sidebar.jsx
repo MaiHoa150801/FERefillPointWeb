@@ -46,11 +46,16 @@ const Sidebar = ({ activeTab }) => {
               </NavLink>
               <NavLink to="/shop/product/add" className={`nav-link  ${activeTab === 'shop/product/add'} `}>
                 <i className="fa fa-home" />
+
                 <span><b> Thêm Sản phẩm </b></span>
               </NavLink>
               <NavLink to="/shop/order" className={`nav-link  ${activeTab === 'shop/order'} `}>
                 <span> <i className="fas fa-gift" /></span>
                 <span> <b> Đơn hàng</b></span>
+              </NavLink>
+              <NavLink to="/shop/voucher" className={`nav-link  ${activeTab === 'shop/voucher'} `}>
+                <i className="fa fa-home" />
+                <span><b> Mã giảm giá </b></span>
               </NavLink>
             </>
           ) : (<></>)}

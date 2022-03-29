@@ -22,9 +22,11 @@ import Profile from './components/Sections/Profile';
 import ShopRoute from './components/Sections/ShopRoute';
 import ProductTable from './components/Sections/ProductTable';
 import Order from './components/Sections/Order';
+import Voucher from './components/Sections/Voucher';
 import Shop from './components/Sections/Register/Shop';
 import AddProduct from './components/Sections/AddProduct';
 import ShopAdmin from './components/Sections/ShopAdmin';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -79,6 +81,16 @@ function App() {
             <ProtectedRoute >
               <Account activeTab="shop/order">
                 <Order />
+              </Account>
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/shop/voucher"
+          element={
+            <ProtectedRoute>
+              <Account activeTab="shop/voucher">
+                <Voucher />
               </Account>
             </ProtectedRoute>
           }

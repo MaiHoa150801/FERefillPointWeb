@@ -43,6 +43,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { getMe } from '../Service/UserService';
 // Contact Landing page
+
 export const contactLanding = (name, email, subject, message) => async (dispatch) => {
   try {
     dispatch({ type: CONTACT_LANDING_REQUEST });
@@ -145,6 +146,7 @@ export const loadUser = () => async (dispatch) => {
       payload: data.user,
     });
   } catch (error) {
+    console.log(error);
     // dispatch({
     //   type: LOAD_USER_FAIL,
     //   payload: error.response.data.message,
