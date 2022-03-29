@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Avatar from '@mui/material/Avatar';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { logoutUser } from '../../actions/userAction';
-import styled from "styled-components";
 import React from 'react';
 import {
   Col,
@@ -25,32 +23,34 @@ const Sidebar = ({ activeTab }) => {
   return (
     <>
       <Col md="2" >
-        <Nav style={{ display: "block", paddingLeft: "10px", height: "700px" }}>
+        <Nav style={{ display: "block", height: "500px", background: "DarkTurquoise", color: "white" }} >
           <NavLink to="/account" className={`nav-link ${activeTab === 'profile'} `}>
-            <i className="fa fa-home" />
-            Tài khoản
+            <span><i className="fa fa-home" /></span>
+            <span><b> Tài khoản </b></span>
           </NavLink>
-          {/* <NavLink to="/shop" className={`nav-link  ${activeTab === 'shop'} `}>
-            <i className="fa fa-home" />
-            Bán hàng
-          </NavLink> */}
-          <NavLink to="/shop/register" className={`nav-link  `}>
-            <i className="fa fa-home" />
-            DK Bán hàng
-          </NavLink>
+          {user.role === 'user' && (
+            <NavLink to="/shop/register" className={`nav-link  ${activeTab === 'shop/register'} `}>
+              <span> <i className="fas fa-money-check" /></span>
+              <span><b> ĐK Bán hàng</b></span>
+            </NavLink>
+          )}
           {user.role === "salesperson" ? (
             <>
+              <NavLink to="/shop/dashboard" className={`nav-link  ${activeTab === 'shop/dashboard'} `}>
+                <i className="fa fa-home" />
+                <span><b> Quản lý </b></span>
+              </NavLink>
               <NavLink to="/shop/product" className={`nav-link  ${activeTab === 'shop/product'} `}>
                 <i className="fa fa-home" />
-                Sản phẩm
+                <span><b> Sản phẩm </b></span>
               </NavLink>
-              <NavLink to="/shop" className={`nav-link  ${activeTab === '/shop'} `}>
+              <NavLink to="/shop/product/add" className={`nav-link  ${activeTab === 'shop/product/add'} `}>
                 <i className="fa fa-home" />
-                Thêm Sản phẩm
+                <span><b> Thêm Sản phẩm </b></span>
               </NavLink>
               <NavLink to="/shop/order" className={`nav-link  ${activeTab === 'shop/order'} `}>
-                <i className="fa fa-home" />
-                Đơn hàng
+                <span> <i className="fas fa-gift" /></span>
+                <span> <b> Đơn hàng</b></span>
               </NavLink>
             </>
           ) : (<></>)}
