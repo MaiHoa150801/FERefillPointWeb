@@ -23,6 +23,8 @@ import ShopRoute from './components/Sections/ShopRoute';
 import ProductTable from './components/Sections/ProductTable';
 import Order from './components/Sections/Order';
 import Shop from './components/Sections/Register/Shop';
+import AddProduct from './components/Sections/AddProduct';
+import ShopAdmin from './components/Sections/ShopAdmin';
 
 function App() {
   const dispatch = useDispatch();
@@ -62,11 +64,11 @@ function App() {
           }
         ></Route>
         <Route
-          path="/shop"
+          path="/shop/dashboard"
           element={
             <ProtectedRoute>
-              <Account activeTab="shop">
-                <ShopRoute />
+              <Account activeTab="shop/dashboard">
+                <ShopAdmin />
               </Account>
             </ProtectedRoute>
           }
@@ -77,6 +79,16 @@ function App() {
             <ProtectedRoute >
               <Account activeTab="shop/order">
                 <Order />
+              </Account>
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/shop/product/add"
+          element={
+            <ProtectedRoute >
+              <Account activeTab="shop/product/add">
+                <AddProduct />
               </Account>
             </ProtectedRoute>
           }

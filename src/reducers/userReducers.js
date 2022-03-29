@@ -90,6 +90,7 @@ export const userReducer = (state = { user: {} }, { type, payload }) => {
             return {
                 ...state,
                 loading: false,
+                isAuthenticated: false,
                 error: payload,
             }
         case CLEAR_ERRORS:

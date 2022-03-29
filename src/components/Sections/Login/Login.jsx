@@ -55,7 +55,7 @@ const Login = () => {
             enqueueSnackbar(error, { variant: "error" });
             dispatch(clearErrors());
         }
-        if (isAuthenticated) {
+        if (isAuthenticated === true) {
             enqueueSnackbar('Đăng nhập thành công', { variant: 'success' });
             navigate(`/${redirect}`)
         }

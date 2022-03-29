@@ -27,6 +27,7 @@ const TopNavbar = () => {
   const [togglePrimaryDropDown, setTogglePrimaryDropDown] = useState(false);
 
   const handleLogout = () => {
+    console.log("helo");
     dispatch(logoutUser());
     enqueueSnackbar('Đăng xuất thành công', { variant: 'success' });
     navigate('/login');
