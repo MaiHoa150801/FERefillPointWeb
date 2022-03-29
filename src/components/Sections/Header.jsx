@@ -17,7 +17,7 @@ export default function Header() {
           Mỗi lần bạn đong đầy sản phẩm đã góp phần giảm thiểu rác thải đe dọa đến môi trường. Hãy tải ứng dụng về để cùng hạn chế rác thải nhựa ra môi trường.
           </HeaderP>
           <BtnWrapper>
-            <FullButton title="Tải ứng dụng" />
+            <FullButton title="Tải ứng dụng" action={() => window.location.href = "https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40synguyen282001/RifillPointApp-dc21455145824884bdd102bed190f4ba-signed.apk" }/>
           </BtnWrapper>
         </div>
       </LeftSide>

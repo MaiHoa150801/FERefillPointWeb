@@ -48,7 +48,7 @@ const Login = () => {
         dispatch(loginUser(email, password));
     }
 
-    const redirect = location.search ? location.search.split("=")[1] : "account";
+    const redirect = location.search ? location.search.split("=")[1] : "";
 
     useEffect(() => {
         if (error) {
@@ -90,14 +90,14 @@ const Login = () => {
                     <div className="register">
                         <p> <a href="/register"> Bạn chưa có tài khoản? Đăng Kí </a></p>
                     </div>
-                    <div className="social-media">
+                    {/* <div className="social-media">
                         <h5>Đăng nhập với mạng xã hội</h5>
                         <div className="social-icons">
                             <a href="/"><i className="icon-social-facebook" title="Facebook" /></a>
                             <a href="/"><i className="icon-social-google" title="Google" /></a>
                             <a href="/"><i className="icon-social-twitter" title="Twitter" /></a>
                         </div>
-                    </div>
+                    </div> */}
                 </form>
             </div>
 

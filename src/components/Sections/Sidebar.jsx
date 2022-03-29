@@ -30,19 +30,29 @@ const Sidebar = ({ activeTab }) => {
             <i className="fa fa-home" />
             Tài khoản
           </NavLink>
-          <NavLink to="/shop" className={`nav-link  ${activeTab === 'shop'} `}>
+          {/* <NavLink to="/shop" className={`nav-link  ${activeTab === 'shop'} `}>
             <i className="fa fa-home" />
             Bán hàng
-          </NavLink>
-          <NavLink to="/shop/order" className={`nav-link  ${activeTab === 'shop/order'} `}>
+          </NavLink> */}
+          <NavLink to="/shop/register" className={`nav-link  `}>
             <i className="fa fa-home" />
-            Đơn hàng
+            DK Bán hàng
           </NavLink>
           {user.role === "salesperson" ? (
-            <NavLink to="/shop/product" className={`nav-link  ${activeTab === 'shop/product'} `}>
-              <i className="fa fa-home" />
-              Sản phẩm
-            </NavLink>
+            <>
+              <NavLink to="/shop/product" className={`nav-link  ${activeTab === 'shop/product'} `}>
+                <i className="fa fa-home" />
+                Sản phẩm
+              </NavLink>
+              <NavLink to="/shop" className={`nav-link  ${activeTab === '/shop'} `}>
+                <i className="fa fa-home" />
+                Thêm Sản phẩm
+              </NavLink>
+              <NavLink to="/shop/order" className={`nav-link  ${activeTab === 'shop/order'} `}>
+                <i className="fa fa-home" />
+                Đơn hàng
+              </NavLink>
+            </>
           ) : (<></>)}
         </Nav>
       </Col>

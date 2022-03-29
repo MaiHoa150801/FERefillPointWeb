@@ -22,6 +22,7 @@ import Setting from './components/Sections/Setting';
 import ShopRoute from './components/Sections/ShopRoute';
 import ProductTable from './components/Sections/ProductTable';
 import Order from './components/Sections/Order';
+import Shop from './components/Sections/Register/Shop';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,13 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/password/forgot" element={<ForgotPassword />}></Route>
+        <Route
+          path="/shop/register"
+          element={
+            <ProtectedRoute>
+              <Shop />
+            </ProtectedRoute>
+          }></Route>
         <Route
           path="/password/reset/:token"
           element={<ResetPassword />}

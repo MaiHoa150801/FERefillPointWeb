@@ -123,7 +123,7 @@ const UpdatePassword = () => {
                                         type="submit"
                                         variant="info"
                                     >
-                                        Update Profile
+                                        Update Password
                                     </Button>
                                 </Form>
                             </Card.Body>
