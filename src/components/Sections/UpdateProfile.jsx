@@ -89,16 +89,16 @@ const UpdateProfile = () => {
             <Container fluid>
                 <Row>
                     <Col md="8">
-                        <Card>
+                        <Card fluid style={{  background:"LightBlue"}}>
                             <Card.Header>
-                                <Card.Title as="h4">Update Profile</Card.Title>
+                                <Card.Title as="h4">Cập nhật tiểu sử</Card.Title>
                             </Card.Header>
                             <Card.Body>
                                 <Form onSubmit={updateProfileHandler} encType="multipart/form-data">
                                     <Row>
                                         <Col className="pr-1" md="6">
                                             <Form.Group>
-                                                <label>Username</label>
+                                                <label>Tên người dùng</label>
                                                 <Form.Control
                                                     value={name}
                                                     type="text"
@@ -109,7 +109,7 @@ const UpdateProfile = () => {
                                         <Col className="pl-1" md="6">
                                             <Form.Group>
                                                 <label htmlFor="exampleInputEmail1">
-                                                    Email address
+                                                    Địa chỉ email
                                                 </label>
                                                 <Form.Control
                                                     value={email}
@@ -124,7 +124,7 @@ const UpdateProfile = () => {
                                     <Row>
                                         <Col md="12">
                                             <Form.Group>
-                                                <label>Address</label>
+                                                <label>Địa chỉ</label>
                                                 <Form.Control
                                                     value={address}
                                                     onChange={(e) => setAddress(e.target.value)}
@@ -136,7 +136,7 @@ const UpdateProfile = () => {
                                     <Row>
                                         <Col className="pr-1" md="4">
                                             <Form.Group>
-                                                <label>Phone</label>
+                                                <label>Số điện thoại</label>
                                                 <Form.Control
                                                     value={phone}
                                                     onChange={(e) => setPhone(e.target.value)}
@@ -146,7 +146,7 @@ const UpdateProfile = () => {
                                         </Col>
                                         <Col className="pr-1" md="2">
                                             <Form.Group>
-                                                <label>Avatar</label>
+                                                <label>Ảnh đại diện</label>
                                                 <Form.Control
                                                     // value={user.phone}
                                                     onChange={handleUpdateDataChange}
@@ -161,7 +161,7 @@ const UpdateProfile = () => {
                                         type="submit"
                                         variant="info"
                                     >
-                                        Update Profile
+                                        Cập nhật tiểu sử
                                     </Button>
                                     
                                 </Form>

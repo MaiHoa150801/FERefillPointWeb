@@ -18,7 +18,7 @@ import UpdatePassword from './components/Sections/UpdatePassword';
 import RegisterStore from './components/Sections/RegisterStore';
 import Dashboard from './components/Admin/Dashboard';
 import MainData from './components/Admin/MainData';
-import Setting from './components/Sections/Setting';
+import Profile from './components/Sections/Profile';
 import ShopRoute from './components/Sections/ShopRoute';
 import ProductTable from './components/Sections/ProductTable';
 import Order from './components/Sections/Order';
@@ -48,7 +48,7 @@ function App() {
           element={
             <ProtectedRoute>
               <Account activeTab="profile">
-                <Setting />
+                <Profile />
               </Account>
             </ProtectedRoute>
           }

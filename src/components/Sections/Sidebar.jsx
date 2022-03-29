@@ -1,9 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Avatar from '@mui/material/Avatar';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { logoutUser } from '../../actions/userAction';
-import styled from "styled-components";
 import React from 'react';
 import {
   Col,
@@ -24,29 +22,31 @@ const Sidebar = ({ activeTab }) => {
   };
   return (
     <>
-      <Col md="2" >
-        <Nav style={{ display: "block", paddingLeft: "10px", height: "700px" }}>
-          <NavLink to="/account" className={`nav-link ${activeTab === 'profile'} `}>
-            <i className="fa fa-home" />
-            Tài khoản
-          </NavLink>
-          <NavLink to="/shop" className={`nav-link  ${activeTab === 'shop'} `}>
-            <i className="fa fa-home" />
-            Bán hàng
-          </NavLink>
-          <NavLink to="/shop/order" className={`nav-link  ${activeTab === 'shop/order'} `}>
-            <i className="fa fa-home" />
-            Đơn hàng
-          </NavLink>
-          {user.role === "salesperson" ? (
-            <NavLink to="/shop/product" className={`nav-link  ${activeTab === 'shop/product'} `}>
-              <i className="fa fa-home" />
-              Sản phẩm
+        <Col md="2" >
+          <Nav style={{ display: "block",  height: "500px", background:"DarkTurquoise", color:"white"}} >
+              <NavLink to="/account" className={`nav-link ${activeTab === 'profile'} `}>
+                <span><i className="fa fa-home" /></span>
+                <span><b> Tài khoản </b></span>
+              </NavLink>
+              <NavLink to="/shop" className={`nav-link  ${activeTab === 'shop'} `}>
+                <span> <i className="fas fa-money-check" /></span>
+                <span><b> Bán hàng</b></span>
+              </NavLink>
+              <NavLink to="/shop/order" className={`nav-link  ${activeTab === 'shop/order'} `}>
+                <span> <i className="fas fa-gift" /></span>
+                <span> <b> Đơn hàng</b></span>
+              </NavLink>
+            {user.role === "salesperson" ? (
+              <NavLink to="/shop/product" className={`nav-link  ${activeTab === 'shop/product'} `}>
+                <i className="fa fa-home" />
+                Sản phẩm
             </NavLink>
-          ) : (<></>)}
-        </Nav>
-      </Col>
+            ) : (<></>)}
+          </Nav>
+        </Col>
     </>
+      
+    
   );
 };
 

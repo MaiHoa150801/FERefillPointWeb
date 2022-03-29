@@ -68,19 +68,19 @@ const UpdatePassword = () => {
     return (
         <>
             {loading}
-            <Container fluid>
+            <Container >
                 <Row>
                     <Col md="8">
-                        <Card>
+                        <Card fluid style={{  background:"LightBlue"}}>
                             <Card.Header>
-                                <Card.Title as="h4">Update Password</Card.Title>
+                                <Card.Title as="h4">Cập nhật mật khẩu mới</Card.Title>
                             </Card.Header>
                             <Card.Body>
                                 <Form  onSubmit={updatePasswordSubmitHandler}>
                                     <Row>
                                         <Col md="12" >
                                             <Form.Group>
-                                                <label>Old Password</label>
+                                                <label>Mật khẩu cũ</label>
                                                 <Form.Control
                                                     value={oldPassword}
                                                     name="oldPassword"
@@ -94,7 +94,7 @@ const UpdatePassword = () => {
                                         <Col className="pl-1" md="6">
                                             <Form.Group>
                                                 <label htmlFor="exampleInputEmail1">
-                                                    New Password
+                                                    Mật khẩu mới
                                                 </label>
                                                 <Form.Control
                                                     name="newPassword"
@@ -106,7 +106,7 @@ const UpdatePassword = () => {
                                         <Col className="pl-1" md="6">
                                             <Form.Group>
                                                 <label htmlFor="exampleInputEmail1">
-                                                    Confirm Password
+                                                    Xác thực mật khẩu
                                                 </label>
                                                 <Form.Control
                                                     name="confirmPassword"
@@ -123,7 +123,7 @@ const UpdatePassword = () => {
                                         type="submit"
                                         variant="info"
                                     >
-                                        Update Profile
+                                        Cập nhật mật khẩu mới
                                     </Button>
                                 </Form>
                             </Card.Body>

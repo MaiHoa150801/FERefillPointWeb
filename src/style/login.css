@@ -44,7 +44,7 @@ padding: 50px 0;
 	font-weight: bold;
 	background-color: rgb(18, 136, 58);
 	border: none;
-	color: white;
+
 	margin-top: 20px;
 }
 .registration-form .form-control{
@@ -106,5 +106,9 @@ padding: 50px 0;
 			padding: 50px 20px;
 	}
 
+}
+
+input:-webkit-autofill {
+	-webkit-text-fill-color: #000;
 }
 
