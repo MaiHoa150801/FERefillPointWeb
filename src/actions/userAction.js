@@ -236,18 +236,15 @@ export const forgotPassword = (email) => async (dispatch) => {
   try {
     dispatch({ type: FORGOT_PASSWORD_REQUEST });
 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
+    console.log(email);
 
     const { data } = await axios.post(
       'http://localhost:8080/api/v1/password/forgot',
-      email,
-      config
+      { email }
+      // config
     );
 
+    console.log(data);
     dispatch({
       type: FORGOT_PASSWORD_SUCCESS,
       payload: data.message,
@@ -261,20 +258,41 @@ export const forgotPassword = (email) => async (dispatch) => {
 };
 
 // Reset Password
-export const resetPassword = (token, passwords) => async (dispatch) => {
+export const sendCode = (email, code) => async (dispatch) => {
+  try {
+    // dispatch({ type: RESET_PASSWORD_REQUEST });
+    // const token = await Cookies.get('token');
+    // const header = token ? { Authorization: `Bearer ${token}` } : null;
+
+    // const config = {
+    //   headers: header
+    // };
+
+    const { data } = await axios.post(
+      'http://localhost:8080/api/v1/password/sendcode',
+      { email, code }
+    );
+    console.log(data);
+    dispatch({
+      type: RESET_PASSWORD_SUCCESS,
+      payload: data.success,
+    });
+  } catch (error) {
+    // dispatch({
+    //   type: RESET_PASSWORD_FAIL,
+    //   payload: error.response.data.message,
+    // });
+  }
+};
+
+// Reset Password
+export const resetPass = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: RESET_PASSWORD_REQUEST });
 
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    const { data } = await axios.put(
-      `http://localhost:8080/api/v1/password/reset/${token}`,
-      passwords,
-      config
+    const { data } = await axios.post(
+      'http://localhost:8080/api/v1/password/reset',
+      {email, password}
     );
 
     dispatch({

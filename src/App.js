@@ -26,7 +26,7 @@ import Voucher from './components/Sections/Voucher';
 import Shop from './components/Sections/Register/Shop';
 import AddProduct from './components/Sections/AddProduct';
 import ShopAdmin from './components/Sections/ShopAdmin';
-
+import CodeResetPassword from './components/Sections/Login/code-reset-password';
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +44,8 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/password/forgot" element={<ForgotPassword />}></Route>
+        <Route path="/password/code" element={<CodeResetPassword />}></Route>
+        <Route path="/password/reset" element={<ResetPassword />}></Route>
         <Route
           path="/shop/register"
           element={
