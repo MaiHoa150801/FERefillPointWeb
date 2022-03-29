@@ -12,11 +12,11 @@ import {
     Row,
     Col,
 } from "react-bootstrap";
-
-const Setting = () => {
-
+ 
+const Profile = () => {
+ 
     const navigate = useNavigate();
-
+ 
     const { user, loading, isAuthenticated } = useSelector(state => state.user)
     console.log(user + "account");
     console.log(user.avatar.url);
@@ -25,43 +25,32 @@ const Setting = () => {
             navigate("/login")
         }
     }, [isAuthenticated, navigate]);
-
+ 
     const getLastName = () => {
         const nameArray = user.name.split(" ");
         return nameArray[nameArray.length - 1];
     }
-
+ 
     const [open, setOpen] = React.useState(true);
-
+ 
     const handleClick = () => {
         setOpen(!open);
     };
     return (
         <>
-            <Container fluid>
+            <Container fluid >
                 <Row>
-                    <Col md="8">
-                        <Card>
+                    <Col md="8" >
+                        <Card style={{  background:"LightBlue"}}>
                             <Card.Header>
-                                <Card.Title as="h4">Profile</Card.Title>
+                                <Card.Title as="h4">Hồ sơ khách hàng</Card.Title>
                             </Card.Header>
                             <Card.Body>
                                 <Form>
                                     <Row>
-                                        {/* <Col className="pr-1" md="5">
-                                            <Form.Group>
-                                                <label>Company (disabled)</label>
-                                                <Form.Control
-                                                    defaultValue="Creative Code Inc."
-                                                    disabled
-                                                    placeholder="Company"
-                                                    type="text"
-                                                ></Form.Control>
-                                            </Form.Group>
-                                        </Col> */}
                                         <Col className="pr-1" md="6">
                                             <Form.Group>
-                                                <label>Username</label>
+                                                <label>Tên người dùng</label>
                                                 <Form.Control
                                                     value={user.name}
                                                     // placeholder="Username"
@@ -73,7 +62,7 @@ const Setting = () => {
                                         <Col className="pl-1" md="6">
                                             <Form.Group>
                                                 <label htmlFor="exampleInputEmail1">
-                                                    Email address
+                                                    Email
                                                 </label>
                                                 <Form.Control
                                                     value={user.email}
@@ -87,7 +76,7 @@ const Setting = () => {
                                     <Row>
                                         <Col className="pr-1" md="6">
                                             <Form.Group>
-                                                <label>First Name</label>
+                                                <label>Tên</label>
                                                 <Form.Control
                                                     value={user.name && user.name.split(" ", 1)}
                                                     disabled
@@ -97,7 +86,7 @@ const Setting = () => {
                                         </Col>
                                         <Col className="pl-1" md="6">
                                             <Form.Group>
-                                                <label>Last Name</label>
+                                                <label>Họ</label>
                                                 <Form.Control
                                                     value={getLastName()}
                                                     disabled
@@ -106,10 +95,11 @@ const Setting = () => {
                                             </Form.Group>
                                         </Col>
                                     </Row>
+
                                     <Row>
                                         <Col md="12">
                                             <Form.Group>
-                                                <label>Address</label>
+                                                <label>Địa chỉ</label>
                                                 <Form.Control
                                                     value={user.address }
                                                     disabled
@@ -121,7 +111,7 @@ const Setting = () => {
                                     <Row>
                                         <Col className="pr-1" md="4">
                                             <Form.Group>
-                                                <label>Phone</label>
+                                                <label>Số điện thoại</label>
                                                 <Form.Control
                                                     value={user.phone }
                                                     disabled
@@ -130,38 +120,29 @@ const Setting = () => {
                                             </Form.Group>
                                         </Col>
                                     </Row>
-                                    {/* <Row>
-                                        <Col md="12">
-                                            <Form.Group>
-                                                <label>About Me</label>
-                                                <Form.Control
-                                                    cols="80"
-                                                    defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in
-                          that two seat Lambo."
-                                                    placeholder="Here can be your description"
-                                                    rows="4"
-                                                    as="textarea"
-                                                ></Form.Control>
-                                            </Form.Group>
-                                        </Col>
-                                    </Row> */}
                                     <br></br>
-                                    <Button
-                                        className="btn-fill pull-right"
-                                        type="submit"
-                                        variant="info"
-                                        href="account/update"
-                                    >
-                                        Update Profile
-                                    </Button> 
-                                    <Button
-                                        className="btn-fill pull-right"
-                                        type="button"
-                                        href='/password/update'
-                                        variant="info"
-                                    >
-                                        Update Password
-                                    </Button>                                
+                                    <div >
+                                        <span style={{ marginRight:"20px"}}>
+                                            <Button
+                                                className="btn-fill pull-right"
+                                                type="submit"
+                                                variant="info"
+                                                href="account/update"
+                                            >
+                                                Cập nhật tiểu sử
+                                            </Button>
+                                        </span>
+                                        <span style={{ marginRight:"20px"}}>
+                                            <Button
+                                                className="btn-fill pull-right"
+                                                type="button"
+                                                href='/password/update'
+                                                variant="info"
+                                            >
+                                                Cập nhật mật khẩu
+                                            </Button>  
+                                        </span>
+                                    </div>            
                                 </Form>
                             </Card.Body>
                         </Card>
@@ -180,13 +161,7 @@ const Setting = () => {
                                         ></img>
                                         <h5 className="title">{user.name}</h5>
                                     </a>
-                                    {/* <p className="description">michael24</p> */}
                                 </div>
-                                {/* <p className="description text-center">
-                                    "Lamborghini Mercy <br></br>
-                                    Your chick she so thirsty <br></br>
-                                    I'm in that two seat Lambo"
-                                </p> */}
                             </Card.Body>
                             <hr></hr>
                             <div className="button-container mr-auto ml-auto">
@@ -222,5 +197,4 @@ const Setting = () => {
         </>
     );
 };
-
-export default Setting;
+export default Profile;

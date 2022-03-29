@@ -119,10 +119,10 @@ const ShopRigister = () => {
   return (
     <>
       {isAuthenticated}
-      <div id="content" className="flex">
-        <div class="container">
+      <div id="content" className="flex" >
+        <div class="container" fluid style={{  background:"LightBlue"}}>
           <div class="row justify-content-center">
-            <div id="" className="col-6 col-lg-6 col-xl-6 mx-auto">
+            <div id="" className="col-8 col-lg-8 col-xl-8 mx-auto">
               <h4 class="text-center">Đăng kí cửa hàng của bạn</h4>
               <form
                 onSubmit={newShop}
