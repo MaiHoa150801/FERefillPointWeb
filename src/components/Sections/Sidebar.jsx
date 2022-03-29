@@ -56,6 +56,15 @@ const Sidebar = ({ activeTab }) => {
               </Link>
             </li>
             <li>
+              <Link
+                to="/shop/voucher"
+                className={`${activeTab === 'shop/voucher'} `}
+              >
+                <i className="fa fa-gift" />
+                Mã giảm giá
+              </Link>
+            </li>
+            <li>
               <a href="#">
                 <i className="fa fa-send" />
                 Contact

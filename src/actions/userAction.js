@@ -43,7 +43,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { getMe } from '../Service/UserService';
 // Contact Landing page
-export const contactLanding = (name, email, subject, message) => async (dispatch) => {
+export const contactLanding =
+  (name, email, subject, message) => async (dispatch) => {
     try {
       dispatch({ type: CONTACT_LANDING_REQUEST });
 
@@ -58,7 +59,7 @@ export const contactLanding = (name, email, subject, message) => async (dispatch
         { name, email, subject, message },
         config
       );
-        // console.log(data);
+      // console.log(data);
       dispatch({
         type: CONTACT_LANDING_SUCCESS,
         payload: data.user,
@@ -142,10 +143,11 @@ export const loadUser = () => async (dispatch) => {
       payload: data.user,
     });
   } catch (error) {
-    dispatch({
-      type: LOAD_USER_FAIL,
-      payload: error.response.data.message,
-    });
+    console.log(error);
+    // dispatch({
+    //   type: LOAD_USER_FAIL,
+    //   payload: error.response.data.message,
+    // });
   }
 };
 
