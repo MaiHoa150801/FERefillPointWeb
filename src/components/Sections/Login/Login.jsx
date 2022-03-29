@@ -8,8 +8,7 @@ import { useSnackbar } from 'notistack';
 import '../../../style/login.css';
 import ImageLogin from "../../../assets/img/ImageLogin.png";
 import { Helmet } from "react-helmet";
-import Footer from "../../Sections/Footer";
-import TopNavbar from "../../Nav/TopNavbar";
+import validator from 'validator';
 
 const Login = () => {
 
@@ -26,34 +25,41 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         if (!email && ! password) {
-            enqueueSnackbar("Eamil và password không được để trống", { variant: "error" });
+            enqueueSnackbar("Email và password không được để trống", { variant: "error" });
             return;
         }
         
         if (!email ) {
-            enqueueSnackbar("Eamil không được để trống", { variant: "error" });
+            enqueueSnackbar("Email không được để trống", { variant: "error" });
             return;
         }
 
+        if (validator.isEmail(email) == false) {
+            enqueueSnackbar("Email không đúng định dạng", { variant: "error" });
+            return;
+        }
+        
         if (!password ) {
             enqueueSnackbar("Mật khẩu không được để trống", { variant: "error" });
             return;
         }
+        
 
         dispatch(loginUser(email, password));
     }
 
-    const redirect = location.search ? location.search.split("=")[1] : "account";
+    const redirect = location.search ? location.search.split("=")[1] : "";
 
     useEffect(() => {
         if (error) {
             enqueueSnackbar(error, { variant: "error" });
             dispatch(clearErrors());
         }
-        if (isAuthenticated) {
+        if (isAuthenticated === true) {
+            enqueueSnackbar('Đăng nhập thành công', { variant: 'success' });
             navigate(`/${redirect}`)
         }
-    }, [  isAuthenticated, redirect, navigate, enqueueSnackbar]);
+    }, [ dispatch, error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
 
     return (
         <>
@@ -70,7 +76,7 @@ const Login = () => {
                     </div>
                     <div className="form-group">
                         <label id="icon" htmlFor="name" />
-                        <input id="email" type="email" className="form-control item" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)}  />
+                        <input id="email"  className="form-control item" placeholder=" Email" value={email} onChange={(e) => setEmail(e.target.value)}  />
                     </div>
                     <div className="form-group">
                         <input type="password" className="form-control item" id="password" placeholder="Mật khẩu" value={password} onChange={(e) => setPassword(e.target.value)}  />
@@ -84,14 +90,14 @@ const Login = () => {
                     <div className="register">
                         <p> <a href="/register"> Bạn chưa có tài khoản? Đăng Kí </a></p>
                     </div>
-                    <div className="social-media">
+                    {/* <div className="social-media">
                         <h5>Đăng nhập với mạng xã hội</h5>
                         <div className="social-icons">
                             <a href="/"><i className="icon-social-facebook" title="Facebook" /></a>
                             <a href="/"><i className="icon-social-google" title="Google" /></a>
                             <a href="/"><i className="icon-social-twitter" title="Twitter" /></a>
                         </div>
-                    </div>
+                    </div> */}
                 </form>
             </div>
 

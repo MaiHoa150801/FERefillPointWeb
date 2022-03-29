@@ -39,7 +39,6 @@ const Account = ({ activeTab, children }) => {
       ) : (
         <div className="wrapper">
           <Sidebar activeTab={activeTab} />
-
           {children}
         </div>
       )}

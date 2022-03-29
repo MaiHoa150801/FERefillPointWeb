@@ -22,7 +22,7 @@ export const createShop = (shopData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      'http://localhost:8080/api/v1/shop/new',
+      'http://localhost:8080/api/v1/salesperson/new',
       shopData,
       config
     );

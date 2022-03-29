@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from 'js-cookie';
 import {
     ALL_PRODUCTS_FAIL,
     ALL_PRODUCTS_REQUEST,
@@ -155,10 +156,11 @@ export const getAdminProducts = () => async (dispatch) => {
 // New Product ---ADMIN
 export const createProduct = (productData) => async (dispatch) => {
     try {
-        console.log(productData);
-        dispatch({ type: NEW_PRODUCT_REQUEST });
-        const config = { header: { "Content-Type": "application/json" } }
-        const { data } = await axios.post("http://localhost:8080/api/v1/admin/product/new", productData, config);
+        const token = await Cookies.get('token');
+        const header = token ? { Authorization: `Bearer ${token}` } : null;
+        const { data } = await axios.post("http://localhost:8080/api/v1/admin/product/new", productData,  {
+            headers: header
+        });
 
         dispatch({
             type: NEW_PRODUCT_SUCCESS,
@@ -194,9 +196,12 @@ export const updateProduct = (id, productData) => async (dispatch) => {
 // Delete Product ---ADMIN
 export const deleteProduct = (id) => async (dispatch) => {
     try {
+        const token = await Cookies.get('token');
+        const header = token ? { Authorization: `Bearer ${token}` } : null;
         dispatch({ type: DELETE_PRODUCT_REQUEST });
-        const { data } = await axios.delete(`http://localhost:4000/api/v1/admin/product/${id}`);
-
+        const { data } = await axios.delete(`http://localhost:8080/api/v1/saler/product/${id}`, {
+            headers: header
+        });
         dispatch({
             type: DELETE_PRODUCT_SUCCESS,
             payload: data.success,

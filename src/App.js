@@ -18,11 +18,15 @@ import UpdatePassword from './components/Sections/UpdatePassword';
 import RegisterStore from './components/Sections/RegisterStore';
 import Dashboard from './components/Admin/Dashboard';
 import MainData from './components/Admin/MainData';
-import Setting from './components/Sections/Setting';
+import Profile from './components/Sections/Profile';
 import ShopRoute from './components/Sections/ShopRoute';
 import ProductTable from './components/Sections/ProductTable';
 import Order from './components/Sections/Order';
 import Voucher from './components/Sections/Voucher';
+import Shop from './components/Sections/Register/Shop';
+import AddProduct from './components/Sections/AddProduct';
+import ShopAdmin from './components/Sections/ShopAdmin';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +45,13 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/password/forgot" element={<ForgotPassword />}></Route>
         <Route
+          path="/shop/register"
+          element={
+            <ProtectedRoute>
+              <Shop />
+            </ProtectedRoute>
+          }></Route>
+        <Route
           path="/password/reset/:token"
           element={<ResetPassword />}
         ></Route>
@@ -49,17 +60,17 @@ function App() {
           element={
             <ProtectedRoute>
               <Account activeTab="profile">
-                <Setting />
+                <Profile />
               </Account>
             </ProtectedRoute>
           }
         ></Route>
         <Route
-          path="/shop"
+          path="/shop/dashboard"
           element={
             <ProtectedRoute>
-              <Account activeTab="shop">
-                <ShopRoute />
+              <Account activeTab="shop/dashboard">
+                <ShopAdmin />
               </Account>
             </ProtectedRoute>
           }
@@ -67,7 +78,7 @@ function App() {
         <Route
           path="/shop/order"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute >
               <Account activeTab="shop/order">
                 <Order />
               </Account>
@@ -85,10 +96,22 @@ function App() {
           }
         ></Route>
         <Route
+          path="/shop/product/add"
+          element={
+            <ProtectedRoute >
+              <Account activeTab="shop/product/add">
+                <AddProduct />
+              </Account>
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
           path="/account/update"
           element={
             <ProtectedRoute>
-              <UpdateProfile />
+              <Account activeTab="account/update">
+                <UpdateProfile />
+              </Account>
             </ProtectedRoute>
           }
         ></Route>
@@ -97,14 +120,16 @@ function App() {
           path="/password/update"
           element={
             <ProtectedRoute>
-              <UpdatePassword />
+              <Account activeTab="password/update">
+                <UpdatePassword />
+              </Account>
             </ProtectedRoute>
           }
         ></Route>
         <Route
           path="/admin/dashboard"
           element={
-            <ProtectedRoute isAdmin={true}>
+            <ProtectedRoute >
               <Dashboard activeTab={0}>
                 <MainData />
               </Dashboard>
@@ -114,7 +139,7 @@ function App() {
         <Route
           path="/shop/product"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute  >
               <Account activeTab="shop/product">
                 <ProductTable />
               </Account>
@@ -124,7 +149,7 @@ function App() {
         <Route
           path="/saler/dashboard"
           element={
-            <ProtectedRoute isSaler={true}>
+            <ProtectedRoute >
               <AdminLayout />
             </ProtectedRoute>
           }

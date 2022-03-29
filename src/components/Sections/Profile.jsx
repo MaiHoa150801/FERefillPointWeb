@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import TextField from '@mui/material/TextField'
-import { Avatar, FormControlLabel, Radio, RadioGroup } from '@mui/material';
-import { useSnackbar } from 'notistack';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors, loadUser, updateProfile } from '../../actions/userAction';
-import { UPDATE_PROFILE_RESET } from '../../constants/userConstants';
 import {
     Badge,
     Button,
@@ -17,117 +12,97 @@ import {
     Row,
     Col,
 } from "react-bootstrap";
-
-const UpdateProfile = () => {
-
-    const dispatch = useDispatch();
+ 
+const Profile = () => {
+ 
     const navigate = useNavigate();
-    const { enqueueSnackbar } = useSnackbar();
-
-    const { user } = useSelector((state) => state.user);
-    const { error, isUpdated, loading } = useSelector((state) => state.profile);
-
-    console.log(user + "update profile");
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [avatar, setAvatar] = useState("");
-    const [avatarPreview, setAvatarPreview] = useState("");
-    const [address, setAddress] = useState("");
-
-
-    const updateProfileHandler = (e) => {
-        e.preventDefault();
-
-        const formData = new FormData();
-        formData.set("name", name);
-        formData.set("address", address);
-        formData.set("email", email);
-        formData.set("phone", phone);
-        formData.set("avatar", avatar);
-
-        dispatch(updateProfile(formData));
-    }
-
-    const handleUpdateDataChange = (e) => {
-        const reader = new FileReader();
-        setAvatar("");
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                setAvatarPreview(reader.result);
-                setAvatar(reader.result);
-            }
-        };
-
-        reader.readAsDataURL(e.target.files[0]);
-    }
-
+ 
+    const { user, loading, isAuthenticated } = useSelector(state => state.user)
+    console.log(user + "account");
+    console.log(user.avatar.url);
     useEffect(() => {
-        if (user) {
-            setName(user.name);
-            setEmail(user.email);
-            setPhone(user.phone);
-            setAddress(user.address);
-            setAvatarPreview(user.avatar.url);
+        if (isAuthenticated === false) {
+            navigate("/login")
         }
-        if (error) {
-            enqueueSnackbar(error, { variant: "error" });
-            dispatch(clearErrors());
-        }
-        if (isUpdated) {
-            enqueueSnackbar("Profile Updated Successfully", { variant: "success" });
-            dispatch(loadUser());
-            navigate('/account');
-
-            dispatch({ type: UPDATE_PROFILE_RESET });
-        }
-    }, [dispatch, user, isUpdated, navigate, enqueueSnackbar]);
-
+    }, [isAuthenticated, navigate]);
+ 
+    const getLastName = () => {
+        const nameArray = user.name.split(" ");
+        return nameArray[nameArray.length - 1];
+    }
+ 
+    const [open, setOpen] = React.useState(true);
+ 
+    const handleClick = () => {
+        setOpen(!open);
+    };
     return (
         <>
-            {loading}
-            <Container fluid>
+            <Container fluid >
                 <Row>
-                    <Col md="8">
-                        <Card fluid style={{  background:"LightBlue"}}>
+                    <Col md="8" >
+                        <Card style={{  background:"LightBlue"}}>
                             <Card.Header>
-                                <Card.Title as="h4">Cập nhật tiểu sử</Card.Title>
+                                <Card.Title as="h4">Hồ sơ khách hàng</Card.Title>
                             </Card.Header>
                             <Card.Body>
-                                <Form onSubmit={updateProfileHandler} encType="multipart/form-data">
+                                <Form>
                                     <Row>
                                         <Col className="pr-1" md="6">
                                             <Form.Group>
                                                 <label>Tên người dùng</label>
                                                 <Form.Control
-                                                    value={name}
+                                                    value={user.name}
+                                                    // placeholder="Username"
                                                     type="text"
-                                                    onChange={(e) => setName(e.target.value)}
+                                                    disabled
                                                 ></Form.Control>
                                             </Form.Group>
                                         </Col>
                                         <Col className="pl-1" md="6">
                                             <Form.Group>
                                                 <label htmlFor="exampleInputEmail1">
-                                                    Địa chỉ email
+                                                    Email
                                                 </label>
                                                 <Form.Control
-                                                    value={email}
-                                                    onChange={(e) => setEmail(e.target.value)}
+                                                    value={user.email}
+                                                    // placeholder="Email"
                                                     type="email"
-                                                    
+                                                    disabled
                                                 ></Form.Control>
                                             </Form.Group>
                                         </Col>
                                     </Row>
-                                   
+                                    <Row>
+                                        <Col className="pr-1" md="6">
+                                            <Form.Group>
+                                                <label>Tên</label>
+                                                <Form.Control
+                                                    value={user.name && user.name.split(" ", 1)}
+                                                    disabled
+                                                    type="text"
+                                                ></Form.Control>
+                                            </Form.Group>
+                                        </Col>
+                                        <Col className="pl-1" md="6">
+                                            <Form.Group>
+                                                <label>Họ</label>
+                                                <Form.Control
+                                                    value={getLastName()}
+                                                    disabled
+                                                    type="text"
+                                                ></Form.Control>
+                                            </Form.Group>
+                                        </Col>
+                                    </Row>
+
                                     <Row>
                                         <Col md="12">
                                             <Form.Group>
                                                 <label>Địa chỉ</label>
                                                 <Form.Control
-                                                    value={address}
-                                                    onChange={(e) => setAddress(e.target.value)}
+                                                    value={user.address }
+                                                    disabled
                                                     type="text"
                                                 ></Form.Control>
                                             </Form.Group>
@@ -138,32 +113,36 @@ const UpdateProfile = () => {
                                             <Form.Group>
                                                 <label>Số điện thoại</label>
                                                 <Form.Control
-                                                    value={phone}
-                                                    onChange={(e) => setPhone(e.target.value)}
+                                                    value={user.phone }
+                                                    disabled
                                                     type="text"
-                                                ></Form.Control>
-                                            </Form.Group>
-                                        </Col>
-                                        <Col className="pr-1" md="2">
-                                            <Form.Group>
-                                                <label>Ảnh đại diện</label>
-                                                <Form.Control
-                                                    // value={user.phone}
-                                                    onChange={handleUpdateDataChange}
-                                                    type="file"
                                                 ></Form.Control>
                                             </Form.Group>
                                         </Col>
                                     </Row>
                                     <br></br>
-                                    <Button
-                                        className="btn-fill pull-right"
-                                        type="submit"
-                                        variant="info"
-                                    >
-                                        Cập nhật tiểu sử
-                                    </Button>
-                                    
+                                    <div >
+                                        <span style={{ marginRight:"20px"}}>
+                                            <Button
+                                                className="btn-fill pull-right"
+                                                type="submit"
+                                                variant="info"
+                                                href="account/update"
+                                            >
+                                                Cập nhật tiểu sử
+                                            </Button>
+                                        </span>
+                                        <span style={{ marginRight:"20px"}}>
+                                            <Button
+                                                className="btn-fill pull-right"
+                                                type="button"
+                                                href='/password/update'
+                                                variant="info"
+                                            >
+                                                Cập nhật mật khẩu
+                                            </Button>  
+                                        </span>
+                                    </div>            
                                 </Form>
                             </Card.Body>
                         </Card>
@@ -176,7 +155,7 @@ const UpdateProfile = () => {
                                         <img
                                             alt="..."
                                             className="avatar border-gray rounded-circle"
-                                            src={avatarPreview}
+                                            src={user.avatar.url}
                                             width="150px"
                                             height="150px"
                                         ></img>
@@ -218,5 +197,4 @@ const UpdateProfile = () => {
         </>
     );
 };
-
-export default UpdateProfile;
+export default Profile;
