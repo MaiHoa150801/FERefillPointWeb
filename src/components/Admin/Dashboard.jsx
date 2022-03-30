@@ -39,7 +39,7 @@ const Dashboard = () => {
                         <div className="card bg-warning text-white mb-4">
                             <div className="card-body">Total Products</div>
                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                <a className="small text-white stretched-link" >{products.length}</a>
+                                <a className="small text-white stretched-link" ></a>
                             </div>
                         </div>
                     </div>

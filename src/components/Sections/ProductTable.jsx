@@ -9,27 +9,25 @@ import Actions from '../../components/Admin/Actions';
 
 const ProductTable = () => {
   const { products, error } = useSelector((state) => state.products);
-  console.log(products);
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));
-  }
+  };
   const columns = [
     {
-      field: "id",
-      headerName: " ID SP",
+      field: 'id',
+      headerName: ' ID SP',
       minWidth: 100,
       flex: 0.1,
     },
     {
-      field: "name",
-      headerName: "Tên SP",
+      field: 'name',
+      headerName: 'Tên SP',
       minWidth: 200,
       flex: 0.3,
-
     },
     {
-      field: "description",
-      headerName: "Mô tả",
+      field: 'description',
+      headerName: 'Mô tả',
       minWidth: 100,
       flex: 0.2,
     },
@@ -40,51 +38,53 @@ const ProductTable = () => {
     //   flex: 0.2,
     // },
     {
-      field: "measure",
-      headerName: "Đơn vị",
-      headerAlign: "left",
-      align: "left",
+      field: 'measure',
+      headerName: 'Đơn vị',
+      headerAlign: 'left',
+      align: 'left',
       minWidth: 70,
       flex: 0.1,
     },
     {
-      field: "unit_price",
-      headerName: "Giá",
-      type: "number",
+      field: 'unit_price',
+      headerName: 'Giá',
+      type: 'number',
       minWidth: 100,
-      headerAlign: "left",
-      align: "left",
+      headerAlign: 'left',
+      align: 'left',
       flex: 0.2,
     },
     {
-      field: "sale_price",
-      headerName: "Giá đã giảm",
-      type: "number",
+      field: 'sale_price',
+      headerName: 'Giá đã giảm',
+      type: 'number',
       minWidth: 100,
-      headerAlign: "left",
-      align: "left",
+      headerAlign: 'left',
+      align: 'left',
       flex: 0.2,
-
     },
     {
-      field: "tradeMarkName",
-      headerName: "Nhãn hàng",
+      field: 'tradeMarkName',
+      headerName: 'Nhãn hàng',
       minWidth: 100,
       flex: 0.1,
-      align: "left",
-      headerAlign: "left",
-
+      align: 'left',
+      headerAlign: 'left',
     },
     {
-      field: "actions",
-      headerName: "Actions",
+      field: 'actions',
+      headerName: 'Actions',
       minWidth: 100,
       flex: 0.1,
-      type: "number",
+      type: 'number',
       sortable: false,
       renderCell: (params) => {
         return (
-          <Actions editRoute={'product'} deleteHandler={deleteProductHandler} id={params.row.id} />
+          <Actions
+            editRoute={'product'}
+            deleteHandler={deleteProductHandler}
+            id={params.row.id}
+          />
         );
       },
     },
@@ -101,13 +101,11 @@ const ProductTable = () => {
       sale_price: item.sale_price,
       tradeMarkName: item.trademark && item.trademark.name,
     });
-
   });
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getSliderProducts());
   }, [dispatch]);
-
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
