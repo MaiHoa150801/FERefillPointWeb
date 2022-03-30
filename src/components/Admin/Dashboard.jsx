@@ -23,7 +23,6 @@ const Dashboard = () => {
 
     return (
         <>
-
             <div className="container-fluid">
                 <h2>Dashboard</h2>
                 <div className="row">

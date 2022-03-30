@@ -20,7 +20,7 @@ export const createShipper = (shipperData) => async (dispatch) => {
         const header = token ? { Authorization: `Bearer ${token}` } : null;
 
         const { data } = await axios.post(
-            'http://localhost:8080/api/v1/admin/shipper/register',
+            'https://be-refill-x8j5d.ondigitalocean.app/admin/shipper/register',
             shipperData,
             { headers: header }
         );
@@ -46,7 +46,7 @@ export const userRegister = (shipperData) => async (dispatch) => {
         const header = token ? { Authorization: `Bearer ${token}` } : null;
 
         const { data } = await axios.post(
-            'http://localhost:8080/api/v1/admin/shipper/register',
+            'https://be-refill-x8j5d.ondigitalocean.app/admin/shipper/register',
             shipperData,
             { headers: header }
         );

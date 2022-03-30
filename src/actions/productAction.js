@@ -41,9 +41,9 @@ export const getProducts =
     try {
       dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-      let url = `http://localhost:4000/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
+      let url = `https://be-refill-x8j5d.ondigitalocean.app/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
       if (category) {
-        url = `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
+        url = `https://be-refill-x8j5d.ondigitalocean.app/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
       }
       const { data } = await axios.get(url);
 
@@ -64,7 +64,7 @@ export const getSimilarProducts = (category) => async (dispatch) => {
   try {
     dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get(`http://localhost:8080/api/v1/products?category=${category}`);
+        const { data } = await axios.get(`https://be-refill-x8j5d.ondigitalocean.app/products?category=${category}`);
 
     dispatch({
       type: ALL_PRODUCTS_SUCCESS,
@@ -83,7 +83,7 @@ export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-        const { data } = await axios.get(`http://localhost:8080/api/v1/product/${id}`);
+        const { data } = await axios.get(`https://be-refill-x8j5d.ondigitalocean.app/product/${id}`);
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -102,7 +102,7 @@ export const newReview = (reviewData) => async (dispatch) => {
     try {
         dispatch({ type: NEW_REVIEW_REQUEST });
         const config = { header: { "Content-Type": "application/json" } }
-        const { data } = await axios.put("http://localhost:8080/api/v1/review", reviewData, config);
+        const { data } = await axios.put("https://be-refill-x8j5d.ondigitalocean.app/review", reviewData, config);
 
     dispatch({
       type: NEW_REVIEW_SUCCESS,
@@ -123,7 +123,7 @@ export const getSliderProducts = () => async (dispatch) => {
     const token = await Cookies.get('token');
     const header = token ? { Authorization: `Bearer ${token}` } : null;
     const { data } = await axios.get(
-      'http://localhost:8080/api/v1/saler/product',
+      'https://be-refill-x8j5d.ondigitalocean.app/saler/product',
       {
         headers: header,
       }
@@ -147,7 +147,7 @@ export const getAdminProducts = () => async (dispatch) => {
     dispatch({ type: ADMIN_PRODUCTS_REQUEST });
 
     const { data } = await axios.get(
-      'http://localhost:8080/api/v1/admin/products'
+      'https://be-refill-x8j5d.ondigitalocean.app/admin/products'
     );
 
     dispatch({
@@ -168,7 +168,7 @@ export const createProduct = (productData) => async (dispatch) => {
     const token = await Cookies.get('token');
     const header = token ? { Authorization: `Bearer ${token}` } : null;
     const { data } = await axios.post(
-      'http://localhost:8080/api/v1/admin/product/new',
+      'https://be-refill-x8j5d.ondigitalocean.app/admin/product/new',
       productData,
       {
         headers: header,
@@ -192,7 +192,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_PRODUCT_REQUEST });
         const config = { header: { "Content-Type": "application/json" } }
-        const { data } = await axios.put(`http://localhost:8080/api/v1/admin/product/${id}`, productData, config);
+        const { data } = await axios.put(`https://be-refill-x8j5d.ondigitalocean.app/admin/product/${id}`, productData, config);
 
     dispatch({
       type: UPDATE_PRODUCT_SUCCESS,
@@ -213,7 +213,7 @@ export const deleteProduct = (id) => async (dispatch) => {
     const header = token ? { Authorization: `Bearer ${token}` } : null;
     dispatch({ type: DELETE_PRODUCT_REQUEST });
     const { data } = await axios.delete(
-      `http://localhost:8080/api/v1/saler/product/${id}`,
+      `https://be-refill-x8j5d.ondigitalocean.app/saler/product/${id}`,
       {
         headers: header,
       }
@@ -235,7 +235,7 @@ export const getAllReviews = (id) => async (dispatch) => {
   try {
     dispatch({ type: ALL_REVIEWS_REQUEST });
     const { data } = await axios.get(
-      `http://localhost:4000/api/v1/admin/reviews?id=${id}`
+      `https://be-refill-x8j5d.ondigitalocean.app/admin/reviews?id=${id}`
     );
 
     dispatch({
@@ -255,7 +255,7 @@ export const deleteReview = (reviewId, productId) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_REVIEW_REQUEST });
     const { data } = await axios.delete(
-      `http://localhost:4000/api/v1/admin/reviews?id=${reviewId}&productId=${productId}`
+      `https://be-refill-x8j5d.ondigitalocean.app/admin/reviews?id=${reviewId}&productId=${productId}`
     );
 
     dispatch({
