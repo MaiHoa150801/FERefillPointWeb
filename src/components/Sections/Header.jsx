@@ -32,7 +32,7 @@ export default function Header() {
               <p className="font15 whiteColor">
                 <em>Cùng chung tay đong đầy sản phẩm. Mỗi lần bạn đong đầy sản phẩm đã góp phần giảm thiểu rác thải đe dọa đến môi trường</em>
               </p>
-              <p className="font13 orangeColor textRight" style={{marginTop: '10px'}}>Ralph Waldo Emerson</p>
+              <p className="font13 orangeColor textRight" style={{marginTop: '10px'}}>Nguyễn Thị Thu</p>
             </div>
           </QuoteWrapper>
           <DotsWrapper>

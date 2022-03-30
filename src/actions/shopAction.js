@@ -26,10 +26,10 @@ export const createShop = (shopData) => async (dispatch) => {
       shopData,
       config
     );
-
+      console.log(data);
     dispatch({
       type: NEW_SHOP_SUCCESS,
-      payload: data.shop,
+      payload: data,
     });
   } catch (error) {
     dispatch({

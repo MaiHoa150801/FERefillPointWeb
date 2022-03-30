@@ -135,7 +135,7 @@ export default function Voucher() {
           Tạo mã giảm giá
         </Button>
         <MUIDataTable
-          title={'Orders List'}
+          title={'Mã giảm giá'}
           data={dataTable}
           columns={columns}
           options={options}

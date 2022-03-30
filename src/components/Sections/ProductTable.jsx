@@ -9,6 +9,7 @@ import Actions from '../../components/Admin/Actions';
 
 const ProductTable = () => {
   const { products, error } = useSelector((state) => state.products);
+  
   const deleteProductHandler = (id) => {
     dispatch(deleteProduct(id));
   };

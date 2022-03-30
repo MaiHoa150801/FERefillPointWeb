@@ -19,8 +19,7 @@ export default function Shop() {
 
     const { loading, success, error } = useSelector((state) => state.shop);
 
-    const { user, isAuthenticated } = useSelector((state) => state.user);
-    console.log(user);
+    const { user } = useSelector((state) => state.user);
 
     const [logo, setLogo] = useState();
     const [logoPreview, setLogoPreview] = useState('preview.png');

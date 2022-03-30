@@ -67,7 +67,7 @@ const Sidebar = ({ activeTab }) => {
               </NavLink>
               <NavLink to="/admin/shippers" className={`nav-link  ${activeTab === 'admin/shippers'} `}>
                 <i className="fa fa-home" />
-                <span><b> Quản lý Shippers </b></span>
+                <span><b> Quản lý  </b></span>
               </NavLink>
               <NavLink to="/admin/shipper/add" className={`nav-link  ${activeTab === 'admin/shipper/add'} `}>
                 <i className="fa fa-home" />

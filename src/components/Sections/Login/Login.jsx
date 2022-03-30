@@ -48,18 +48,18 @@ const Login = () => {
         dispatch(loginUser(email, password));
     }
 
-    const redirect = location.search ? location.search.split("=")[1] : "";
+    // const redirect = location.search ? location.search.split("=")[1] : "";redirect,
 
     useEffect(() => {
         if (error) {
             enqueueSnackbar(error, { variant: "error" });
             dispatch(clearErrors());
         }
-        if (isAuthenticated === true) {
+        if (isAuthenticated) {
             enqueueSnackbar('Đăng nhập thành công', { variant: 'success' });
-            navigate(`/${redirect}`)
+            navigate("/")
         }
-    }, [ dispatch, error, isAuthenticated, redirect, navigate, enqueueSnackbar]);
+    }, [ dispatch, error, isAuthenticated, navigate, enqueueSnackbar]);
 
     return (
         <>

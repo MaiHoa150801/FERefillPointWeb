@@ -84,7 +84,7 @@ const UpdatePassword = () => {
                                                 <Form.Control
                                                     value={oldPassword}
                                                     name="oldPassword"
-                                                    type="text"
+                                                    type="password"
                                                     onChange={(e) => setOldPassword(e.target.value)}
                                                 ></Form.Control>
                                             </Form.Group>
@@ -97,6 +97,7 @@ const UpdatePassword = () => {
                                                     Mật khẩu mới
                                                 </label>
                                                 <Form.Control
+                                                    type="password"
                                                     name="newPassword"
                                                     value={newPassword}
                                                     onChange={(e) => setNewPassword(e.target.value)}
@@ -109,6 +110,7 @@ const UpdatePassword = () => {
                                                     Xác thực mật khẩu
                                                 </label>
                                                 <Form.Control
+                                                    type="password"
                                                     name="confirmPassword"
                                                     value={confirmPassword}
                                                     onChange={(e) => setConfirmPassword(e.target.value)}

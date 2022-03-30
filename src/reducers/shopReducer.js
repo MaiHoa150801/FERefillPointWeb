@@ -33,8 +33,17 @@ import {
 export const shopReducer = (state = { shop: {} }, { type, payload }) => {
     switch (type) {
         case NEW_SHOP_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            };
         case LOAD_SHOP_REQUEST:
         case NEW_SHOP_SUCCESS:
+            return {
+                loading: false,
+                success: payload.success,
+                shop: payload.shop,
+            };
         case LOAD_SHOP_SUCCESS:
             return {
                 loading: false,
