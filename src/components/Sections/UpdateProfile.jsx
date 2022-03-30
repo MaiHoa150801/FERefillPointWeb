@@ -38,6 +38,26 @@ const UpdateProfile = () => {
 
     const updateProfileHandler = (e) => {
         e.preventDefault();
+        if (!email && !name && !phone && !avatar && !address) {
+            enqueueSnackbar("không được để trống tất cả cả trường", { variant: "error" });
+            return;
+        }
+        if (!email) {
+            enqueueSnackbar("không được để trống email", { variant: "error" });
+            return;
+        }
+        if (!name) {
+            enqueueSnackbar("không được để trống name", { variant: "error" });
+            return;
+        }
+        if (!phone) {
+            enqueueSnackbar("không được để trống name", { variant: "error" });
+            return;
+        }
+        if (!avatar) {
+            enqueueSnackbar("không được để trống name", { variant: "error" });
+            return;
+        }
 
         const formData = new FormData();
         formData.set("name", name);
@@ -89,7 +109,7 @@ const UpdateProfile = () => {
             <Container fluid>
                 <Row>
                     <Col md="8">
-                        <Card fluid style={{  background:"LightBlue"}}>
+                        <Card fluid style={{ background: "LightBlue" }}>
                             <Card.Header>
                                 <Card.Title as="h4">Cập nhật tiểu sử</Card.Title>
                             </Card.Header>
@@ -100,6 +120,7 @@ const UpdateProfile = () => {
                                             <Form.Group>
                                                 <label>Tên người dùng</label>
                                                 <Form.Control
+                                                    name='name'
                                                     value={name}
                                                     type="text"
                                                     onChange={(e) => setName(e.target.value)}
@@ -112,20 +133,22 @@ const UpdateProfile = () => {
                                                     Địa chỉ email
                                                 </label>
                                                 <Form.Control
+                                                    name='email'
                                                     value={email}
                                                     onChange={(e) => setEmail(e.target.value)}
                                                     type="email"
-                                                    
+
                                                 ></Form.Control>
                                             </Form.Group>
                                         </Col>
                                     </Row>
-                                   
+
                                     <Row>
                                         <Col md="12">
                                             <Form.Group>
                                                 <label>Địa chỉ</label>
                                                 <Form.Control
+                                                    name='address'
                                                     value={address}
                                                     onChange={(e) => setAddress(e.target.value)}
                                                     type="text"
@@ -138,6 +161,7 @@ const UpdateProfile = () => {
                                             <Form.Group>
                                                 <label>Số điện thoại</label>
                                                 <Form.Control
+                                                    name='phone'
                                                     value={phone}
                                                     onChange={(e) => setPhone(e.target.value)}
                                                     type="text"
@@ -146,12 +170,18 @@ const UpdateProfile = () => {
                                         </Col>
                                         <Col className="pr-1" md="2">
                                             <Form.Group>
-                                                <label>Ảnh đại diện</label>
-                                                <Form.Control
-                                                    // value={user.phone}
+                                                {/* <label></label> */}
+                                                <div className="avatarfield" style={{margin: "25px", width: "200px"}}>
+                                                    Chọn hình đại diện
+                                                    <input type="file" name="avatar" onChange={handleUpdateDataChange} className="hide_file"></input>
+                                                </div>
+                                                {/* <Form.Control
+                                                    name="avatar"
+                                                    accept="image/*"
                                                     onChange={handleUpdateDataChange}
                                                     type="file"
-                                                ></Form.Control>
+                                                    className="hidden"
+                                                ></Form.Control> */}
                                             </Form.Group>
                                         </Col>
                                     </Row>
@@ -163,7 +193,7 @@ const UpdateProfile = () => {
                                     >
                                         Cập nhật tiểu sử
                                     </Button>
-                                    
+
                                 </Form>
                             </Card.Body>
                         </Card>

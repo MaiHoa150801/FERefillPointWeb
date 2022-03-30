@@ -1,14 +1,7 @@
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { getSliderProducts, deleteProduct } from '../../actions/productAction';
 import { DataGrid } from '@mui/x-data-grid';
@@ -99,7 +92,6 @@ const ProductTable = () => {
 
   const rows = [];
   products && products.forEach((item) => {
-    console.log(item.trademark && item.trademark.name);
     rows.unshift({
       id: item.id,
       name: item.name,

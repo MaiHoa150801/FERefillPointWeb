@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from 'react';
-import Avatar from '@mui/material/Avatar'
+import Avatar from '@mui/material/Avatar';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';

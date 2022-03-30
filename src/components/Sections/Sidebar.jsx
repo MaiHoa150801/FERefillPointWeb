@@ -59,6 +59,22 @@ const Sidebar = ({ activeTab }) => {
               </NavLink>
             </>
           ) : (<></>)}
+          {user.role === "admin" ? (
+            <>
+              <NavLink to="/admin/dashboard" className={`nav-link  ${activeTab === 'admin/dashboard'} `}>
+                <i className="fa fa-home" />
+                <span><b> Trang quản lý </b></span>
+              </NavLink>
+              <NavLink to="/admin/shippers" className={`nav-link  ${activeTab === 'admin/shippers'} `}>
+                <i className="fa fa-home" />
+                <span><b> Quản lý Shippers </b></span>
+              </NavLink>
+              <NavLink to="/admin/shipper/add" className={`nav-link  ${activeTab === 'admin/shipper/add'} `}>
+                <i className="fa fa-home" />
+                <span><b> Thêm Shipper </b></span>
+              </NavLink>
+            </>
+          ) : (<></>)}
         </Nav>
       </Col>
     </>

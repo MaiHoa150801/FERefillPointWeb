@@ -63,7 +63,7 @@ export const getSimilarProducts = (category) => async (dispatch) => {
     try {
         dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get(`http://localhost:4000/api/v1/products?category=${category}`);
+        const { data } = await axios.get(`http://localhost:8080/api/v1/products?category=${category}`);
 
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,
@@ -82,7 +82,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-        const { data } = await axios.get(`http://localhost:4000/api/v1/product/${id}`);
+        const { data } = await axios.get(`http://localhost:8080/api/v1/product/${id}`);
 
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
@@ -101,7 +101,7 @@ export const newReview = (reviewData) => async (dispatch) => {
     try {
         dispatch({ type: NEW_REVIEW_REQUEST });
         const config = { header: { "Content-Type": "application/json" } }
-        const { data } = await axios.put("http://localhost:4000/api/v1/review", reviewData, config);
+        const { data } = await axios.put("http://localhost:8080/api/v1/review", reviewData, config);
 
         dispatch({
             type: NEW_REVIEW_SUCCESS,
@@ -179,7 +179,7 @@ export const updateProduct = (id, productData) => async (dispatch) => {
     try {
         dispatch({ type: UPDATE_PRODUCT_REQUEST });
         const config = { header: { "Content-Type": "application/json" } }
-        const { data } = await axios.put(`http://localhost:4000/api/v1/admin/product/${id}`, productData, config);
+        const { data } = await axios.put(`http://localhost:8080/api/v1/admin/product/${id}`, productData, config);
 
         dispatch({
             type: UPDATE_PRODUCT_SUCCESS,

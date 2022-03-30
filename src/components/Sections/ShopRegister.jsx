@@ -223,9 +223,8 @@ const ShopRigister = () => {
                           <label htmlFor="website_name">Kinh độ</label>
                           <input
                             className="form-control"
-                            type="number"
                             name="latitude"
-                            id="latitude"
+                            
                             placeholder="Enter..."
                             value={latitude}
                             onChange={handleDataChange}
@@ -235,9 +234,8 @@ const ShopRigister = () => {
                           <label htmlFor="website_name">Vĩ độ</label>
                           <input
                             className="form-control"
-                            type="number"
                             name="longitude"
-                            id="longitude"
+                          
                             placeholder="Enter..."
                             value={longitude}
                             onChange={handleDataChange}

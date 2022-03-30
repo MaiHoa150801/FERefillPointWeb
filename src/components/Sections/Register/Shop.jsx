@@ -132,7 +132,7 @@ export default function Shop() {
             </Helmet>
             <div className="registration-form">
                 <form id="frm-register" onSubmit={newShop} encType="multipart/form-data">
-                    <div className=" form-img" style={{ "line-height": "0px"}}>
+                    <div className=" form-img" style={{ "line-height": "0px" }}>
                         <h4>ĐĂNG KÍ SHOP </h4>
                     </div>
                     <div className="form-group" style={{ display: "flex" }}>
@@ -161,14 +161,14 @@ export default function Shop() {
                     </div>
                     <div className="row">
                         <div className="form-group">
-                            <input type="number" name="latitude" className="form-control item" id="latitude" value={latitude} onChange={handleDataChange} placeholder="Kinh độ" />
+                            <input name="latitude" className="form-control item" id="latitude" value={latitude} onChange={handleDataChange} placeholder="Kinh độ" />
                         </div>
                         <div className="form-group">
-                            <input type="number" name="longitude" className="form-control item" id="longitude" value={longitude} onChange={handleDataChange} placeholder="Vĩ độ" />
+                            <input name="longitude" className="form-control item" id="longitude" value={longitude} onChange={handleDataChange} placeholder="Vĩ độ" />
                         </div>
                     </div>
                     <div >
-                        <textarea type="text" name="description"  className="item" style={{width: "100%", height: "100px"}} value={description} onChange={handleDataChange} placeholder="Mô tả shop" />
+                        <textarea type="text" name="description" className="item" style={{ width: "100%", height: "100px" }} value={description} onChange={handleDataChange} placeholder="Mô tả shop" />
                     </div>
                     <div className="form-group">
                         <button id="btn-register" type="submit" className="btn btn-block create-account"> Đăng kí</button>

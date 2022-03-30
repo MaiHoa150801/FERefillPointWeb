@@ -27,6 +27,8 @@ import Shop from './components/Sections/Register/Shop';
 import AddProduct from './components/Sections/AddProduct';
 import ShopAdmin from './components/Sections/ShopAdmin';
 import CodeResetPassword from './components/Sections/Login/code-reset-password';
+import AddShipper from './components/Admin/AddShipper';
+import Shippers from './components/Admin/Shippers';
 
 function App() {
   const dispatch = useDispatch();
@@ -70,7 +72,7 @@ function App() {
         <Route
           path="/shop/dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute isSaler={true}>
               <Account activeTab="shop/dashboard">
                 <ShopAdmin />
               </Account>
@@ -80,7 +82,7 @@ function App() {
         <Route
           path="/shop/order"
           element={
-            <ProtectedRoute >
+            <ProtectedRoute isSaler={true}>
               <Account activeTab="shop/order">
                 <Order />
               </Account>
@@ -90,7 +92,7 @@ function App() {
         <Route
           path="/shop/voucher"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute isSaler={true}>
               <Account activeTab="shop/voucher">
                 <Voucher />
               </Account>
@@ -100,7 +102,7 @@ function App() {
         <Route
           path="/shop/product/add"
           element={
-            <ProtectedRoute >
+            <ProtectedRoute isSaler={true}>
               <Account activeTab="shop/product/add">
                 <AddProduct />
               </Account>
@@ -128,20 +130,11 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
-        <Route
-          path="/admin/dashboard"
-          element={
-            <ProtectedRoute >
-              <Dashboard activeTab={0}>
-                <MainData />
-              </Dashboard>
-            </ProtectedRoute>
-          }
-        ></Route>
+
         <Route
           path="/shop/product"
           element={
-            <ProtectedRoute  >
+            <ProtectedRoute isSaler={true} >
               <Account activeTab="shop/product">
                 <ProductTable />
               </Account>
@@ -153,6 +146,39 @@ function App() {
           element={
             <ProtectedRoute >
               <AdminLayout />
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Account activeTab="admin/dashboard">
+                <Dashboard />
+              </Account>
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin/shippers"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Account activeTab="admin/shippers">
+                <Shippers />
+              </Account>
+            </ProtectedRoute>
+          }
+        ></Route>
+
+        <Route
+          path="/admin/shipper/add"
+          element={
+            <ProtectedRoute isAdmin={true}>
+              <Account activeTab="admin/shipper/add">
+                <AddShipper />
+              </Account>
             </ProtectedRoute>
           }
         ></Route>

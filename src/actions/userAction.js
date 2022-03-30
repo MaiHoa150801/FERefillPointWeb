@@ -311,8 +311,10 @@ export const resetPass = (email, password) => async (dispatch) => {
 export const getAllUsers = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_USERS_REQUEST });
+    const token = await Cookies.get('token');
+    const header = token ? { Authorization: `Bearer ${token}` } : null;
     const { data } = await axios.get(
-      'http://localhost:8080/api/v1/admin/users'
+      'http://localhost:8080/api/v1/admin/users', {headers: header}
     );
     dispatch({
       type: ALL_USERS_SUCCESS,
