@@ -22,7 +22,7 @@ export const createShop = (shopData) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      'https://be-refill-x8j5d.ondigitalocean.app/salesperson/new',
+      'https://be-refill-x8j5d.ondigitalocean.app/api/v1/salesperson/new',
       shopData,
       config
     );
