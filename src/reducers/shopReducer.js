@@ -70,3 +70,32 @@ export const shopReducer = (state = { shop: {} }, { type, payload }) => {
             return state;
     }
 }
+
+export const AllShopsReducer = (state = { shops: [] }, { type, payload }) => {
+    switch (type) {
+        case ALL_SHOPS_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            };
+        case ALL_SHOPS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                shops: payload,
+            };
+        case ALL_SHOPS_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: payload,
+            };
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null,
+            };
+        default:
+            return state;
+    }
+};

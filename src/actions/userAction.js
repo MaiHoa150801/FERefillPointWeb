@@ -352,7 +352,8 @@ export const getUserDetails = (id) => async (dispatch) => {
 export const updateUser = (id, userData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_USER_REQUEST });
-
+    const token = await Cookies.get('token');
+    const header = token ? { Authorization: `Bearer ${token}` } : null;
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -362,7 +363,7 @@ export const updateUser = (id, userData) => async (dispatch) => {
     const { data } = await axios.put(
       `https://be-refill-x8j5d.ondigitalocean.app/api/v1/admin/user/${id}`,
       userData,
-      config
+      {headers: header}
     );
 
     dispatch({
@@ -381,8 +382,10 @@ export const updateUser = (id, userData) => async (dispatch) => {
 export const deleteUser = (id) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_USER_REQUEST });
+    const token = await Cookies.get('token');
+    const header = token ? { Authorization: `Bearer ${token}` } : null;
     const { data } = await axios.delete(
-      `https://be-refill-x8j5d.ondigitalocean.app/api/v1/admin/user/${id}`
+      `https://be-refill-x8j5d.ondigitalocean.app/api/v1/admin/user/${id}`, {headers: header}
     );
 
     dispatch({

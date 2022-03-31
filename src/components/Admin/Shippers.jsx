@@ -10,14 +10,39 @@ import { getSliderProducts, deleteProduct } from '../../actions/productAction';
 import { DataGrid } from '@mui/x-data-grid';
 import Actions from '../../components/Admin/Actions';
 import Paper from '@mui/material/Paper';
+import { clearErrors, deleteUser } from '../../actions/userAction';
+import { DELETE_USER_RESET } from '../../constants/userConstants';
+import { useSnackbar } from 'notistack';
 
 const Shippers = () => {
-
+    const { enqueueSnackbar } = useSnackbar();
     const dispatch = useDispatch();
 
     const { users } = useSelector((state) => state.users);
     console.log(users);
     const { products, error } = useSelector((state) => state.products);
+
+    const { loading, isDeleted, error: deleteError } = useSelector((state) => state.profile);
+
+    useEffect(() => {
+        if (error) {
+            enqueueSnackbar(error, { variant: "error" });
+            dispatch(clearErrors());
+        }
+        if (deleteError) {
+            enqueueSnackbar(deleteError, { variant: "error" });
+            dispatch(clearErrors());
+        }
+        if (isDeleted) {
+            enqueueSnackbar("User Deleted Successfully", { variant: "success" });
+            dispatch({ type: DELETE_USER_RESET });
+        }
+        dispatch(getAllUsers());
+    }, [dispatch, error, deleteError, isDeleted, enqueueSnackbar]);
+
+    const deleteUserHandler = (id) => {
+        dispatch(deleteUser(id));
+    }
 
     const columns = [
         {
@@ -75,7 +100,9 @@ const Shippers = () => {
             sortable: false,
             renderCell: (params) => {
                 return (
-                    <Actions />
+                    <Actions editRoute={'user'}
+                    deleteHandler={deleteUserHandler}
+                    id={params.row.id} name={params.row.name}/>
                 );
             },
         },
@@ -85,7 +112,7 @@ const Shippers = () => {
 
     useEffect(() => {
         dispatch(getAllUsers());
-        dispatch(getSliderProducts());
+        
     }, []);
 
     users && users.forEach((item) => {

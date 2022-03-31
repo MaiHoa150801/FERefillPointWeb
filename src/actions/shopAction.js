@@ -6,9 +6,13 @@ import {
   LOAD_SHOP_SUCCESS,
   LOAD_SHOP_FAIL,
   LOAD_SHOP_REQUEST,
+  ALL_SHOPS_REQUEST,
+  ALL_SHOPS_SUCCESS,
+  ALL_SHOPS_FAIL,
 } from '../constants/shopConstants';
 import { getShop } from '../Service/ShopService';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 // Register User
 export const createShop = (shopData) => async (dispatch) => {
@@ -52,6 +56,28 @@ export const LoadShop = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOAD_SHOP_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// Get All Shops ---ADMIN
+export const getAllShops = () => async (dispatch) => {
+  try {
+    dispatch({ type: ALL_SHOPS_REQUEST });
+    const token = await Cookies.get('token');
+    const header = token ? { Authorization: `Bearer ${token}` } : null;
+    const { data } = await axios.get(
+      'https://be-refill-x8j5d.ondigitalocean.app/api/v1/salespersons', {headers: header}
+    );
+    console.log(data);
+    dispatch({
+      type: ALL_SHOPS_SUCCESS,
+      payload: data.salesperson,
+    });
+  } catch (error) {
+    dispatch({
+      type: ALL_SHOPS_FAIL,
       payload: error.response.data.message,
     });
   }

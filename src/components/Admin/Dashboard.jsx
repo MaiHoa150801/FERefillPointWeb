@@ -7,6 +7,7 @@ import { Doughnut, Line, Pie, Bar } from 'react-chartjs-2';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllUsers } from '../../actions/userAction';
 import { getSliderProducts, deleteProduct } from '../../actions/productAction';
+import { getAllShops } from '../../actions/shopAction';
 
 const Dashboard = () => {
 
@@ -14,10 +15,13 @@ const Dashboard = () => {
 
     const { users } = useSelector((state) => state.users);
     const { products, error } = useSelector((state) => state.products);
-
+    console.log(products);
+    const { shops } = useSelector((state) => state.shops);
+    console.log(shops);
     useEffect(() => {
         dispatch(getAllUsers());
-        dispatch(getSliderProducts());
+        // dispatch(getSliderProducts());
+        dispatch(getAllShops());
     }, []);
 
 
@@ -38,7 +42,7 @@ const Dashboard = () => {
                         <div className="card bg-warning text-white mb-4">
                             <div className="card-body">Total Products</div>
                             <div className="card-footer d-flex align-items-center justify-content-between">
-                                <a className="small text-white stretched-link" ></a>
+                                <a className="small text-white stretched-link" >{users.length}</a>
                             </div>
                         </div>
                     </div>
